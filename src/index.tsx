@@ -1,10 +1,23 @@
-import * as React from 'react'
-import styles from './styles.module.css'
+// export the list of official providers
+export {
+  getShuffledProviders,
+  providersCopy as providers
+} from './shared/utils';
 
-interface Props {
-  text: string
-}
+// export the types
+export type {
+  SPIDButtonProps,
+  Protocols,
+  ProviderRecord,
+  Languages,
+  Sizes,
+  ColorTheme,
+  CornerType,
+  ConfigurationGET,
+  ConfigurationPOST,
+  Types
+} from './shared/types';
 
-export const ExampleComponent = ({ text }: Props) => {
-  return <div className={styles.test}>Example Component: {text}</div>
-}
+export { SPIDReactButton } from './component';
+export { SPIDReactButton as SPIDReactButtonModal } from './modalVariant';
+export { SPIDReactButton as SPIDReactButtonDropdown } from './dropdownVariant';

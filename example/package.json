@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "analyze": "source-map-explorer 'build/static/js/*.js'",
     "start": "node ../node_modules/react-scripts/bin/react-scripts.js start",
     "build": "node ../node_modules/react-scripts/bin/react-scripts.js build",
     "test": "node ../node_modules/react-scripts/bin/react-scripts.js test",
@@ -17,14 +18,27 @@
     "@types/node": "file:../node_modules/@types/node",
     "@types/react": "file:../node_modules/@types/react",
     "@types/react-dom": "file:../node_modules/@types/react-dom",
+    "@types/react-select": "^4.0.13",
+    "bootstrap-italia": "^1.4.3",
+    "codesandbox": "^2.2.1",
+    "design-react-kit": "^3.3.3",
+    "prettier": "^2.2.1",
     "react": "file:../node_modules/react",
     "react-dom": "file:../node_modules/react-dom",
     "react-scripts": "file:../node_modules/react-scripts",
-    "typescript": "file:../node_modules/typescript",
-    "spid-react-button": "file:.."
+    "react-select": "^4.3.0",
+    "react-syntax-highlighter": "^15.4.3",
+    "source-map-explorer": "^2.5.2",
+    "spid-react-button": "file:..",
+    "spid-smart-button": "file:../node_modules/spid-smart-button",
+    "typeface-lora": "^1.1.13",
+    "typeface-roboto-mono": "^1.1.13",
+    "typeface-titillium-web": "^1.1.13",
+    "typescript": "file:../node_modules/typescript"
   },
   "devDependencies": {
-    "@babel/plugin-syntax-object-rest-spread": "^7.8.3"
+    "@babel/plugin-syntax-object-rest-spread": "^7.8.3",
+    "@types/react-syntax-highlighter": "^13.5.0"
   },
   "eslintConfig": {
     "extends": "react-app"

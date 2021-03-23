@@ -1,0 +1,299 @@
+/**  
+ * The content of this file is derived from: https://github.com/italia/spid-sp-access-button/blob/master/src/production/css/spid-sp-access-button.min.css
+ * All original copyrights, credits and license apply here as: https://github.com/italia/spid-sp-access-button/blob/master/LICENSE.md
+ */
+
+@import url(https://fonts.googleapis.com/css?family=Titillium+Web:400,600);
+:root {
+    --text-color-positive: #FFF;
+    --text-color-negative: #06C;
+    --background-color-positive: #06C;
+    --background-color-negative: #FFF;
+    --color-darker: #036;
+    --color-lighter: #83BEED;
+}
+
+.container {
+    position: relative;
+    display: inline-block;
+}
+
+.button {
+    display: inline-block;
+    position: relative;
+    padding: 0;
+    color: var(--text-color-positive);
+    font-family: "Titillium Web", HelveticaNeue, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
+    font-weight: 600;
+    line-height: 1em;
+    text-decoration: none;
+    border: 0;
+    text-align: center;
+    cursor: pointer;
+    overflow: hidden
+}
+
+.buttonIcon, .buttonText {
+    display: block;
+    float: left;
+}
+
+.buttonIcon {
+    margin: 0 -.4em 0 0;
+    padding: 0.6em .8em .5em;
+    border-right: rgba(255, 255, 255, 0.1) 0.1em solid;
+}
+
+.buttonIcon>img {
+    margin-bottom: 0rem !important;
+}
+
+.buttonText {
+    padding: .95em 1em .85em 1em;
+    font-size: 1.15em;
+    text-align: center;
+}
+
+.theme .buttonText {
+    color: var(--text-color-positive);
+}
+
+.themeNegative.buttonText {
+    color: var(--text-color-negative);
+}
+
+.button svg {
+    width: 1.8em;
+    height: 1.8em;
+}
+
+.block {
+    display: block
+}
+
+.small {
+    font-size: 10px;
+    width: 150px
+}
+
+.small>span img {
+    width: 19px;
+    height: 19px;
+    border: 0;
+}
+
+.medium {
+    font-size: 15px;
+    width: 220px
+}
+
+.medium>span img {
+    width: 29px;
+    height: 29px;
+    border: 0
+}
+
+.large {
+    font-size: 20px;
+    width: 280px
+}
+
+.large>span img {
+    width: 38px;
+    height: 38px;
+    border: 0;
+}
+
+.extraLarge {
+    font-size: 25px;
+    width: 340px
+}
+
+.extraLarge>span img {
+    width: 47px;
+    height: 47px;
+    border: 0;
+}
+
+.theme {
+    background-color: var(--background-color-positive);
+    color: var(--text-color-positive);
+}
+
+.theme:hover {
+    background-color: var(--color-darker);
+    color: var(--text-color-positive);
+}
+
+.theme:active {
+    background-color: var(--color-lighter);
+    color: var(--color-darker)
+}
+
+.themeNegative {
+    color: var(--text-color-negative);
+    background-color: var(--background-color-negative);
+}
+
+.themeNegative:hover {
+    color: var(--color-darker);
+    background-color: var(--background-color-negative);
+}
+
+.themeNegative:active {
+    color: var(--color-lighter);
+    background-color: var(--color-darker)
+}
+
+.idpButton {
+    position: absolute;
+    z-index: 1039;
+    top: 100%;
+    left: 0
+}
+
+.idpButton .idpButtonMenu, .idpButton .idpButtonPanel {
+    list-style: none;
+    background: white;
+    border: solid 1px #ddd;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    overflow: visible;
+    padding: 0;
+    margin: 0
+}
+
+.idpButtonSmall, .idpButtonMedium {
+    width: 230px;
+}
+
+.idpButtonLarge {
+    width: 270px;
+}
+
+.idpButtonExtraLarge {
+    width: 330px;
+}
+
+.idpButton .idpButtonPanel {
+    padding: 10px;
+}
+
+.idpButton.idpButtonTip {
+    margin-top: 8px;
+}
+
+.idpButton.idpButtonTip:before {
+    position: absolute;
+    content: "";
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 7px solid #ddd;
+    display: inline-block;
+    top: -6px;
+    left: 9px;
+}
+
+.idpButton.idpButtonTip:after {
+    position: absolute;
+    content: "";
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 6px solid #fff;
+    display: inline-block;
+    top: -5px;
+    left: 10px;
+}
+
+.idpButton.idpButtonTip.idpButtonTipAnchorRight:before {
+    left: auto;
+    right: 9px
+}
+
+.idpButton.idpButtonTip.idpButtonTipAnchorRight:after {
+    left: auto;
+    right: 10px
+}
+
+.idpButton.idpButtonScroll .idpButtonMenu, .idpButton.idpButtonScroll .idpButtonPanel {
+    max-height: 180px;
+    overflow: auto
+}
+
+.idpButton .idpButtonMenu li {
+    list-style: none;
+    padding: 0 0;
+    margin: 0;
+    line-height: 18px
+}
+
+.idpButton .idpButtonMenu li>a, .idpButton .idpButtonMenu label {
+    display: block;
+    font-family: "Titillium Web", HelveticaNeue, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
+    font-weight: 600;
+    font-size: .9em;
+    color: #06C;
+    text-decoration: underline;
+    line-height: 18px;
+    padding-top: 5px;
+    white-space: nowrap;
+    border-bottom: 1px solid #ddd
+}
+
+.idpButton .idpButtonMenu li>a:hover, .idpButton .idpButtonMenu label:hover {
+    color: var(--color-darker);
+    cursor: pointer;
+    background-color: #F0F0F0
+}
+
+.idpLogo {
+    font-size: 100%;
+    height: 10%;
+    width: 100%;
+    border: 0;
+    border-bottom: 1px solid #CCC;
+    background-color: #FFF;
+    padding: 15px !important;
+    text-align: left;
+    cursor: pointer
+}
+
+.idpLogo:hover {
+    background-color: #F0F0F0
+}
+
+.idpLogo img {
+    height: 25px;
+    vertical-align: middle;
+    cursor: pointer
+}
+
+.topMenuSpace10>a img {
+    margin-top: 10px;
+}
+
+.topMenuSpace20>a img {
+    margin-top: 20px;
+}
+
+.topMenuLine {
+    border-top: 5px solid #000
+}
+
+.supportLink>a {
+    padding: 5px 0 10px 10px
+}
+
+.srOnly {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0
+}
+
+.disabled {
+    color: #aaa;
+}
