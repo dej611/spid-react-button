@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { isGetMethod, isProviderActive } from '../shared/utils';
-import { getIdpButtonSizeClass, useMountAndUnMount } from './util';
+import { getIdpButtonSizeClass } from './util';
 
 import type { TranslateFn } from '../shared/i18n';
 import type {
@@ -21,14 +21,12 @@ type ProvidersDropdownProps = Required<
     | 'configuration'
     | 'protocol'
     | 'extraProviders'
-    | 'onProvidersShown'
-    | 'onProvidersHidden'
-    | 'onProviderClicked'
   >
-> & {
-  i18n: TranslateFn;
-  providers: RegisteredProviderRecord[];
-};
+> &
+  Pick<SPIDButtonProps, 'onProviderClicked'> & {
+    i18n: TranslateFn;
+    providers: RegisteredProviderRecord[];
+  };
 export const ProvidersDropdown = ({
   configuration,
   supported,
@@ -39,13 +37,8 @@ export const ProvidersDropdown = ({
   protocol,
   providers,
   extraProviders,
-  onProvidersShown,
-  onProvidersHidden,
   onProviderClicked
 }: ProvidersDropdownProps) => {
-  // useMount + useUnmount in one go
-  useMountAndUnMount(onProvidersShown, onProvidersHidden);
-
   return (
     <div
       className={`${styles.idpButton} ${styles.idpButtonTip} ${
@@ -90,15 +83,13 @@ export const ProvidersDropdown = ({
 };
 
 type ProviderButtonProps = Required<
-  Pick<
-    SPIDButtonProps,
-    'url' | 'mapping' | 'configuration' | 'onProviderClicked'
-  >
-> & {
-  idp: RegisteredProviderRecord;
-  isActive: boolean;
-  i18n: TranslateFn;
-};
+  Pick<SPIDButtonProps, 'url' | 'mapping' | 'configuration'>
+> &
+  Pick<SPIDButtonProps, 'onProviderClicked'> & {
+    idp: RegisteredProviderRecord;
+    isActive: boolean;
+    i18n: TranslateFn;
+  };
 const ProviderButton = ({
   idp,
   configuration,
@@ -117,9 +108,14 @@ const ProviderButton = ({
   if (isGetMethod(configuration)) {
     return (
       <a
-        href={actionURL}
+        title={linkTitle}
+        href={isActive ? actionURL : undefined}
+        // @ts-expect-error
+        disabled={!isActive}
         className={`${styles.idpLogo} ${isActive ? '' : styles.disabled}`}
-        onClick={() => onProviderClicked(idp)}
+        onClick={(e) => onProviderClicked?.(idp, e)}
+        role='link'
+        id={entityID}
       >
         <ProviderButtonContent idp={idp} title={linkTitle} />
       </a>
@@ -130,9 +126,11 @@ const ProviderButton = ({
     <form name='spid_idp_access' action={actionURL} method='POST'>
       <button
         className={`${styles.idpLogo} ${isActive ? '' : styles.disabled}`}
-        id={idp.entityName}
+        id={idp.entityID}
         name={linkTitle}
+        title={linkTitle}
         type='submit'
+        onClick={(e) => onProviderClicked?.(idp, e)}
       >
         <ProviderButtonContent idp={idp} title={linkTitle} />
       </button>

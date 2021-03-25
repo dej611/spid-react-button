@@ -1,3 +1,14 @@
 #main {
     padding-top: 25px;
 }
+
+.tableFixHead {
+    overflow-y: auto;
+    height: 350px;
+}
+
+.tableFixHead thead th {
+    position: sticky;
+    top: 0;
+    background-color: #FFF;
+}

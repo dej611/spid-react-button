@@ -24,15 +24,16 @@ const ProviderButtonContent = ({
 };
 
 type ProviderButtonProps = Required<
-  Pick<SPIDButtonProps, 'url' | 'configuration' | 'onProviderClicked'>
-> & {
-  idp: RegisteredProviderRecord;
-  entityID: ProviderRecord['entityID'];
-  i18n: TranslateFn;
-  isActive: boolean;
-  delay: number;
-  visibility: ModalState;
-};
+  Pick<SPIDButtonProps, 'url' | 'configuration'>
+> &
+  Pick<SPIDButtonProps, 'onProviderClicked'> & {
+    idp: RegisteredProviderRecord;
+    entityID: ProviderRecord['entityID'];
+    i18n: TranslateFn;
+    isActive: boolean;
+    delay: number;
+    visibility: ModalState;
+  };
 export const ProviderButton = ({
   idp,
   entityID,
@@ -67,11 +68,13 @@ export const ProviderButton = ({
     return (
       <span className={`spid-button-idp ${classNames}`} style={style}>
         <a
+          id={entityID}
           title={linkTitle}
-          href={isActive ? actionURL : ''}
+          href={isActive ? actionURL : undefined}
           // @ts-expect-error
           disabled={!isActive}
-          onClick={() => onProviderClicked(idp)}
+          onClick={(e) => onProviderClicked?.(idp, e)}
+          role='link'
         >
           <ProviderButtonContent entityName={idp.entityName} logo={idp.logo} />
         </a>
@@ -83,10 +86,12 @@ export const ProviderButton = ({
     <span className='spid-button-idp'>
       <form action={actionURL} method='POST'>
         <button
+          id={entityID}
           type='submit'
           className='spid-button-idp-button'
           title={linkTitle}
           disabled={!isActive}
+          onClick={(e) => onProviderClicked?.(idp, e)}
         >
           <ProviderButtonContent entityName={idp.entityName} logo={idp.logo} />
         </button>

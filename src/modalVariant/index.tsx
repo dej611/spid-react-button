@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { CSSTransition } from 'react-transition-group';
 import SpidIcoCircleLbUrl from 'spid-smart-button/dist/img/spid-ico-circle-lb.svg';
 import SpidIcoCircleBbUrl from 'spid-smart-button/dist/img/spid-ico-circle-bb.svg';
 
@@ -15,7 +14,7 @@ import {
   mergeProviders,
   validateURL,
   getShuffledProviders,
-  noop
+  useCallbacksRef
 } from '../shared/utils';
 import { ProvidersModal } from './ProvidersModal';
 
@@ -78,24 +77,61 @@ export const SPIDReactButton = ({
   protocol = 'SAML',
   url,
   supported = providersList.map(({ entityID }) => entityID),
-  onProvidersShown = noop,
-  onProvidersHidden = noop,
-  onProviderClicked = noop
+  onProvidersShown,
+  onProvidersHidden,
+  onProviderClicked
 }: SPIDButtonProps) => {
-  const [showModal, toggleModal] = useState(false);
   const [state, setState] = useState<ModalState>(possibleStates.INIT);
+  const [onShownRef, onHiddenRef] = useCallbacksRef(
+    onProvidersShown,
+    onProvidersHidden
+  );
 
   useEffect(() => {
     const escHandler = (event: KeyboardEvent) => {
       if (event.keyCode === ESC_KEY) {
-        toggleModal(false);
+        setState(possibleStates.EXITING);
       }
     };
-    if (showModal) {
+    if (isVisible(state)) {
       document.addEventListener('keyup', escHandler);
     }
     return () => document.removeEventListener('keyup', escHandler);
-  }, [showModal]);
+  }, [state]);
+
+  useEffect(() => {
+    if (state.type === possibleStates.ENTERED.type) {
+      if (onShownRef.current) {
+        onShownRef.current();
+      }
+    }
+    if (state.type === possibleStates.EXITED.type) {
+      if (onHiddenRef.current) {
+        onHiddenRef.current();
+      }
+    }
+  }, [state]);
+
+  useEffect(() => {
+    let timer: NodeJS.Timeout;
+    if (state.type === possibleStates.ENTERING.type) {
+      timer = setTimeout(
+        () => setState(possibleStates.ENTERED),
+        DEFAULT_TRANSITION_TIME
+      );
+    }
+    if (state.type === possibleStates.EXITING.type) {
+      timer = setTimeout(
+        () => setState(possibleStates.EXITED),
+        DEFAULT_TRANSITION_TIME
+      );
+    }
+    return () => {
+      if (timer != null) {
+        clearTimeout(timer);
+      }
+    };
+  }, [state]);
 
   validateURL(url);
 
@@ -115,8 +151,6 @@ export const SPIDReactButton = ({
     mapping,
     protocol,
     supported,
-    onProvidersShown,
-    onProvidersHidden,
     onProviderClicked
   };
 
@@ -124,28 +158,19 @@ export const SPIDReactButton = ({
 
   return (
     <div aria-live='polite'>
-      <CSSTransition
-        in={showModal}
-        timeout={DEFAULT_TRANSITION_TIME}
-        unmountOnExit
-        onEntering={() => setState(possibleStates.ENTERING)}
-        onEntered={() => setState(possibleStates.ENTERED)}
-        onExiting={() => setState(possibleStates.EXITING)}
-        onExited={() => setState(possibleStates.EXITED)}
-      >
-        <ProvidersModal
-          visibility={state}
-          i18n={translateFn}
-          providers={mergedProviders}
-          closeModal={() => toggleModal(false)}
-          {...moreModalProps}
-        />
-      </CSSTransition>
-
+      <ProvidersModal
+        visibility={state}
+        i18n={translateFn}
+        providers={mergedProviders}
+        closeModal={() => setState(possibleStates.EXITING)}
+        {...moreModalProps}
+      />
       <LoginButton
         modalVisibility={state}
         i18n={translateFn}
-        toggleModal={toggleModal}
+        toggleModal={(open: boolean) =>
+          setState(open ? possibleStates.ENTERING : possibleStates.EXITING)
+        }
         {...moreLoginProps}
       />
     </div>

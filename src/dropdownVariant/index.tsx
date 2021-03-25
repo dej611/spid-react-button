@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import SpidIcoCircleBbUrl from 'spid-smart-button/dist/img/spid-ico-circle-bb.svg';
 import SpidIcoCircleLbUrl from 'spid-smart-button/dist/img/spid-ico-circle-lb.svg';
@@ -8,7 +8,7 @@ import {
   validateURL,
   getShuffledProviders,
   mergeProviders,
-  noop
+  useCallbacksRef
 } from '../shared/utils';
 
 import styles from './index.module.css';
@@ -27,12 +27,28 @@ export const SPIDReactButton = ({
   theme = 'positive',
   protocol = 'SAML',
   extraProviders = [],
-  onProviderClicked = noop,
-  onProvidersHidden = noop,
-  onProvidersShown = noop
+  onProviderClicked,
+  onProvidersHidden,
+  onProvidersShown
 }: SPIDButtonProps) => {
-  const [openDropdown, toggleDropdown] = useState(false);
+  const [openDropdown, toggleDropdown] = useState<boolean | undefined>(
+    undefined
+  );
+  const [onShownRef, onHiddenRef] = useCallbacksRef(
+    onProvidersShown,
+    onProvidersHidden
+  );
+
   const i18n = getTranslationFn(lang);
+
+  useEffect(() => {
+    if (openDropdown && onShownRef?.current) {
+      onShownRef.current();
+    }
+    if (openDropdown === false && onHiddenRef?.current) {
+      onHiddenRef.current();
+    }
+  }, [openDropdown]);
 
   validateURL(url);
 
@@ -69,8 +85,6 @@ export const SPIDReactButton = ({
           providers={mergedProviders}
           extraProviders={extraProviders}
           onProviderClicked={onProviderClicked}
-          onProvidersHidden={onProvidersHidden}
-          onProvidersShown={onProvidersShown}
         />
       )}
     </div>

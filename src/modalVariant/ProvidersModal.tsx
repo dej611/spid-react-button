@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import SpidLogoAnimationBlackUrl from 'spid-smart-button/dist/img/spid-logo-animation-black.svg';
 import SpidLogoUrl from 'spid-smart-button/dist/img/spid-logo.svg';
 import CloseSvgUrl from 'spid-smart-button/dist/img/close.svg';
@@ -19,7 +19,7 @@ import {
   possibleStates
 } from './constants';
 import type { ModalState } from './types';
-import { isProviderActive, noop } from '../shared/utils';
+import { isProviderActive } from '../shared/utils';
 import { isVisible } from './utils';
 import { ProviderButton } from './ProviderButton';
 import { TranslateFn } from '../shared/i18n';
@@ -58,21 +58,6 @@ function getModalClasses({ type }: ModalState) {
   }
 }
 
-function useVisibilityEffect(
-  fn: () => void,
-  visibility: ModalState,
-  compareLogin: (
-    prevVisibility: ModalState,
-    nextVisibility: ModalState
-  ) => boolean
-) {
-  const ref = useRef<ModalState | undefined>(undefined);
-  if (!ref.current || !compareLogin(visibility, ref.current)) {
-    ref.current = visibility;
-  }
-  useEffect(fn, [ref.current]);
-}
-
 type ProvidersModalProps = Required<
   Pick<
     SPIDButtonProps,
@@ -82,16 +67,14 @@ type ProvidersModalProps = Required<
     | 'mapping'
     | 'configuration'
     | 'extraProviders'
-    | 'onProvidersShown'
-    | 'onProvidersHidden'
-    | 'onProviderClicked'
   >
-> & {
-  i18n: TranslateFn;
-  visibility: ModalState;
-  providers: RegisteredProviderRecord[];
-  closeModal: () => void;
-};
+> &
+  Pick<SPIDButtonProps, 'onProviderClicked'> & {
+    i18n: TranslateFn;
+    visibility: ModalState;
+    providers: RegisteredProviderRecord[];
+    closeModal: () => void;
+  };
 export const ProvidersModal = ({
   i18n,
   mapping,
@@ -103,16 +86,8 @@ export const ProvidersModal = ({
   url,
   closeModal,
   configuration,
-  onProvidersShown = noop,
-  onProvidersHidden = noop,
-  onProviderClicked = noop
+  onProviderClicked
 }: ProvidersModalProps) => {
-  useVisibilityEffect(onProvidersShown, visibility, (_, next) => {
-    return next.type === possibleStates.ENTERED.type;
-  });
-  useVisibilityEffect(onProvidersHidden, visibility, (_, next) => {
-    return next.type === possibleStates.EXITED.type;
-  });
   const {
     panel: panelClasses,
     buttonClose: buttonCloseClasses,

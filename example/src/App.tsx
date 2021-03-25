@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react'
 
-import { SPIDReactButton, SPIDButtonProps } from 'spid-react-button'
+import { SPIDReactButton, SPIDButtonProps, ProviderRecord } from 'spid-react-button'
 import 'spid-smart-button/dist/spid-button.min.css';
 import 'bootstrap-italia/dist/css/bootstrap-italia.min.css';
 import 'typeface-titillium-web';
@@ -17,16 +17,22 @@ import { AppHeader } from './Header';
 import { defaultURL, initState } from './constants';
 import { Configurator } from './Configurator';
 import { CodeRenderer } from './CodeRenderer';
+import { EventsTable } from './EventsTable';
 
 const App = () => {
   const [buttonProps, setProps] = useState(initState);
 
   const [isValidURL, setValidURL] = useState(true);
+  const [events, setEvents] = useState<{type: string, name: string, arg?: string}[]>([]);
 
   const updateStateProp = useCallback(
     <T extends keyof SPIDButtonProps>(prop: T, newValue: SPIDButtonProps[T]) => {
       return setProps(prevState => ({ ...prevState, [prop]: newValue }))
     }, [setProps]);
+
+  const prependEvent = useCallback((newEvent) => {
+    setEvents((events) => [newEvent, ...events]);
+  }, [setEvents])
 
   return <>
     <AppHeader />
@@ -35,9 +41,21 @@ const App = () => {
         <Row>
           <Col md="6">
             <Row>
+              <Col>
               <legend>{(buttonProps.type).toUpperCase()} version</legend>
-              <SPIDReactButton {...buttonProps} url={isValidURL ? buttonProps.url : defaultURL} />
-              <CodeRenderer {...buttonProps} url={isValidURL ? buttonProps.url : defaultURL} />
+              <SPIDReactButton 
+                {...buttonProps} 
+                url={isValidURL ? buttonProps.url : defaultURL} 
+                onProvidersShown={() => prependEvent({type: buttonProps.type, name: 'onProvidersShown'})}
+                onProvidersHidden={() => prependEvent({type: buttonProps.type, name: 'onProvidersHidden'})}
+                onProviderClicked={(arg: ProviderRecord, e) => {
+                  e.preventDefault();
+                  prependEvent({type: buttonProps.type, name: 'onProvidersClicked', arg: JSON.stringify(arg, null, 2)})
+                }}
+                />
+              <EventsTable events={events}/>
+              <CodeRenderer {...buttonProps} url={isValidURL ? buttonProps.url : defaultURL}/>
+              </Col>
             </Row>
           </Col>
           <Col>

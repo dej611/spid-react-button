@@ -1,10 +1,12 @@
+import { useRef } from 'react';
 import { ProviderRecord } from '..';
 import { providers } from './providers';
 import {
   ConfigurationGET,
   ConfigurationPOST,
   Protocols,
-  RegisteredProviderRecord
+  RegisteredProviderRecord,
+  SPIDButtonProps
 } from './types';
 
 export function mergeProviders(
@@ -63,4 +65,18 @@ export function isProviderActive(
   );
 }
 
-export function noop() {}
+export function useCallbacksRef(
+  onShown: SPIDButtonProps['onProvidersShown'],
+  onHidden: SPIDButtonProps['onProvidersHidden']
+) {
+  const onShownRef = useRef(onShown);
+  const onHiddenRef = useRef(onHidden);
+
+  if (onShownRef?.current !== onShown) {
+    onShownRef.current = onShown;
+  }
+  if (onHiddenRef?.current !== onHidden) {
+    onHiddenRef.current = onHidden;
+  }
+  return [onShownRef, onHiddenRef];
+}
