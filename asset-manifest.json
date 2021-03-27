@@ -1,0 +1,40 @@
+{
+  "files": {
+    "main.css": "./static/css/main.12d84948.chunk.css",
+    "main.js": "./static/js/main.0583d7fc.chunk.js",
+    "main.js.map": "./static/js/main.0583d7fc.chunk.js.map",
+    "runtime-main.js": "./static/js/runtime-main.05469cf9.js",
+    "runtime-main.js.map": "./static/js/runtime-main.05469cf9.js.map",
+    "static/css/2.4b99b357.chunk.css": "./static/css/2.4b99b357.chunk.css",
+    "static/js/2.c8f9a509.chunk.js": "./static/js/2.c8f9a509.chunk.js",
+    "static/js/2.c8f9a509.chunk.js.map": "./static/js/2.c8f9a509.chunk.js.map",
+    "index.html": "./index.html",
+    "precache-manifest.366b34b808ce1f5b97335a896304469e.js": "./precache-manifest.366b34b808ce1f5b97335a896304469e.js",
+    "service-worker.js": "./service-worker.js",
+    "static/css/2.4b99b357.chunk.css.map": "./static/css/2.4b99b357.chunk.css.map",
+    "static/css/main.12d84948.chunk.css.map": "./static/css/main.12d84948.chunk.css.map",
+    "static/js/2.c8f9a509.chunk.js.LICENSE.txt": "./static/js/2.c8f9a509.chunk.js.LICENSE.txt",
+    "static/media/close.svg": "./static/media/close.44523799.svg",
+    "static/media/index.css": "./static/media/titillium-web-latin-900.c0d751f2.woff",
+    "static/media/spid-ico-circle-bb.svg": "./static/media/spid-ico-circle-bb.14efd2a9.svg",
+    "static/media/spid-ico-circle-lb.svg": "./static/media/spid-ico-circle-lb.37a8c5a1.svg",
+    "static/media/spid-idp-arubaid.svg": "./static/media/spid-idp-arubaid.7481f87b.svg",
+    "static/media/spid-idp-infocertid.svg": "./static/media/spid-idp-infocertid.ad51ea34.svg",
+    "static/media/spid-idp-intesaid.svg": "./static/media/spid-idp-intesaid.5a593306.svg",
+    "static/media/spid-idp-lepidaid.svg": "./static/media/spid-idp-lepidaid.1bb85b86.svg",
+    "static/media/spid-idp-namirialid.svg": "./static/media/spid-idp-namirialid.e0a47a34.svg",
+    "static/media/spid-idp-posteid.svg": "./static/media/spid-idp-posteid.108d0e70.svg",
+    "static/media/spid-idp-sielteid.svg": "./static/media/spid-idp-sielteid.a435bc7e.svg",
+    "static/media/spid-idp-spiditalia.svg": "./static/media/spid-idp-spiditalia.fb579c03.svg",
+    "static/media/spid-idp-timid.svg": "./static/media/spid-idp-timid.d31fd87d.svg",
+    "static/media/spid-logo-animation-black.svg": "./static/media/spid-logo-animation-black.27152c4a.svg",
+    "static/media/spid-logo.svg": "./static/media/spid-logo.ba2b2535.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.05469cf9.js",
+    "static/css/2.4b99b357.chunk.css",
+    "static/js/2.c8f9a509.chunk.js",
+    "static/css/main.12d84948.chunk.css",
+    "static/js/main.0583d7fc.chunk.js"
+  ]
+}
