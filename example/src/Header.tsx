@@ -23,8 +23,8 @@ export const AppHeader = () => (<Header
             <li>
               <a
                 aria-label="Github"
-                href="####"
-                target="_blank"
+                href="https://github.com/dej611/spid-react-button"
+                target="_blank noreferrer"
               >
                 <Icon
                   color=""
