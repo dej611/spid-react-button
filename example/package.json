@@ -30,7 +30,7 @@
     "react-select": "^4.3.0",
     "react-syntax-highlighter": "^15.4.3",
     "source-map-explorer": "^2.5.2",
-    "spid-react-button": "file:..",
+    "@dej611/spid-react-button": "file:..",
     "spid-smart-button": "file:../node_modules/spid-smart-button",
     "svg-loaders-react": "^2.2.1",
     "typeface-lora": "^1.1.13",

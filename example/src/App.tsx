@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react'
 
-import { SPIDReactButton, SPIDButtonProps, ProviderRecord } from 'spid-react-button'
+import { SPIDReactButton, SPIDButtonProps, ProviderRecord } from '@dej611/spid-react-button'
 import 'spid-smart-button/dist/spid-button.min.css';
 import 'bootstrap-italia/dist/css/bootstrap-italia.min.css';
 import 'typeface-titillium-web';
@@ -8,7 +8,7 @@ import 'typeface-roboto-mono';
 import 'typeface-lora';
 
 
-import 'spid-react-button/dist/index.css';
+import '@dej611/spid-react-button/dist/index.css';
 
 // @ts-expect-error
 import { Col, Row, Container } from 'design-react-kit';

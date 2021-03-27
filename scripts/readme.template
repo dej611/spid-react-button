@@ -7,7 +7,7 @@
 ## Install
 
 ```bash
-npm install --save spid-react-button spid-smart-button
+npm install --save @dej611/spid-react-button spid-smart-button
 ```
 
 This package requires the `spid-smart-button` dependency for some assets.
@@ -17,10 +17,10 @@ This package requires the `spid-smart-button` dependency for some assets.
 ```jsx
 import React, { Component } from 'react'
 
-import {SPIDReactButton} from 'spid-react-button'
+import {SPIDReactButton} from '@dej611/spid-react-button'
 
 // For dropdown version
-import 'spid-react-button/dist/index.css'
+import '@dej611/spid-react-button/dist/index.css'
 
 // For modal version
 import 'spid-smart-button/dist/spid-button.min.css';

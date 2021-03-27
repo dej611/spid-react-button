@@ -22,12 +22,12 @@ function isDefaultProp(prop: string, value: unknown){
 const cssByType = {
     'modal': `// requires the "spid-smart-button" dependency
 import 'spid-smart-button/dist/spid-button.min.css';`,
-    'dropdown': "import 'spid-react-button/dist/index.css';"
+    'dropdown': "import '@dej611/spid-react-button/dist/index.css';"
 };
 
 export const CodeRenderer = (buttonProps: NoFunctionProps) => {
     const entries = Object.entries(buttonProps);
-    const code = `import { SPIDReactButton } from 'spid-react-button'
+    const code = `import { SPIDReactButton } from '@dej611/spid-react-button'
     ${cssByType[buttonProps.type]}
     
     function mySPIDButton(props){
