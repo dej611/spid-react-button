@@ -73,9 +73,6 @@
     "url": "https://github.com/dej611/spid-react-button/issues"
   },
   "homepage": "https://github.com/dej611/spid-react-button",
-  "directories": {
-    "example": "example"
-  },
   "dependencies": {},
   "keywords": [
     "spid",
