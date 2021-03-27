@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { SPIDButtonProps} from 'spid-react-button'
+import { SPIDButtonProps} from '@dej611/spid-react-button'
 // @ts-expect-error
 import { Input, Col, Row, Toggle, FormGroup, Label } from 'design-react-kit';
 import { SelectComponent } from './BISelect';

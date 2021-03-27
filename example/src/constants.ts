@@ -1,6 +1,6 @@
-import { getShuffledProviders } from "spid-react-button";
+import { getShuffledProviders } from "@dej611/spid-react-button";
 
-import {Protocols, Languages, Sizes, CornerType, ColorTheme, ConfigurationGET, ConfigurationPOST, Types, SPIDButtonProps} from 'spid-react-button'
+import {Protocols, Languages, Sizes, CornerType, ColorTheme, ConfigurationGET, ConfigurationPOST, Types, SPIDButtonProps} from '@dej611/spid-react-button'
 
 export const defaultURL = "/myLogin/idp={{idp}}";
 export const providersList = getShuffledProviders();

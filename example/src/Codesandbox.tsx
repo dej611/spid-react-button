@@ -25,7 +25,7 @@ function generateURLParams(code: string, addDependency: boolean){
       "react": "17.0.2",
       "react-dom": "17.0.2",
       "react-scripts": "4.0.0",
-      "spid-react-button": "latest"
+      "@dej611/spid-react-button": "latest"
     },
     "devDependencies": {
       "@babel/runtime": "7.13.8",
