@@ -12,7 +12,8 @@
     "node": ">=10"
   },
   "scripts": {
-    "build": "microbundle-crl --no-compress --format modern,cjs",
+    "build:ts": "microbundle-crl --no-compress --format modern,cjs",
+    "build": "microbundle-crl --no-compress --format modern,cjs && npm run doc",
     "start": "microbundle-crl watch --no-compress --format modern,cjs",
     "prepare": "run-s build",
     "test": "run-s test:unit test:lint test:build",
@@ -21,7 +22,8 @@
     "test:unit": "cross-env CI=1 react-scripts test --env=jsdom",
     "test:watch": "react-scripts test --env=jsdom",
     "predeploy": "cd example && npm install && npm run build",
-    "deploy": "gh-pages -d example/build"
+    "deploy": "gh-pages -d example/build",
+    "doc": "typedoc src/index.tsx --excludePrivate --json ./doc.json && node scripts/doc.js"
   },
   "peerDependencies": {
     "react": "^16.0.0",
@@ -58,7 +60,8 @@
     "react-dom": "^16.13.1",
     "react-scripts": "^3.4.1",
     "spid-smart-button": "1.1.5",
-    "typescript": "3.7.5"
+    "typedoc": "^0.20.34",
+    "typescript": "3.9.9"
   },
   "files": [
     "dist"

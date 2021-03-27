@@ -7,8 +7,7 @@ import { SPIDButtonProps } from '../shared/types';
 import {
   validateURL,
   getShuffledProviders,
-  mergeProviders,
-  useCallbacksRef
+  mergeProviders
 } from '../shared/utils';
 
 import styles from './index.module.css';
@@ -16,7 +15,13 @@ import { ProvidersDropdown } from './ProvidersMenu';
 import { getButtonSizeClass } from './util';
 
 const shuffledProviders = getShuffledProviders();
-
+/**
+ * The specific component button with the dropdown.
+ * Use this component when you want to minimize the footprint in your project.
+ * It accepts the same props as the main component. The `type` prop is ignored in this case.
+ *
+ * @param props
+ */
 export const SPIDReactButton = ({
   url,
   lang = 'it',
@@ -34,19 +39,15 @@ export const SPIDReactButton = ({
   const [openDropdown, toggleDropdown] = useState<boolean | undefined>(
     undefined
   );
-  const [onShownRef, onHiddenRef] = useCallbacksRef(
-    onProvidersShown,
-    onProvidersHidden
-  );
 
   const i18n = getTranslationFn(lang);
 
   useEffect(() => {
-    if (openDropdown && onShownRef?.current) {
-      onShownRef.current();
+    if (openDropdown && onProvidersShown) {
+      onProvidersShown();
     }
-    if (openDropdown === false && onHiddenRef?.current) {
-      onHiddenRef.current();
+    if (openDropdown === false && onProvidersHidden) {
+      onProvidersHidden();
     }
   }, [openDropdown]);
 

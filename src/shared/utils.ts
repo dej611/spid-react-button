@@ -1,12 +1,10 @@
-import { useRef } from 'react';
 import { ProviderRecord } from '..';
 import { providers } from './providers';
 import {
   ConfigurationGET,
   ConfigurationPOST,
   Protocols,
-  RegisteredProviderRecord,
-  SPIDButtonProps
+  RegisteredProviderRecord
 } from './types';
 
 export function mergeProviders(
@@ -42,8 +40,15 @@ function dirtyCopy<T>(obj: T): T {
   return JSON.parse(JSON.stringify(obj));
 }
 // Used for exporting
-export const providersCopy = dirtyCopy(providers);
+/**
+ * Returns a copy of the list of the official providers.
+ * @private
+ */
+export const providersCopy = dirtyCopy(providers) as RegisteredProviderRecord[];
 
+/**
+ * Returns a copy of the list of the official providers, already shuffled
+ */
 export function getShuffledProviders() {
   return providersCopy.sort(() => Math.random() - 0.5);
 }
@@ -63,20 +68,4 @@ export function isProviderActive(
     (extraProviders.length === 0 || isExtraProviders) &&
     idp.active
   );
-}
-
-export function useCallbacksRef(
-  onShown: SPIDButtonProps['onProvidersShown'],
-  onHidden: SPIDButtonProps['onProvidersHidden']
-) {
-  const onShownRef = useRef(onShown);
-  const onHiddenRef = useRef(onHidden);
-
-  if (onShownRef?.current !== onShown) {
-    onShownRef.current = onShown;
-  }
-  if (onHiddenRef?.current !== onHidden) {
-    onHiddenRef.current = onHidden;
-  }
-  return [onShownRef, onHiddenRef];
 }

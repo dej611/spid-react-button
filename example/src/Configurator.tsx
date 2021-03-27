@@ -7,25 +7,25 @@ import { SelectComponent } from './BISelect';
 import { colorThemes, configurations, cornerTypes, languages, NoFunctionProps, protocols, providersList, sizes, types } from './constants';
 
 function getOptionsAndCurrentSelection<T>(labels: string[], options: T[], currentState: SPIDButtonProps, prop: keyof SPIDButtonProps) {
-    const outputOptions = labels.map(
-      (label, i) => ({ label, value: options[i] })
-    );
-    // @ts-expect-error
-    const currentSelection = outputOptions.find(({ value }) => value === currentState[prop])
-    return { options: outputOptions, selection: currentSelection! }
-  }
+  const outputOptions = labels.map(
+    (label, i) => ({ label, value: options[i] })
+  );
+  // @ts-expect-error
+  const currentSelection = outputOptions.find(({ value }) => value === currentState[prop])
+  return { options: outputOptions, selection: currentSelection! }
+}
 
-  type ConfiguratorProps = {
-    buttonProps: NoFunctionProps,
-    updateProp: <T extends keyof NoFunctionProps>(prop: T, newValue: NoFunctionProps[T]) => void,
-    setValidURL: (newValue: boolean) => void,
-    isValidURL: boolean
-  }
+type ConfiguratorProps = {
+  buttonProps: NoFunctionProps,
+  updateProp: <T extends keyof NoFunctionProps>(prop: T, newValue: NoFunctionProps[T]) => void,
+  setValidURL: (newValue: boolean) => void,
+  isValidURL: boolean
+}
 
 export const Configurator = ({buttonProps, updateProp, setValidURL, isValidURL }: ConfiguratorProps) => {
 
 
-    const { options: langOptions, selection: langSelection } = getOptionsAndCurrentSelection(['Italiano', 'English', 'Deutsche'], languages, buttonProps, 'lang')
+  const { options: langOptions, selection: langSelection } = getOptionsAndCurrentSelection(['Italiano', 'English', 'Deutsche'], languages, buttonProps, 'lang')
   const { options: sizeOptions, selection: sizeSelection } = getOptionsAndCurrentSelection(['Small', 'Medium', 'Large'], sizes, buttonProps, 'size')
   const { options: colorSchemeOptions, selection: colorThemeSelection } = getOptionsAndCurrentSelection(['Positive', 'Negative'], colorThemes, buttonProps, 'theme')
   const { options: protocolOptions, selection: protocolSelection } = getOptionsAndCurrentSelection(['SAML', 'OIDC'], protocols, buttonProps, 'protocol')
@@ -33,6 +33,7 @@ export const Configurator = ({buttonProps, updateProp, setValidURL, isValidURL }
   const { options: methodOptions, selection: methodSelection } = getOptionsAndCurrentSelection(['GET', 'POST'], configurations, buttonProps, 'configuration')
   const { options: typeOptions, selection: typeSelection } = getOptionsAndCurrentSelection(['Modal', 'Dropown'], types, buttonProps, 'type')
 
+    const validProps = isValidURL ? {valid: true} : {invalid: true}
     return <>
     <div className="form-row">
             <Col md={6}>
@@ -40,8 +41,7 @@ export const Configurator = ({buttonProps, updateProp, setValidURL, isValidURL }
                 label={"URL - must contain '{{idp}}':"}
                 placeholder='Add a URL'
                 value={buttonProps.url}
-                valid={isValidURL}
-                invalid={!isValidURL}
+                {...validProps}
                 infoText={isValidURL ? '' : 'Please add the "{{idp}}" string in it'}
                 onChange={(event) => {
                   // @ts-expect-error
@@ -119,10 +119,10 @@ export const Configurator = ({buttonProps, updateProp, setValidURL, isValidURL }
                 /></FormGroup></Col>
           </div>
           <div className="form-row">
-            <Col md={3}>
-              <FormGroup check className="m-8">
+            <Col>
+              <FormGroup check >
                 <Toggle
-                  label={<span>Fluid</span>}
+                  label='Fluid'
                   checked={buttonProps.fluid}
                   onChange={({ target }) => {
                     // @ts-expect-error
@@ -131,7 +131,7 @@ export const Configurator = ({buttonProps, updateProp, setValidURL, isValidURL }
                 />
               </FormGroup>
             </Col>
-            <Col >
+            <Col md={4}>
               <SelectComponent
                 label='Type'
                 selectedValue={typeSelection}
@@ -143,7 +143,7 @@ export const Configurator = ({buttonProps, updateProp, setValidURL, isValidURL }
                 }}
               />
               </Col>
-            <Col >
+            <Col md={4}>
               <SelectComponent
                 label='Protocol'
                 selectedValue={protocolSelection}
@@ -159,8 +159,7 @@ export const Configurator = ({buttonProps, updateProp, setValidURL, isValidURL }
           <Row>
             <fieldset>
               <legend>Provider supported:</legend>
-              <FormGroup check >
-
+              <FormGroup check>
                 {providersList.map(({ entityID, entityName, logo }) => <div key={entityName}>
                   <Input id={entityName} type="checkbox" checked={buttonProps.supported.includes(entityID)} onChange={(event) => {
                     // @ts-expect-error
@@ -178,5 +177,6 @@ export const Configurator = ({buttonProps, updateProp, setValidURL, isValidURL }
                 )}
               </FormGroup>
             </fieldset>
-          </Row></>
+          </Row>
+        </>
 }

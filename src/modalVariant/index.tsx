@@ -13,8 +13,7 @@ import { DEFAULT_TRANSITION_TIME, ESC_KEY, possibleStates } from './constants';
 import {
   mergeProviders,
   validateURL,
-  getShuffledProviders,
-  useCallbacksRef
+  getShuffledProviders
 } from '../shared/utils';
 import { ProvidersModal } from './ProvidersModal';
 
@@ -65,6 +64,14 @@ const LoginButton = ({
   );
 };
 
+/**
+ * The specific component button with the modal.
+ * Use this component when you want to minimize the footprint in your project.
+ * It accepts the same props as the main component. The `type` prop is ignored in this case.
+ *
+ * Mind this component requires the `css` from `spid-smart-button` to be imported.
+ * @param props
+ */
 export const SPIDReactButton = ({
   lang = 'it',
   extraProviders = [],
@@ -82,10 +89,6 @@ export const SPIDReactButton = ({
   onProviderClicked
 }: SPIDButtonProps) => {
   const [state, setState] = useState<ModalState>(possibleStates.INIT);
-  const [onShownRef, onHiddenRef] = useCallbacksRef(
-    onProvidersShown,
-    onProvidersHidden
-  );
 
   useEffect(() => {
     const escHandler = (event: KeyboardEvent) => {
@@ -100,14 +103,14 @@ export const SPIDReactButton = ({
   }, [state]);
 
   useEffect(() => {
-    if (state.type === possibleStates.ENTERED.type) {
-      if (onShownRef.current) {
-        onShownRef.current();
+    if (state.type === possibleStates.ENTERING.type) {
+      if (onProvidersShown) {
+        onProvidersShown();
       }
     }
-    if (state.type === possibleStates.EXITED.type) {
-      if (onHiddenRef.current) {
-        onHiddenRef.current();
+    if (state.type === possibleStates.EXITING.type) {
+      if (onProvidersHidden) {
+        onProvidersHidden();
       }
     }
   }, [state]);

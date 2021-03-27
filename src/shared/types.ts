@@ -1,5 +1,5 @@
 /**
- * The protocol to use for the current instance.
+ * The protocol to use for the current instance.\n
  * Only Providers who support the declared protocol are enabled.
  */
 export type Protocols = 'SAML' | 'OIDC';
@@ -8,7 +8,7 @@ export type Protocols = 'SAML' | 'OIDC';
  */
 export type Languages = 'it' | 'en' | 'de';
 /**
- * The size of the button. Options are: `"sm"` (small), `"md"` (medium), `"l"` (large) and `"xl"` (extra large - dropdown only).
+ * The size of the button. Options are: `"sm"` (small), `"md"` (medium), `"l"` (large) and `"xl"` (extra large - dropdown only).\n
  * The modal version does not support the `"xl"` size and will fallback to `"l"` if passed.
  */
 export type Sizes = 'sm' | 'md' | 'l' | 'xl';
@@ -25,7 +25,7 @@ export type ColorTheme = 'positive' | 'negative';
 export type CornerType = 'rounded' | 'sharp';
 /**
  * Each Provider button will use this configuration for its button.
- * This is the specific GET type
+ * This is the specific GET type.
  */
 export type ConfigurationGET = { method: 'GET' };
 /**
@@ -153,7 +153,7 @@ export type SPIDButtonProps = {
       | React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => void;
   /**
-   * Used for testing. Do not use in production
+   * Used for testing. *Do not use in production*
    */
   extraProviders?: ProviderRecord[];
 };

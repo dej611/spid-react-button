@@ -1,7 +1,6 @@
 import React from 'react';
 import { render, fireEvent, screen, act } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import { config } from 'react-transition-group';
 import { ConfigurationGET, ConfigurationPOST } from '.';
 import { providers } from './shared/providers';
 import { SPIDReactButton } from './component';
@@ -10,8 +9,6 @@ import { Types } from './shared/types';
 jest.useFakeTimers();
 const TIMEOUT_VALUE = 2500;
 const defaultURL = '/myLogin/idp={{idp}}';
-
-config.disabled = true;
 
 const configurations: [ConfigurationGET, ConfigurationPOST] = [
   { method: 'GET' },
