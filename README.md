@@ -36,107 +36,176 @@ function Example(){
 
 ## Components
 
-#### SPIDReactButton
+### SPIDReactButton
+
+**Type**: `Component`  
+
+**Props**: `SPIDButtonProps`  
 
 The main component for the button.  
 Use this component with the `type` prop to select the version you prefer.
 
-props: `SPIDButtonProps`
 
 The SPIDButtonProps object contains the following properties:
 
-* **configuration** ?: `ConfigurationGET | ConfigurationPOST` = `{"method": "GET"}`
+#### configuration
+
+**Type**: `ConfigurationGET | ConfigurationPOST`  
+
+**Required**: No  
+
+**Default value**: `{"method": "GET"}`
 
 
 Each Provider button will use this configuration for its button.  
 The default value is `{"method": "GET"}`
 
-___
 
-* **corners** ?: `CornerType` = `"rounded"`
+#### corners
+
+**Type**: `CornerType`  
+
+**Required**: No  
+
+**Default value**: `"rounded"`
 
 
 The type of corner for the button: rounded or sharp.  
 The default value is `"rounded"`.
 
-___
 
-* **extraProviders** ?: `ProviderRecord[]`  
+#### extraProviders
+
+**Type**: `ProviderRecord[]`  
+
+**Required**: No  
+
+
 
 Used for testing. *Do not use in production*
 
-___
 
-* **fluid** ?: `boolean` = `false`
+#### fluid
+
+**Type**: `boolean`  
+
+**Required**: No  
+
+**Default value**: `false`
 
 
 This controls the width of the button: when fluid it will fill all the available space.  
 It applies only to the modal version.  
 The default value is `false`.
 
-___
 
-* **lang** ?: `Languages` = `"it"`
+#### lang
+
+**Type**: `Languages`  
+
+**Required**: No  
+
+**Default value**: `"it"`
 
 
 The language used for the UI. The default value is `"it"`.
 
-___
 
-* **mapping** ?: `Record<string | string>`  
+#### mapping
+
+**Type**: `Record<string | string>`  
+
+**Required**: No  
+
+
 
 An object containing the mapping for the providers.  
 This is useful when a Service Provider identifies the IDP with a different string than the entityID
 
-___
 
-* **onProviderClicked** ?: `(
+#### onProviderClicked
+
+**Type**: `(
 providerEntry : ProviderRecord,
 event : React.MouseEvent<HTMLAnchorElement | MouseEvent> | React.MouseEvent<HTMLButtonElement | MouseEvent>) => void`  
 
+**Required**: No  
+
+
+
 This is called when a user clicks on a provider button.
 
-___
 
-* **onProvidersHidden** ?: `() => void`  
+#### onProvidersHidden
+
+**Type**: `() => void`  
+
+**Required**: No  
+
+
 
 This is called when the providers are hidden on the screen (as soon as the animation starts)
 
-___
 
-* **onProvidersShown** ?: `() => void`  
+#### onProvidersShown
+
+**Type**: `() => void`  
+
+**Required**: No  
+
+
 
 This is called when the providers are shown on the screen (as soon as the animation starts)
 
-___
 
-* **protocol** ?: `Protocols` = `"SAML"`
+#### protocol
+
+**Type**: `Protocols`  
+
+**Required**: No  
+
+**Default value**: `"SAML"`
 
 
 The protocol to use for the current instance.  
 Only Providers who support the declared protocol are enabled.  
 The default value is `"SAML"`.
 
-___
 
-* **size** ?: `Sizes` = `"md"`
+#### size
+
+**Type**: `Sizes`  
+
+**Required**: No  
+
+**Default value**: `"md"`
 
 
 The size of the button. Options are: `"sm"` (small), `"md"` (medium), `"l"` (large) and `"xl"` (extra large - dropdown only).  
 The modal version does not support the `"xl"` size and will fallback to `"l"` if passed.  
 The default value is `"md"`.
 
-___
 
-* **supported** ?: `ProviderRecord["entityID"][]` = All providers
+#### supported
+
+**Type**: `ProviderRecord["entityID"][]`  
+
+**Required**: No  
+
+**Default value**: All providers
 
 
 The list of entityID supported by the button instance.  
 The default value is all the official providers.
 
-___
 
-* **theme** ?: `ColorTheme` = `"positive"`
+#### theme
+
+**Type**: `ColorTheme`  
+
+**Required**: No  
+
+**Default value**: `"positive"`
 
 
 The theme used for the button:  
@@ -144,16 +213,26 @@ The theme used for the button:
 * "negative" has a white background and blue text.  
 The default value is `"positive"`.
 
-___
 
-* **type** ?: `Types` = `"modal"`
+#### type
+
+**Type**: `Types`  
+
+**Required**: No  
+
+**Default value**: `"modal"`
 
 
 The way to present the providers once clicked. The default value is `"modal"`.
 
-___
 
-* **url**: `string`  
+#### url
+
+**Type**: `string`  
+
+**Required**: Yes  
+
+
 
 The URL used by the buttons.  
 It can be either absolute or relative.  
@@ -162,24 +241,39 @@ It must contains the `"{{idp}}"` string in it, which will be replaced by the ent
 This props is *mandatory*.
 
 
-#### SPIDReactButtonDropdown
+
+
+
+___
+
+### SPIDReactButtonDropdown
+
+**Type**: `Component`  
+
+**Props**: `SPIDButtonProps`  
 
 The specific component button with the dropdown.  
 Use this component when you want to minimize the footprint in your project.  
 It accepts the same props as the main component. The `type` prop is ignored in this case.
 
-props: `SPIDButtonProps`
 
 
 
 
-#### SPIDReactButtonModal
+
+
+___
+
+### SPIDReactButtonModal
+
+**Type**: `Component`  
+
+**Props**: `SPIDButtonProps`  
 
 The specific component button with the modal.  
 Use this component when you want to minimize the footprint in your project.  
 It accepts the same props as the main component. The `type` prop is ignored in this case.
 
-props: `SPIDButtonProps`
 
 
 
@@ -256,10 +350,10 @@ The object format of a Identity Provider object.
 * entityName: `string`  
 
 
-* logo ?: `string`  
+* logo: `string` - Optional  
 
 
-* protocols ?: `Protocols[]`  
+* protocols: `Protocols[]` - Optional  
 
 
 

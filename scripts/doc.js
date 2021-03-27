@@ -174,11 +174,12 @@ readFile(path.normalize(rootPath + '/readme.template'), {
     .map(({ name, ...props }, i) => {
       const param = props.props[0].replace('__namedParameters : ', '');
       const { children } = types.find(({ name }) => name === param);
-      return `#### ${name}
+      return `### ${name}
 
+      **Type**: \`${props.type}\`  \n
+      **Props**: \`${param}\`  \n
       ${props.description.replace(/\n/g, '  \n')}
 
-    props: \`${param}\`
 
     ${
       i > 0
@@ -194,21 +195,24 @@ readFile(path.normalize(rootPath + '/readme.template'), {
                   description,
                   isOptional
                 }) => {
-                  return `* **${name}**${
-                    isOptional ? ' ?:' : ':'
-                  } \`${valueType}\`${
+                  return `#### ${name}
+                  
+                  **Type**: \`${valueType}\`  \n
+                  **Required**: ${isOptional ? 'No' : 'Yes'}  \n
+                  ${
                     defaultValue && defaultValue.length
-                      ? ` = ${defaultValue[0]}`
+                      ? `**Default value**: ${defaultValue[0]}`
                       : ''
                   }  \n
-                ${description.replace(/\n/g, '  \n')}`;
+                  ${description.replace(/\n/g, '  \n')}
+                `;
                 }
               )
-              .join(SEPARATOR)}`
+              .join('\n\n')}`
     }
     `;
     })
-    .join('\n\n')}
+    .join(`\n\n${SEPARATOR}`)}
   ${SEPARATOR}
   ## Types
 
@@ -234,7 +238,9 @@ readFile(path.normalize(rootPath + '/readme.template'), {
         
         ${children
           .map(({ name, description, isOptional, valueType }) => {
-            return `* ${name}${isOptional ? ' ?:' : ':'} \`${valueType}\`  \n
+            return `* ${name}: \`${valueType}\`${
+              isOptional ? ' - Optional' : ''
+            }  \n
             ${description.replace(/\n/g, '  \n')}`;
           })
           .join('\n')}`;
