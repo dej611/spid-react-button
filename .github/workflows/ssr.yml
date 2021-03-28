@@ -30,7 +30,7 @@ jobs:
             run: npm link @dej611/spid-react-button && npm i spid-smart-button
 
           - name: Add the buttons to the page
-            run: cp ../spid-react-button/.github/workflows/gatsby.template src/pages/index.js
+            run: cp ../spid-react-button/.github/workflows/gatsby.template ./src/pages/index.js
 
           - name: Run a build
             run: npx gatsby build
