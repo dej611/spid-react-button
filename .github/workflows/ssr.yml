@@ -26,8 +26,8 @@ jobs:
           - name: Start a new Gatsby project
             run: npx gatsby new test-project
 
-          - name: Link lib + add peer deps + add template page
-            run: cd test-project && npm link @dej611/spid-react-button && npm i spid-smart-button && cp ../.github/workflows/gatsby.template ./src/pages/index.js
+          - name: Link lib + add template page
+            run: cd test-project && npm link @dej611/spid-react-button && cp ../.github/workflows/gatsby.template ./src/pages/index.js
 
           - name: Run a build
             run: cd test-project && npx gatsby build
