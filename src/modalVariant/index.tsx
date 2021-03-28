@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import SpidIcoCircleLbUrl from 'spid-smart-button/dist/img/spid-ico-circle-lb.svg';
-import SpidIcoCircleBbUrl from 'spid-smart-button/dist/img/spid-ico-circle-bb.svg';
+import SpidIcoCircleLbUrl from '/../shared/svgs/spid-ico-circle-lb.svg';
+import SpidIcoCircleBbUrl from '/../shared/svgs/spid-ico-circle-bb.svg';
 
 import { getTranslationFn } from '../shared/i18n';
 import {
   computeButtonClasses,
   computeButtonTransitionClasses,
-  isVisible
+  isVisible,
+  getDefinedClasses
 } from './utils';
 
 import { DEFAULT_TRANSITION_TIME, ESC_KEY, possibleStates } from './constants';
@@ -20,6 +21,8 @@ import { ProvidersModal } from './ProvidersModal';
 import type { TranslateFn } from '../shared/i18n';
 import type { SPIDButtonProps } from '../shared/types';
 import type { ModalState } from './types';
+
+import styles from './index.module.css';
 
 const providersList = getShuffledProviders();
 
@@ -50,16 +53,24 @@ const LoginButton = ({
     theme === 'negative' ? SpidIcoCircleLbUrl : SpidIcoCircleBbUrl;
   return (
     <button
-      className={`spid-button ${customStylingClasses} ${wrapperTransitionClasses}`}
+      className={`${styles['spid-button']} ${getDefinedClasses(
+        customStylingClasses,
+        styles
+      )} ${getDefinedClasses(wrapperTransitionClasses, styles)}`}
       onClick={() => toggleModal(true)}
     >
       <span
         aria-hidden={!isVisible(modalVisibility)}
-        className={`spid-button-icon ${iconButtonClasses}`}
+        className={`${styles['spid-button-icon']} ${getDefinedClasses(
+          iconButtonClasses,
+          styles
+        )}`}
       >
         <img src={buttonImageUrl} alt={i18n('entra_con_SPID')} />
       </span>
-      <span className='spid-button-text'>{i18n('entra_con_SPID')}</span>
+      <span className={styles['spid-button-text']}>
+        {i18n('entra_con_SPID')}
+      </span>
     </button>
   );
 };

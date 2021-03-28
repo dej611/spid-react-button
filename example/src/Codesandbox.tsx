@@ -14,7 +14,7 @@ ReactDOM.render(
   rootElement
 );`
 
-function generateURLParams(code: string, addDependency: boolean){
+function generateURLParams(code: string){
   const manifest = {
     "name": "spid-react-button-example",
     "version": "1.0.0",
@@ -25,7 +25,8 @@ function generateURLParams(code: string, addDependency: boolean){
       "react": "17.0.2",
       "react-dom": "17.0.2",
       "react-scripts": "4.0.0",
-      "@dej611/spid-react-button": "latest"
+      "@dej611/spid-react-button": "latest",
+      "typeface-titillium-web": "latest"
     },
     "devDependencies": {
       "@babel/runtime": "7.13.8",
@@ -39,9 +40,6 @@ function generateURLParams(code: string, addDependency: boolean){
     },
     "browserslist": [">0.2%", "not dead", "not ie <= 11", "not op_mini all"]
   };
-  if(addDependency){
-    manifest.dependencies['spid-smart-button'] = 'latest';
-  }
     return getParameters({
     files: {
         // @ts-expect-error
@@ -60,6 +58,6 @@ function generateURLParams(code: string, addDependency: boolean){
   });
 }
 
-  export const CodeSandboxLink = ({code, addDependency}: {code: string, addDependency: boolean}) => {
-      return <a target="_blank noreferral" href={`https://codesandbox.io/api/v1/sandboxes/define?parameters=${generateURLParams(code, addDependency)}`} className="float-right"><Icon icon="it-software"/> Open it Codesandbox</a>
+  export const CodeSandboxLink = ({code}: {code: string}) => {
+      return <a target="_blank noreferral" href={`https://codesandbox.io/api/v1/sandboxes/define?parameters=${generateURLParams(code)}`} className="float-right"><Icon icon="it-software"/> Open it Codesandbox</a>
   }

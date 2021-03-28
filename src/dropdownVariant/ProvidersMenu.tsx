@@ -105,15 +105,17 @@ const ProviderButton = ({
   const linkTitle = isActive
     ? i18n('accedi_con_idp', idp.entityName)
     : i18n('idp_disabled');
+
+  const loginURL = isActive ? actionURL : undefined;
   if (isGetMethod(configuration)) {
     return (
       <a
         title={linkTitle}
-        href={isActive ? actionURL : undefined}
+        href={loginURL}
         // @ts-expect-error
         disabled={!isActive}
         className={`${styles.idpLogo} ${isActive ? '' : styles.disabled}`}
-        onClick={(e) => onProviderClicked?.(idp, e)}
+        onClick={(e) => onProviderClicked?.(idp, loginURL, e)}
         role='link'
         id={entityID}
       >
@@ -126,11 +128,16 @@ const ProviderButton = ({
     <form name='spid_idp_access' action={actionURL} method='POST'>
       <button
         className={`${styles.idpLogo} ${isActive ? '' : styles.disabled}`}
-        id={idp.entityID}
+        id={entityID}
         name={linkTitle}
         title={linkTitle}
         type='submit'
-        onClick={(e) => onProviderClicked?.(idp, e)}
+        onClick={(e) => {
+          if (!isActive) {
+            e.preventDefault();
+          }
+          return onProviderClicked?.(idp, loginURL, e);
+        }}
       >
         <ProviderButtonContent idp={idp} title={linkTitle} />
       </button>

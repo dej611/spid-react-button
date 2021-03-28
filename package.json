@@ -16,7 +16,9 @@
   },
   "scripts": {
     "build:ts": "microbundle-crl --no-compress --format modern,cjs",
-    "build": "microbundle-crl --no-compress --format modern,cjs && npm run doc",
+    "build:svg": "./scripts/svgs.sh",
+    "build:css": "./scripts/styles.sh",
+    "build": "npm run build:css && npm run build:svg && npm run build:ts && npm run doc",
     "start": "microbundle-crl watch --no-compress --format modern,cjs",
     "prepare": "run-s build",
     "test": "run-s test:unit test:lint test:build",
@@ -30,7 +32,7 @@
   },
   "peerDependencies": {
     "react": "^16.0.0",
-    "spid-smart-button": "1.1.5"
+    "typeface-titillium-web": "latest"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "5.11.9",
@@ -63,8 +65,10 @@
     "react-dom": "^16.13.1",
     "react-scripts": "^3.4.1",
     "spid-smart-button": "1.1.5",
+    "svgo": "^2.2.2",
     "typedoc": "^0.20.34",
-    "typescript": "3.9.9"
+    "typescript": "3.9.9",
+    "typeface-titillium-web": "latest"
   },
   "files": [
     "dist"
@@ -79,5 +83,11 @@
     "login",
     "sso",
     "italia.it"
-  ]
+  ],
+  "jest": {
+    "moduleNameMapper": {
+      "/../(.*).svg$": "<rootDir>/src/$1.svg",
+      "/./(.*).svg$": "<rootDir>/src/shared/$1.svg"
+    }
+  }
 }
