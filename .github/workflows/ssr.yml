@@ -1,0 +1,33 @@
+name: SSR tests
+
+on: [pull_request]
+
+jobs:
+    build:
+
+        runs-on: ubuntu-latest
+    
+        steps:
+          - uses: actions/checkout@v2
+          - name: Use Node.js 12.16.1
+            uses: actions/setup-node@v1
+            with:
+              node-version: 12.16.1
+            
+          - name: Installing dependencies
+            run: npm install
+
+          - name: Build the library
+            run: npm run build:ts
+
+          - name: Enable the linking
+            run: npm link
+
+          - name: Start a new Gatsby project
+            run: npx gatsby new test-project
+
+          - name: Link lib + add template page
+            run: cd test-project && npm link @dej611/spid-react-button && cp ../.github/workflows/gatsby.template ./src/pages/index.js
+
+          - name: Run a build
+            run: cd test-project && npx gatsby build
