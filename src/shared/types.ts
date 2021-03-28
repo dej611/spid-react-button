@@ -144,10 +144,12 @@ export type SPIDButtonProps = {
   /**
    * This is called when a user clicks on a provider button.
    * @param providerEntry The full entry of the provider clicked is passed, together with the event
+   * @param loginURL The final URL for the specific Identity Provider. It returns undefined if the button is disabled
    * @param event React original MouseEvent
    */
   onProviderClicked?: (
     providerEntry: ProviderRecord,
+    loginURL: string | undefined,
     event:
       | React.MouseEvent<HTMLAnchorElement, MouseEvent>
       | React.MouseEvent<HTMLButtonElement, MouseEvent>

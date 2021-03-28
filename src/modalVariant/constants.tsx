@@ -13,8 +13,6 @@ export const possibleStates = {
 } as const;
 
 export const panelAnimClass = 'spid-button-panel-anim';
-export const fadeInClass = 'spid-button-fade-in';
-export const fadeOutClass = 'spid-button-fade-out';
 export const logoAnimationOutClass = 'spid-button-logo-animation-out';
 export const emptyClass = '';
 export const buttonIconAnimationClass = 'spid-button-icon-animation';

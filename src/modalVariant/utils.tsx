@@ -15,7 +15,7 @@ export function computeButtonClasses({
   corners,
   size,
   fluid
-}: classesProps) {
+}: classesProps): string[] {
   if (process.env.NODE_ENV === 'production') {
     if (size === 'xl') {
       console.log(
@@ -30,31 +30,47 @@ export function computeButtonClasses({
     fluid ? 'fluid' : null
   ]
     .map((type) => (type != null ? `spid-button-${type}` : null))
-    .filter(Boolean)
-    .join(' ');
+    .filter<string>((name: string | null): name is string => name != null);
 }
 
-export function computeButtonTransitionClasses({ type }: ModalState) {
+const emptyClasses: string[] = [];
+export function computeButtonTransitionClasses({
+  type
+}: ModalState): { wrapper: string[]; icon: string[] } {
+  const inClass = 'in';
   switch (type) {
     case possibleStates.ENTERING.type:
       return {
-        wrapper: 'spid-button-transition',
-        icon: `${buttonIconAnimationClass} in`
+        wrapper: ['spid-button-transition'],
+        icon: [buttonIconAnimationClass, inClass]
       };
     case possibleStates.ENTERED.type:
-      return { wrapper: '', icon: `${buttonIconAnimationClass} in` };
+      return {
+        wrapper: emptyClasses,
+        icon: [buttonIconAnimationClass, inClass]
+      };
     case possibleStates.EXITING.type:
       return {
-        wrapper: 'spid-button-reverse-enter-transition',
-        icon: buttonIconAnimationClass
+        wrapper: ['spid-button-reverse-enter-transition'],
+        icon: [buttonIconAnimationClass]
       };
     case possibleStates.EXITED.type:
-      return { wrapper: '', icon: buttonIconAnimationClass };
+      return { wrapper: emptyClasses, icon: [buttonIconAnimationClass] };
     case possibleStates.INIT.type:
-      return { wrapper: '', icon: '' };
+      return { wrapper: emptyClasses, icon: emptyClasses };
   }
 }
 
 export function isVisible(modalState: ModalState) {
   return modalState.type.includes('enter');
+}
+
+export function getDefinedClasses(
+  klasses: string[],
+  styles: Record<string, string>
+) {
+  return klasses
+    ?.map((klass) => styles[klass])
+    .filter(Boolean)
+    .join(' ');
 }

@@ -19,33 +19,29 @@ function isDefaultProp(prop: string, value: unknown){
     return initState[prop] === value;
 }
 
-const cssByType = {
-    'modal': `// requires the "spid-smart-button" dependency
-import 'spid-smart-button/dist/spid-button.min.css';`,
-    'dropdown': "import '@dej611/spid-react-button/dist/index.css';"
-};
-
 export const CodeRenderer = (buttonProps: NoFunctionProps) => {
     const entries = Object.entries(buttonProps);
-    const code = `import { SPIDReactButton } from '@dej611/spid-react-button'
-    ${cssByType[buttonProps.type]}
-    
-    function mySPIDButton(props){
-        return (
-            <SPIDReactButton 
-                ${entries
-                    .filter(([prop, value]) => !isDefaultProp(prop, value))
-                    .map(([prop, value]) => `${prop}={${JSON.stringify(value, null, 2)}}`)
-                    .join('\n            ')}
-            />
-        );
-    }`;
+    const code = `
+import { SPIDReactButton } from '@dej611/spid-react-button';
+import 'typeface-titillium-web';
+import '@dej611/spid-react-button/dist/index.css';
+
+function mySPIDButton(props){
+    return (
+        <SPIDReactButton 
+            ${entries
+                .filter(([prop, value]) => !isDefaultProp(prop, value))
+                .map(([prop, value]) => `${prop}={${JSON.stringify(value, null, 2)}}`)
+                .join('\n            ')}
+        />
+    );
+}`;
 
 return  <div><SyntaxHighlighter language="javascript" showLineNumbers
 
 wrapLines style={vs}>
     {code}
     </SyntaxHighlighter>
-    <CodeSandboxLink code={code} addDependency={buttonProps.type === 'modal'}/>
+    <CodeSandboxLink code={code}/>
     </div>
 }

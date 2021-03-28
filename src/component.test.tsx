@@ -254,7 +254,43 @@ for (const type of types) {
           expect(onClickCallback).toHaveBeenCalledTimes(1);
           expect(onClickCallback).toHaveBeenCalledWith(
             provider,
-            // React native event
+            expect.stringContaining('/myLogin/idp'),
+            // React mouse event
+            expect.anything()
+          );
+        });
+
+        it('should have the custom id for each clicked IDP', () => {
+          const onClickCallback = jest.fn();
+          const customMapping = providers.reduce((memo, { entityID }, i) => {
+            memo[entityID] = i;
+            return memo;
+          }, {});
+          render(
+            <SPIDReactButton
+              url={defaultURL}
+              configuration={configuration}
+              type={type}
+              onProviderClicked={onClickCallback}
+              mapping={customMapping}
+            />
+          );
+          helper.openList();
+
+          const [firstProviderAvailable] = helper.getEnabledProviders();
+
+          helper.clickProvider(firstProviderAvailable);
+
+          helper.closeList();
+          const indexID = firstProviderAvailable.id?.trim();
+          const provider = providers[indexID]!;
+
+          console.log({ indexID, provider });
+          expect(onClickCallback).toHaveBeenCalledWith(
+            provider,
+            '/myLogin/idp=' +
+              encodeURIComponent(customMapping[provider.entityID]),
+            // React mouse event
             expect.anything()
           );
         });
