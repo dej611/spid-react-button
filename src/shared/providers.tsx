@@ -1,12 +1,12 @@
-import ArubaSVGUrl from 'spid-smart-button/dist/img/idp-logos/spid-idp-arubaid.svg';
-import InfocertSVGUrl from 'spid-smart-button/dist/img/idp-logos/spid-idp-infocertid.svg';
-import PosteSVGUrl from 'spid-smart-button/dist/img/idp-logos/spid-idp-posteid.svg';
-import SielteSVGUrl from 'spid-smart-button/dist/img/idp-logos/spid-idp-sielteid.svg';
-import TimSVGUrl from 'spid-smart-button/dist/img/idp-logos/spid-idp-timid.svg';
-import NamirialSVGUrl from 'spid-smart-button/dist/img/idp-logos/spid-idp-namirialid.svg';
-import RegisterItSVGUrl from 'spid-smart-button/dist/img/idp-logos/spid-idp-spiditalia.svg';
-import IntesaSVGUrl from 'spid-smart-button/dist/img/idp-logos/spid-idp-intesaid.svg';
-import LepidaSVGUrl from 'spid-smart-button/dist/img/idp-logos/spid-idp-lepidaid.svg';
+import ArubaSVGUrl from '/../shared/svgs/idp-logos/spid-idp-arubaid.svg';
+import InfocertSVGUrl from '/../shared/svgs/idp-logos/spid-idp-infocertid.svg';
+import PosteSVGUrl from '/../shared/svgs/idp-logos/spid-idp-posteid.svg';
+import SielteSVGUrl from '/../shared/svgs/idp-logos/spid-idp-sielteid.svg';
+import TimSVGUrl from '/../shared/svgs/idp-logos/spid-idp-timid.svg';
+import NamirialSVGUrl from '/../shared/svgs/idp-logos/spid-idp-namirialid.svg';
+import RegisterItSVGUrl from '/../shared/svgs/idp-logos/spid-idp-spiditalia.svg';
+import IntesaSVGUrl from '/../shared/svgs/idp-logos/spid-idp-intesaid.svg';
+import LepidaSVGUrl from '/../shared/svgs/idp-logos/spid-idp-lepidaid.svg';
 
 import type { RegisteredProviderRecord } from './types';
 

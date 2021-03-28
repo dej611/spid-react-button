@@ -1,7 +1,7 @@
 import React from 'react';
-import SpidLogoAnimationBlackUrl from 'spid-smart-button/dist/img/spid-logo-animation-black.svg';
-import SpidLogoUrl from 'spid-smart-button/dist/img/spid-logo.svg';
-import CloseSvgUrl from 'spid-smart-button/dist/img/close.svg';
+import SpidLogoAnimationBlackUrl from '/../shared/svgs/spid-logo-animation-black.svg';
+import SpidLogoUrl from '/../shared/svgs/spid-logo.svg';
+import CloseSvgUrl from '/../shared/svgs/close.svg';
 
 import type {
   RegisteredProviderRecord,
