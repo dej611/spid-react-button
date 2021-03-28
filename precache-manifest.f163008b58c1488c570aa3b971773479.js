@@ -1,35 +1,35 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "b38ac1d5ea3fe9b159abcfcb05b72612",
+    "revision": "e7683257dfbc13a92ca2e563903e5222",
     "url": "./index.html"
   },
   {
-    "revision": "86f6e2786b016a50d61e",
-    "url": "./static/css/2.4b99b357.chunk.css"
+    "revision": "07a24bb1a6a84a5fff2f",
+    "url": "./static/css/2.e94a8814.chunk.css"
   },
   {
-    "revision": "7541ccc693d6a8de580c",
-    "url": "./static/css/main.12d84948.chunk.css"
+    "revision": "cb031bc0c84d35812a6e",
+    "url": "./static/css/main.53926ac6.chunk.css"
   },
   {
-    "revision": "86f6e2786b016a50d61e",
-    "url": "./static/js/2.c8f9a509.chunk.js"
+    "revision": "07a24bb1a6a84a5fff2f",
+    "url": "./static/js/2.20d54428.chunk.js"
   },
   {
     "revision": "eeadc53a343b0ebdde9e595462e24cbf",
-    "url": "./static/js/2.c8f9a509.chunk.js.LICENSE.txt"
+    "url": "./static/js/2.20d54428.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "7541ccc693d6a8de580c",
-    "url": "./static/js/main.de46d6cf.chunk.js"
+    "revision": "cb031bc0c84d35812a6e",
+    "url": "./static/js/main.796dc0c6.chunk.js"
   },
   {
     "revision": "d2be6b898e2e78f53a5a",
     "url": "./static/js/runtime-main.05469cf9.js"
   },
   {
-    "revision": "4452379911664985e4ee7a6e0a421517",
-    "url": "./static/media/close.44523799.svg"
+    "revision": "f2ec1f7d71fc7b790490186810cfa0f1",
+    "url": "./static/media/close~hKFpNpUn.f2ec1f7d.svg"
   },
   {
     "revision": "66b42b940a002a17884bda6ca992391f",
@@ -208,56 +208,56 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./static/media/roboto-mono-latin-700italic.66126900.woff2"
   },
   {
-    "revision": "14efd2a91536b65a583511af75d8bf47",
-    "url": "./static/media/spid-ico-circle-bb.14efd2a9.svg"
+    "revision": "742f29398145faafb8fb07c69be6f73e",
+    "url": "./static/media/spid-ico-circle-bb~bpKzRdOW.742f2939.svg"
   },
   {
-    "revision": "37a8c5a164b0a85b7fa6ab00ec5c6672",
-    "url": "./static/media/spid-ico-circle-lb.37a8c5a1.svg"
+    "revision": "27197b710309a60343c3f5b878f84399",
+    "url": "./static/media/spid-ico-circle-lb~LegQefra.27197b71.svg"
   },
   {
-    "revision": "7481f87b512c3bcf20579f68f49028dc",
-    "url": "./static/media/spid-idp-arubaid.7481f87b.svg"
+    "revision": "1f6e95c7c669998fd5518b3b2e62b1b3",
+    "url": "./static/media/spid-idp-arubaid~biXjMUPd.1f6e95c7.svg"
   },
   {
-    "revision": "ad51ea349849046e30e3efd18f55df16",
-    "url": "./static/media/spid-idp-infocertid.ad51ea34.svg"
+    "revision": "ec5b92ef24615b48d338ebcf15de50b5",
+    "url": "./static/media/spid-idp-infocertid~bmqXPBOx.ec5b92ef.svg"
   },
   {
-    "revision": "5a5933066ff7456a2fd4995ead7fce36",
-    "url": "./static/media/spid-idp-intesaid.5a593306.svg"
+    "revision": "a4ea157f9a095cdcfe87ae10da41dee9",
+    "url": "./static/media/spid-idp-intesaid~xcxRNxJf.a4ea157f.svg"
   },
   {
-    "revision": "1bb85b862ae0aaba6a540d52d2cc7eef",
-    "url": "./static/media/spid-idp-lepidaid.1bb85b86.svg"
+    "revision": "34e0a1b51a092022a33045a7cea3b5b9",
+    "url": "./static/media/spid-idp-lepidaid~YGVaJzCf.34e0a1b5.svg"
   },
   {
-    "revision": "e0a47a349a546de75db449a67e009c13",
-    "url": "./static/media/spid-idp-namirialid.e0a47a34.svg"
+    "revision": "745325fb60f10b813e057913b7eee73f",
+    "url": "./static/media/spid-idp-namirialid~PDxLtsax.745325fb.svg"
   },
   {
-    "revision": "108d0e70b5f43fef2b198e94ba1b47f7",
-    "url": "./static/media/spid-idp-posteid.108d0e70.svg"
+    "revision": "f12f868d5f183a2693264fa822fa8385",
+    "url": "./static/media/spid-idp-posteid~PIAVTNQX.f12f868d.svg"
   },
   {
-    "revision": "a435bc7e682d38c1a8785a65a70c8968",
-    "url": "./static/media/spid-idp-sielteid.a435bc7e.svg"
+    "revision": "092e2208431321ea604010d3852b7106",
+    "url": "./static/media/spid-idp-sielteid~gPbEKUHE.092e2208.svg"
   },
   {
-    "revision": "fb579c038eac03883bf981395f31adc0",
-    "url": "./static/media/spid-idp-spiditalia.fb579c03.svg"
+    "revision": "e45c9e053bf7cb9301be7083b79e146f",
+    "url": "./static/media/spid-idp-spiditalia~GdXfNloS.e45c9e05.svg"
   },
   {
-    "revision": "d31fd87d76ba1c27ef477e44c674380e",
-    "url": "./static/media/spid-idp-timid.d31fd87d.svg"
+    "revision": "b7e584e06ccc3ed9ef5d0cf0bf01c8e1",
+    "url": "./static/media/spid-idp-timid~FIiWQnSz.b7e584e0.svg"
   },
   {
-    "revision": "27152c4a3188a2e37ad5948b01c1a8fe",
-    "url": "./static/media/spid-logo-animation-black.27152c4a.svg"
+    "revision": "3fe355c414ee1922cc93a4874e3505f9",
+    "url": "./static/media/spid-logo-animation-black~ZYbHBrkh.3fe355c4.svg"
   },
   {
-    "revision": "ba2b25350b61b6ec71018002cae0e6ba",
-    "url": "./static/media/spid-logo.ba2b2535.svg"
+    "revision": "b5234f510b70ad7dd579e2d0375eceb9",
+    "url": "./static/media/spid-logo~zJjEzXFQ.b5234f51.svg"
   },
   {
     "revision": "352c059634e4fb6a89bd75afc7712cd3",
