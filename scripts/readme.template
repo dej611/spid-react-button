@@ -20,7 +20,8 @@ An alternative to installing the local package is to use it via CDN, adding this
 
 ```jsx
 import React, { Component } from 'react'
-
+// Import it via package or in your CSS file via the CDN @import
+import 'typeface-titillium-web';
 import {SPIDReactButton} from '@dej611/spid-react-button'
 
 import '@dej611/spid-react-button/dist/index.css'
