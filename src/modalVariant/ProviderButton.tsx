@@ -20,7 +20,7 @@ const ProviderButtonContent = ({
   if (logo == null) {
     return <span>{entityName}</span>;
   }
-  return <img src={`${logo}`} alt={entityName} style={{ maxWidth: 170 }} />;
+  return <img src={`${logo}`} alt={entityName} style={{ maxWidth: '90%' }} />;
 };
 
 type ProviderButtonProps = Required<
