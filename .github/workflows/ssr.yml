@@ -30,7 +30,7 @@ jobs:
             run: cd test-project && npm link @dej611/spid-react-button && npm i spid-smart-button
 
           - name: Check file permissions
-            run:  ls -l ./src/pages/index.js
+            run:  ls -l ./src/pages/
             
           - name: Add the buttons to the page
             run: cp ../spid-react-button/.github/workflows/gatsby.template ./src/pages/index.js
