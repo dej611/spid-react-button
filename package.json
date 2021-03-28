@@ -81,5 +81,11 @@
     "login",
     "sso",
     "italia.it"
-  ]
+  ],
+  "jest": {
+    "moduleNameMapper": {
+      "/../(.*).svg$": "<rootDir>/src/$1.svg",
+      "/./(.*).svg$": "<rootDir>/src/shared/$1.svg"
+    }
+  }
 }
