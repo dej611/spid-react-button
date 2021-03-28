@@ -13,6 +13,8 @@ import type {
   SPIDButtonProps
 } from '../shared/types';
 
+import styles from './index.module.css';
+
 const ProviderButtonContent = ({
   entityName,
   logo
@@ -63,17 +65,21 @@ export const ProviderButton = ({
         }
       : { classNames: emptyClass }
     : { classNames: emptyClass };
+  const loginURL = isActive ? actionURL : undefined;
 
   if (isGetMethod(configuration)) {
     return (
-      <span className={`spid-button-idp ${classNames}`} style={style}>
+      <span
+        className={`${styles['spid-button-idp']} ${styles[classNames] ?? ''}`}
+        style={style}
+      >
         <a
           id={entityID}
           title={linkTitle}
-          href={isActive ? actionURL : undefined}
+          href={loginURL}
           // @ts-expect-error
           disabled={!isActive}
-          onClick={(e) => onProviderClicked?.(idp, e)}
+          onClick={(e) => onProviderClicked?.(idp, loginURL, e)}
           role='link'
         >
           <ProviderButtonContent entityName={idp.entityName} logo={idp.logo} />
@@ -83,15 +89,20 @@ export const ProviderButton = ({
   }
   const { fieldName, extraFields = {} } = configuration;
   return (
-    <span className='spid-button-idp'>
+    <span className={styles['spid-button-idp']}>
       <form action={actionURL} method='POST'>
         <button
           id={entityID}
           type='submit'
-          className='spid-button-idp-button'
+          className={styles['spid-button-idp-button']}
           title={linkTitle}
           disabled={!isActive}
-          onClick={(e) => onProviderClicked?.(idp, e)}
+          onClick={(e) => {
+            if (!isActive) {
+              e.preventDefault();
+            }
+            return onProviderClicked?.(idp, loginURL, e);
+          }}
         >
           <ProviderButtonContent entityName={idp.entityName} logo={idp.logo} />
         </button>

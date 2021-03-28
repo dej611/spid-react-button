@@ -31,7 +31,7 @@
   },
   "peerDependencies": {
     "react": "^16.0.0",
-    "spid-smart-button": "1.1.5"
+    "typeface-titillium-web": "latest"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "5.11.9",
@@ -66,7 +66,8 @@
     "spid-smart-button": "1.1.5",
     "svgo": "^2.2.2",
     "typedoc": "^0.20.34",
-    "typescript": "3.9.9"
+    "typescript": "3.9.9",
+    "typeface-titillium-web": "latest"
   },
   "files": [
     "dist"

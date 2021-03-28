@@ -1,7 +1,6 @@
 import React, { useState, useCallback } from 'react'
 
 import { SPIDReactButton, SPIDButtonProps, ProviderRecord } from '@dej611/spid-react-button'
-import 'spid-smart-button/dist/spid-button.min.css';
 import 'bootstrap-italia/dist/css/bootstrap-italia.min.css';
 import 'typeface-titillium-web';
 import 'typeface-roboto-mono';
@@ -48,9 +47,9 @@ const App = () => {
                   url={isValidURL ? buttonProps.url : defaultURL}
                   onProvidersShown={() => prependEvent({ type: buttonProps.type, name: 'onProvidersShown' })}
                   onProvidersHidden={() => prependEvent({ type: buttonProps.type, name: 'onProvidersHidden' })}
-                  onProviderClicked={(arg: ProviderRecord, e) => {
+                  onProviderClicked={(arg: ProviderRecord, url: string | undefined, e) => {
                     e.preventDefault();
-                    prependEvent({ type: buttonProps.type, name: 'onProvidersClicked', arg: JSON.stringify(arg, null, 2) })
+                    prependEvent({ type: buttonProps.type, name: 'onProvidersClicked', arg: JSON.stringify({url, arg}, null, 2) })
                   }}
                 />
                 <EventsTable events={events} />

@@ -2,15 +2,19 @@
 
 > Pulsante SSO per SPID in React
 
-[![NPM](https://img.shields.io/npm/v/@dej611/spid-react-button.svg)](https://www.npmjs.com/package/@dej611/spid-react-button) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/@dej611/spid-react-button.svg)](https://www.npmjs.com/package/@dej611/spid-react-button)
 
 ## Install
 
 ```bash
-npm install --save @dej611/spid-react-button spid-smart-button
+npm install --save @dej611/spid-react-button typeface-titillium-web
 ```
 
-This package requires the `spid-smart-button` dependency for some assets.
+The package depends on the Titillium font.  
+An alternative to installing the local package is to use it via CDN, adding this line to your css file:
+```css
+@import url(https://fonts.googleapis.com/css?family=Titillium+Web:400,600,700,900);
+```
 
 ## Usage
 
@@ -19,11 +23,7 @@ import React, { Component } from 'react'
 
 import {SPIDReactButton} from '@dej611/spid-react-button'
 
-// For dropdown version
 import '@dej611/spid-react-button/dist/index.css'
-
-// For modal version
-import 'spid-smart-button/dist/spid-button.min.css';
 
 
 function Example(){
