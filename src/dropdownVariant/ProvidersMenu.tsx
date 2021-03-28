@@ -45,7 +45,10 @@ export const ProvidersDropdown = ({
         styles[getIdpButtonSizeClass(size)]
       }`}
     >
-      <ul className={styles.idpButtonMenu} aria-labelledby='spid-idp'>
+      <ul
+        className={styles.idpButtonMenu}
+        aria-label={i18n('scegli_provider_SPID')}
+      >
         {providers.map((idp) => {
           const isActive = isProviderActive(
             idp,
@@ -68,12 +71,10 @@ export const ProvidersDropdown = ({
           );
         })}
         <li className={styles.supportLink}>
-          <a id='collegamentospid' href='http://www.spid.gov.it'>
-            {i18n('maggiori_info')}
-          </a>
+          <a href='http://www.spid.gov.it'>{i18n('maggiori_info')}</a>
         </li>
         <li className={styles.supportLink}>
-          <a id='collegamentospid' href='http://www.spid.gov.it/#registrati'>
+          <a href='http://www.spid.gov.it/#registrati'>
             {i18n('non_hai_SPID')}
           </a>
         </li>

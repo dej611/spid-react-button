@@ -70,7 +70,7 @@ export const SPIDReactButton = ({
         onClick={() => toggleDropdown(!openDropdown)}
       >
         <span className={styles.buttonIcon}>
-          <img src={buttonImageUrl} alt={i18n('entra_con_SPID')} />
+          <img src={buttonImageUrl} alt='Login logo' />
         </span>
         <span className={styles.buttonText}>{i18n('entra_con_SPID')}</span>
       </a>
