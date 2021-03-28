@@ -2,7 +2,7 @@ import React from 'react';
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import jsx from 'react-syntax-highlighter/dist/esm/languages/prism/jsx';
 import {vs} from 'react-syntax-highlighter/dist/esm/styles/prism';
-import { CodeSandboxLink } from './Codesandbox';
+// import { CodeSandboxLink } from './Codesandbox';
 
 import {initState, NoFunctionProps} from './constants';
 
@@ -42,6 +42,6 @@ return  <div><SyntaxHighlighter language="javascript" showLineNumbers
 wrapLines style={vs}>
     {code}
     </SyntaxHighlighter>
-    <CodeSandboxLink code={code}/>
+<!--     <CodeSandboxLink code={code}/> -->
     </div>
 }
