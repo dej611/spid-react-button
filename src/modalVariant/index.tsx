@@ -66,7 +66,7 @@ const LoginButton = ({
           styles
         )}`}
       >
-        <img src={buttonImageUrl} alt={i18n('entra_con_SPID')} />
+        <img src={buttonImageUrl} alt='Login logo' />
       </span>
       <span className={styles['spid-button-text']}>
         {i18n('entra_con_SPID')}
