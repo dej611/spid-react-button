@@ -16,7 +16,7 @@
   },
   "scripts": {
     "build:ts": "microbundle-crl --no-compress --format modern,cjs",
-    "build:svg": "./scripts/svg.sh",
+    "build:svg": "./scripts/svgs.sh",
     "build": "npm run build:svg && npm run build:ts && npm run doc",
     "start": "microbundle-crl watch --no-compress --format modern,cjs",
     "prepare": "run-s build",
