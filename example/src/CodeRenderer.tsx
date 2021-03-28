@@ -42,6 +42,5 @@ return  <div><SyntaxHighlighter language="javascript" showLineNumbers
 wrapLines style={vs}>
     {code}
     </SyntaxHighlighter>
-<!--     <CodeSandboxLink code={code}/> -->
     </div>
 }
