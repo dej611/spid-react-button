@@ -24,7 +24,7 @@ jobs:
             run: npm link
 
           - name: Start a new Gatsby project
-            run: cd .. && npx gatsby new test-project && cd test-project
+            run: npx gatsby new test-project && cd test-project
 
           - name: Link lib + add peer deps
             run: npm link @dej611/spid-react-button && npm i spid-smart-button
