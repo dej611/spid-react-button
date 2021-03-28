@@ -49,8 +49,9 @@ export function computeButtonTransitionClasses({ type }: ModalState) {
         icon: buttonIconAnimationClass
       };
     case possibleStates.EXITED.type:
-    case possibleStates.INIT.type:
       return { wrapper: '', icon: buttonIconAnimationClass };
+    case possibleStates.INIT.type:
+      return { wrapper: '', icon: '' };
   }
 }
 
