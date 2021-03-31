@@ -52,7 +52,7 @@ function getChildren({ kindString, children, type }) {
   throw Error('No children found');
 }
 
-function typeDescription({ type, ...props }) {
+function typeDescription({ type, ...props }, inline = false) {
   if (type === 'literal') {
     return '"' + props.value + '"';
   }
@@ -87,7 +87,9 @@ function typeDescription({ type, ...props }) {
     if (props.declaration.children) {
       // object shaped
       return `{
-            ${props.declaration.children.map(typeDescription).join('\n')}
+            ${props.declaration.children
+              .map(typeDescription)
+              .join(inline ? ', ' : '\n')}
         }`;
     }
     if (props.declaration.signatures) {
@@ -109,7 +111,8 @@ function unrollType(record, array) {
     const referenced = array.find(({ name }) => name === record.name);
     if (referenced) {
       const value = typeDescription(
-        referenced.type ? referenced.type : referenced
+        referenced.type ? referenced.type : referenced,
+        true
       );
       return value && value.replace(/\n/g, '');
     }
