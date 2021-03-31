@@ -8,11 +8,8 @@ import type { SPIDButtonProps } from './shared/types';
  * Use this component with the `type` prop to select the version you prefer.
  * @param props
  */
-export const SPIDReactButton = ({
-  type = 'modal',
-  ...props
-}: SPIDButtonProps) => {
-  if (type === 'modal') {
+export const SPIDReactButton = (props: SPIDButtonProps) => {
+  if (!props.type || props.type === 'modal') {
     return <SPIDReactButtonModal {...props} />;
   }
   return <SPIDReactButtonDropdown {...props} />;
