@@ -51,7 +51,7 @@ The SPIDButtonProps object contains the following properties:
 
 #### configuration
 
-**Possible values**: `{            method : "GET"        } | {            extraFields ?: Record<string | string>fieldName : stringmethod : "POST"        }`  
+**Possible values**: `{            method : "GET"        } | {            extraFields ?: Record<string | string>, fieldName : string, method : "POST"        }`  
 
 **Type**: `ConfigurationGET | ConfigurationPOST`  
 
