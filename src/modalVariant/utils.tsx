@@ -2,10 +2,22 @@ import { SPIDButtonProps } from '../shared/types';
 import {
   buttonIconAnimationClass,
   possibleStates,
-  sizeMapping
+  sizeMapping,
+  emptyClass
 } from './constants';
 import { ModalState } from './types';
 
+import styles from './index.module.css';
+
+// the css module is fake for the modal, so we can just centralize the renaming logic here
+export function getDefinedClasses(klasses: (string | undefined)[]) {
+  return klasses
+    .map((klass) => (klass && styles[klass]) || emptyClass)
+    .join(' ');
+}
+
+// do not wrap these results with the getDefinedClasses yet as they will be wrapped later on
+// on the components
 type classesProps = Pick<
   SPIDButtonProps,
   'theme' | 'corners' | 'size' | 'fluid'
@@ -29,8 +41,8 @@ export function computeButtonClasses({
     size ? `size-${sizeMapping[size] ?? 'large'}` : null,
     fluid ? 'fluid' : null
   ]
-    .map((type) => (type != null ? `spid-button-${type}` : null))
-    .filter<string>((name: string | null): name is string => name != null);
+    .map((type) => (type != null ? `spid-button-${type}` : ''))
+    .filter(Boolean);
 }
 
 const emptyClasses: string[] = [];
@@ -63,14 +75,4 @@ export function computeButtonTransitionClasses({
 
 export function isVisible(modalState: ModalState) {
   return modalState.type.includes('enter');
-}
-
-export function getDefinedClasses(
-  klasses: string[],
-  styles: Record<string, string>
-) {
-  return klasses
-    ?.map((klass) => styles[klass])
-    .filter(Boolean)
-    .join(' ');
 }

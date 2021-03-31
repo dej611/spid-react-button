@@ -2,7 +2,7 @@
 
 > Pulsante SSO per SPID in React
 
-[![NPM](https://img.shields.io/npm/v/@dej611/spid-react-button.svg)](https://www.npmjs.com/package/@dej611/spid-react-button)
+[![NPM](https://img.shields.io/npm/v/@dej611/spid-react-button.svg)](https://www.npmjs.com/package/@dej611/spid-react-button) ![Gzipped size](https://badgen.net/bundlephobia/minzip/@dej611/spid-react-button) ![Dependencies count](https://badgen.net/bundlephobia/dependency-count/@dej611/spid-react-button) ![Treeshaking supported](https://badgen.net/bundlephobia/tree-shaking/@dej611/spid-react-button)
 
 ## Install
 
@@ -51,6 +51,8 @@ The SPIDButtonProps object contains the following properties:
 
 #### configuration
 
+**Possible values**: `{            method : "GET"        } | {            extraFields ?: Record<string | string>fieldName : stringmethod : "POST"        }`  
+
 **Type**: `ConfigurationGET | ConfigurationPOST`  
 
 **Required**: No  
@@ -63,6 +65,8 @@ The default value is `{"method": "GET"}`
 
 
 #### corners
+
+**Possible values**: `"rounded" | "sharp"`  
 
 **Type**: `CornerType`  
 
@@ -77,6 +81,7 @@ The default value is `"rounded"`.
 
 #### extraProviders
 
+
 **Type**: `ProviderRecord[]`  
 
 **Required**: No  
@@ -87,6 +92,7 @@ Used for testing. *Do not use in production*
 
 
 #### fluid
+
 
 **Type**: `boolean`  
 
@@ -102,6 +108,8 @@ The default value is `false`.
 
 #### lang
 
+**Possible values**: `"it" | "en" | "de"`  
+
 **Type**: `Languages`  
 
 **Required**: No  
@@ -114,6 +122,7 @@ The language used for the UI. The default value is `"it"`.
 
 #### mapping
 
+
 **Type**: `Record<string | string>`  
 
 **Required**: No  
@@ -125,6 +134,7 @@ This is useful when a Service Provider identifies the IDP with a different strin
 
 
 #### onProviderClicked
+
 
 **Type**: `(
 providerEntry : ProviderRecord,
@@ -140,6 +150,7 @@ This is called when a user clicks on a provider button.
 
 #### onProvidersHidden
 
+
 **Type**: `() => void`  
 
 **Required**: No  
@@ -151,6 +162,7 @@ This is called when the providers are hidden on the screen (as soon as the anima
 
 #### onProvidersShown
 
+
 **Type**: `() => void`  
 
 **Required**: No  
@@ -161,6 +173,8 @@ This is called when the providers are shown on the screen (as soon as the animat
 
 
 #### protocol
+
+**Possible values**: `"SAML" | "OIDC"`  
 
 **Type**: `Protocols`  
 
@@ -176,6 +190,8 @@ The default value is `"SAML"`.
 
 #### size
 
+**Possible values**: `"sm" | "md" | "l" | "xl"`  
+
 **Type**: `Sizes`  
 
 **Required**: No  
@@ -190,6 +206,8 @@ The default value is `"md"`.
 
 #### supported
 
+**Possible values**: `string[]`  
+
 **Type**: `ProviderRecord["entityID"][]`  
 
 **Required**: No  
@@ -202,6 +220,8 @@ The default value is all the official providers.
 
 
 #### theme
+
+**Possible values**: `"positive" | "negative"`  
 
 **Type**: `ColorTheme`  
 
@@ -218,6 +238,8 @@ The default value is `"positive"`.
 
 #### type
 
+**Possible values**: `"modal" | "dropdown"`  
+
 **Type**: `Types`  
 
 **Required**: No  
@@ -229,6 +251,7 @@ The way to present the providers once clicked. The default value is `"modal"`.
 
 
 #### url
+
 
 **Type**: `string`  
 

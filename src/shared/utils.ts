@@ -7,6 +7,9 @@ import {
   RegisteredProviderRecord
 } from './types';
 
+// avoid http/https confusion and centralize this URL
+export const SPID_URL = 'https://www.spid.gov.it';
+
 export function mergeProviders(
   providers: Readonly<RegisteredProviderRecord>[],
   extraProviders: ProviderRecord[]

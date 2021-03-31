@@ -22,8 +22,6 @@ import type { TranslateFn } from '../shared/i18n';
 import type { SPIDButtonProps } from '../shared/types';
 import type { ModalState } from './types';
 
-import styles from './index.module.css';
-
 const providersList = getShuffledProviders();
 
 const LoginButton = ({
@@ -53,22 +51,23 @@ const LoginButton = ({
     theme === 'negative' ? SpidIcoCircleLbUrl : SpidIcoCircleBbUrl;
   return (
     <button
-      className={`${styles['spid-button']} ${getDefinedClasses(
-        customStylingClasses,
-        styles
-      )} ${getDefinedClasses(wrapperTransitionClasses, styles)}`}
+      className={`${getDefinedClasses([
+        'spid-button',
+        ...customStylingClasses,
+        ...wrapperTransitionClasses
+      ])}`}
       onClick={() => toggleModal(true)}
     >
       <span
         aria-hidden={!isVisible(modalVisibility)}
-        className={`${styles['spid-button-icon']} ${getDefinedClasses(
-          iconButtonClasses,
-          styles
-        )}`}
+        className={`${getDefinedClasses([
+          'spid-button-icon',
+          ...iconButtonClasses
+        ])}`}
       >
         <img src={buttonImageUrl} alt='Login logo' />
       </span>
-      <span className={styles['spid-button-text']}>
+      <span className={getDefinedClasses(['spid-button-text'])}>
         {i18n('entra_con_SPID')}
       </span>
     </button>
