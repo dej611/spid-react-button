@@ -104,7 +104,41 @@ function typeDescription({ type, ...props }) {
   }
 }
 
-const rewriteRecord = (typeRecord) => {
+function unrollType(record, array) {
+  if (record.type === 'reference') {
+    const referenced = array.find(({ name }) => name === record.name);
+    if (referenced) {
+      const value = typeDescription(
+        referenced.type ? referenced.type : referenced
+      );
+      return value && value.replace(/\n/g, '');
+    }
+  }
+  if (record.type === 'union') {
+    return record.types
+      .map((nestedRecord) => unrollType(nestedRecord, array))
+      .join(' | ');
+  }
+  if (record.type === 'array') {
+    const finalType = unrollType(record.elementType, array);
+    return finalType ? finalType + '[]' : undefined;
+  }
+  if (record.type === 'indexedAccess') {
+    const referenced = array.find(
+      ({ name }) => name === record.objectType.name
+    );
+    if (referenced) {
+      const prop = referenced.children.find(
+        ({ name }) => name === record.indexType.value
+      );
+      if (prop) {
+        return typeDescription(prop).replace(/.* : /, '');
+      }
+    }
+  }
+}
+
+const rewriteRecord = (typeRecord, i, array) => {
   if (isReactComponent(typeRecord)) {
     return {
       type: 'Component',
@@ -136,7 +170,9 @@ const rewriteRecord = (typeRecord) => {
       type: typeRecord.kindString,
       name: typeRecord.name,
       description: getCommentSection(typeRecord).shortText,
-      children: getChildren(typeRecord).map(rewriteRecord)
+      children: getChildren(typeRecord).map((record) =>
+        rewriteRecord(record, null, array)
+      )
     };
   }
   if (isProperty(typeRecord)) {
@@ -145,6 +181,7 @@ const rewriteRecord = (typeRecord) => {
       name: typeRecord.name,
       description: getCommentSection(typeRecord).shortText,
       isOptional: typeRecord.flags.isOptional,
+      unrolledTypes: unrollType(typeRecord.type, array),
       valueType: typeDescription(typeRecord.type),
       defaultValue: getCommentSection(typeRecord)
         .tags.filter(({ tag }) => tag === 'defaultvalue')
@@ -172,7 +209,9 @@ readFile(path.normalize(rootPath + '/readme.template'), {
   ${types
     .filter(({ type }) => type === 'Component')
     .map(({ name, ...props }, i) => {
-      const param = props.props[0].replace('__namedParameters : ', '');
+      const param = props.props[0]
+        .replace('__namedParameters : ', '')
+        .replace('props : ', '');
       const { children } = types.find(({ name }) => name === param);
       return `### ${name}
 
@@ -193,10 +232,16 @@ readFile(path.normalize(rootPath + '/readme.template'), {
                   valueType,
                   defaultValue,
                   description,
-                  isOptional
+                  isOptional,
+                  unrolledTypes
                 }) => {
                   return `#### ${name}
                   
+                  ${
+                    unrolledTypes
+                      ? `**Possible values**: \`${unrolledTypes}\`  \n`
+                      : ''
+                  }
                   **Type**: \`${valueType}\`  \n
                   **Required**: ${isOptional ? 'No' : 'Yes'}  \n
                   ${
