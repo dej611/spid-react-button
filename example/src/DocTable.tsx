@@ -2,7 +2,7 @@ import React, { useEffect , useState} from 'react';
 import Markdown from 'markdown-to-jsx';
 // @ts-expect-error
 import {Puff} from 'svg-loaders-react';
-import { CodeRenderer } from './CodeRenderer';
+import { CodeRenderer, GenericCodeRenderer } from './CodeRenderer';
 import { NoFunctionProps } from './constants';
 
 
@@ -34,7 +34,19 @@ export const DocTable = (buttonProps: NoFunctionProps) => {
             .catch(() => setDoc(possibleStates.error))
     }, [setDoc]);
 
+    const npmInstallLine = 'npm install --save @dej611/spid-react-button typeface-titillium-web';
+    const cssImportLine = '@import url(https://fonts.googleapis.com/css?family=Titillium+Web:400,600,700,900);';
     return <div>
+        <h1>Getting started</h1>
+        <GenericCodeRenderer code={npmInstallLine} lang='bash' />
+        
+        The package depends on the Titillium font.
+
+        An alternative to installing the local package is to use it via CDN, adding this line to your css file:
+
+        <GenericCodeRenderer code={cssImportLine} lang='css' />
+        
+        <a href="https://github.com/dej611/spid-react-button" target="_blank noreferrer">Github repository</a>
         <h1>Reference API</h1>
         <CodeRenderer {...buttonProps} url={buttonProps.url} />
         {doc.state === 'init' && <Puff stroke="#0073e6" strokeOpacity=".5"/>}
