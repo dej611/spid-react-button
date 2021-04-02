@@ -4,6 +4,8 @@
 
 [![NPM](https://img.shields.io/npm/v/@dej611/spid-react-button.svg)](https://www.npmjs.com/package/@dej611/spid-react-button) ![Gzipped size](https://badgen.net/bundlephobia/minzip/@dej611/spid-react-button) ![Dependencies count](https://badgen.net/bundlephobia/dependency-count/@dej611/spid-react-button) ![Treeshaking supported](https://badgen.net/bundlephobia/tree-shaking/@dej611/spid-react-button)
 
+[Demo here](dej611.github.io/spid-react-button/)
+
 ## Install
 
 ```bash
@@ -19,7 +21,7 @@ An alternative to installing the local package is to use it via CDN, adding this
 ## Usage
 
 ```jsx
-import React, { Component } from 'react'
+import React from 'react'
 // Import it via package or in your CSS file via the CDN @import
 import 'typeface-titillium-web';
 import {SPIDReactButton} from '@dej611/spid-react-button'
@@ -31,6 +33,8 @@ function Example(){
   return <SPIDReactButton url="/myLogin/{{idp}}"/>
 }
 ```
+
+**Note**: the providers list has no particular sorting order and is shuffled at every page load.
 
 # API
 
@@ -64,6 +68,7 @@ Each Provider button will use this configuration for its button.
 The default value is `{"method": "GET"}`
 
 
+
 #### corners
 
 **Possible values**: `"rounded" | "sharp"`  
@@ -79,6 +84,7 @@ The type of corner for the button: rounded or sharp.
 The default value is `"rounded"`.
 
 
+
 #### extraProviders
 
 
@@ -89,6 +95,7 @@ The default value is `"rounded"`.
 
 
 Used for testing. *Do not use in production*
+
 
 
 #### fluid
@@ -106,6 +113,7 @@ It applies only to the modal version.
 The default value is `false`.
 
 
+
 #### lang
 
 **Possible values**: `"it" | "en" | "de"`  
@@ -120,6 +128,7 @@ The default value is `false`.
 The language used for the UI. The default value is `"it"`.
 
 
+
 #### mapping
 
 
@@ -131,6 +140,7 @@ The language used for the UI. The default value is `"it"`.
 
 An object containing the mapping for the providers.  
 This is useful when a Service Provider identifies the IDP with a different string than the entityID
+
 
 
 #### onProviderClicked
@@ -147,6 +157,11 @@ event : React.MouseEvent<HTMLAnchorElement | MouseEvent> | React.MouseEvent<HTML
 
 This is called when a user clicks on a provider button.
 
+* `providerEntry`: The full entry of the provider clicked is passed, together with the event  
+* `loginURL`: The final URL for the specific Identity Provider. It returns undefined if the button is disabled  
+* `event`: React original MouseEvent
+
+
 
 #### onProvidersHidden
 
@@ -160,6 +175,7 @@ This is called when a user clicks on a provider button.
 This is called when the providers are hidden on the screen (as soon as the animation starts)
 
 
+
 #### onProvidersShown
 
 
@@ -170,6 +186,7 @@ This is called when the providers are hidden on the screen (as soon as the anima
 
 
 This is called when the providers are shown on the screen (as soon as the animation starts)
+
 
 
 #### protocol
@@ -188,6 +205,7 @@ Only Providers who support the declared protocol are enabled.
 The default value is `"SAML"`.
 
 
+
 #### size
 
 **Possible values**: `"sm" | "md" | "l" | "xl"`  
@@ -204,6 +222,7 @@ The modal version does not support the `"xl"` size and will fallback to `"l"` if
 The default value is `"md"`.
 
 
+
 #### supported
 
 **Possible values**: `string[]`  
@@ -217,6 +236,7 @@ The default value is `"md"`.
 
 The list of entityID supported by the button instance.  
 The default value is all the official providers.
+
 
 
 #### theme
@@ -236,6 +256,7 @@ The theme used for the button:
 The default value is `"positive"`.
 
 
+
 #### type
 
 **Possible values**: `"modal" | "dropdown"`  
@@ -248,6 +269,7 @@ The default value is `"positive"`.
 
 
 The way to present the providers once clicked. The default value is `"modal"`.
+
 
 
 #### url
@@ -264,6 +286,7 @@ It can be either absolute or relative.
 It must contains the `"{{idp}}"` string in it, which will be replaced by the entityID of each provider  
 (unless specified otherwise with the `mapping` prop - see below).  
 This props is *mandatory*.
+
 
 
 
@@ -345,14 +368,14 @@ ___
 
 **Protocols**: `"SAML" | "OIDC"`  
 
-The protocol to use for the current instance.\n  
+The protocol to use for the current instance.  
 Only Providers who support the declared protocol are enabled.
 
 ___
 
 **Sizes**: `"sm" | "md" | "l" | "xl"`  
 
-The size of the button. Options are: `"sm"` (small), `"md"` (medium), `"l"` (large) and `"xl"` (extra large - dropdown only).\n  
+The size of the button. Options are: `"sm"` (small), `"md"` (medium), `"l"` (large) and `"xl"` (extra large - dropdown only).  
 The modal version does not support the `"xl"` size and will fallback to `"l"` if passed.
 
 ___
