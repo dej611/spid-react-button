@@ -79,7 +79,9 @@
     "url": "https://github.com/dej611/spid-react-button/issues"
   },
   "homepage": "https://github.com/dej611/spid-react-button",
-  "dependencies": {},
+  "dependencies": {
+    "focus-trap-react": "^8.4.2"
+  },
   "keywords": [
     "spid",
     "login",

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 
 import { isGetMethod } from './utils';
 
@@ -15,6 +15,7 @@ type ProviderButtonProps = Required<
     isActive: boolean;
     i18n: TranslateFn;
     className: string;
+    firstFocus: boolean;
   };
 export const SharedProviderButton = ({
   idp,
@@ -25,8 +26,10 @@ export const SharedProviderButton = ({
   i18n,
   onProviderClicked,
   className,
-  type
+  type,
+  firstFocus
 }: ProviderButtonProps) => {
+  const idpRef = useRef<HTMLAnchorElement | HTMLButtonElement | null>(null);
   const entityID =
     idp.entityID in mapping ? mapping[idp.entityID] : idp.entityID;
   const actionURL = url.replace('{{idp}}', encodeURIComponent(entityID));
@@ -35,9 +38,17 @@ export const SharedProviderButton = ({
     : i18n('idp_disabled');
 
   const loginURL = isActive ? actionURL : undefined;
+
+  useEffect(() => {
+    if (firstFocus && idpRef.current) {
+      idpRef.current.focus();
+    }
+  }, [idpRef]);
+
   if (isGetMethod(configuration)) {
     return (
       <a
+        ref={(el) => (idpRef.current = el)}
         title={linkTitle}
         href={loginURL}
         // @ts-expect-error
@@ -56,6 +67,7 @@ export const SharedProviderButton = ({
   return (
     <form name='spid_idp_access' action={actionURL} method='POST'>
       <button
+        ref={(el) => (idpRef.current = el)}
         className={className}
         id={entityID}
         name={linkTitle}

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import FocusTrap from 'focus-trap-react';
 
 import SpidIcoCircleBbUrl from '/../shared/svgs/spid-ico-circle-bb.svg';
 import SpidIcoCircleLbUrl from '/../shared/svgs/spid-ico-circle-lb.svg';
@@ -7,7 +8,8 @@ import { SPIDButtonProps } from '../shared/types';
 import {
   validateURL,
   getShuffledProviders,
-  mergeProviders
+  mergeProviders,
+  useEscapeKey
 } from '../shared/utils';
 
 import styles from './index.module.css';
@@ -42,6 +44,12 @@ export const SPIDReactButton = ({
 
   const i18n = getTranslationFn(lang);
 
+  useEscapeKey(
+    () => toggleDropdown(false),
+    () => Boolean(openDropdown),
+    [openDropdown]
+  );
+
   useEffect(() => {
     if (openDropdown && onProvidersShown) {
       onProvidersShown();
@@ -59,35 +67,37 @@ export const SPIDReactButton = ({
     theme === 'negative' ? SpidIcoCircleLbUrl : SpidIcoCircleBbUrl;
 
   return (
-    <div className={styles.container}>
-      <a
-        href='#'
-        className={`${styles.button} ${styles[getButtonSizeClass(size)]} ${
-          theme === 'positive' ? styles.theme : styles.themeNegative
-        }`}
-        aria-haspopup='true'
-        aria-expanded={openDropdown}
-        onClick={() => toggleDropdown(!openDropdown)}
-      >
-        <span className={styles.buttonIcon}>
-          <img src={buttonImageUrl} alt='Login logo' />
-        </span>
-        <span className={styles.buttonText}>{i18n('entra_con_SPID')}</span>
-      </a>
-      {openDropdown && (
-        <ProvidersDropdown
-          supported={supported}
-          url={url}
-          mapping={mapping}
-          i18n={i18n}
-          size={size}
-          configuration={configuration}
-          protocol={protocol}
-          providers={mergedProviders}
-          extraProviders={extraProviders}
-          onProviderClicked={onProviderClicked}
-        />
-      )}
-    </div>
+    <FocusTrap active={openDropdown}>
+      <div className={styles.container}>
+        <a
+          href='#'
+          className={`${styles.button} ${styles[getButtonSizeClass(size)]} ${
+            theme === 'positive' ? styles.theme : styles.themeNegative
+          }`}
+          aria-haspopup='true'
+          aria-expanded={openDropdown}
+          onClick={() => toggleDropdown(!openDropdown)}
+        >
+          <span className={styles.buttonIcon}>
+            <img src={buttonImageUrl} alt='Login logo' />
+          </span>
+          <span className={styles.buttonText}>{i18n('entra_con_SPID')}</span>
+        </a>
+        {openDropdown && (
+          <ProvidersDropdown
+            supported={supported}
+            url={url}
+            mapping={mapping}
+            i18n={i18n}
+            size={size}
+            configuration={configuration}
+            protocol={protocol}
+            providers={mergedProviders}
+            extraProviders={extraProviders}
+            onProviderClicked={onProviderClicked}
+          />
+        )}
+      </div>
+    </FocusTrap>
   );
 };

@@ -45,12 +45,13 @@ export const ProvidersDropdown = ({
       className={`${styles.idpButton} ${styles.idpButtonTip} ${
         styles[getIdpButtonSizeClass(size)]
       }`}
+      aria-modal='true'
     >
       <ul
         className={styles.idpButtonMenu}
         aria-label={i18n('scegli_provider_SPID')}
       >
-        {providers.map((idp) => {
+        {providers.map((idp, i) => {
           const isActive = isProviderActive(
             idp,
             supported,
@@ -73,6 +74,7 @@ export const ProvidersDropdown = ({
                 onProviderClicked={onProviderClicked}
                 className={buttonClasses}
                 type='dropdown'
+                firstFocus={i === 0}
               />
             </li>
           );

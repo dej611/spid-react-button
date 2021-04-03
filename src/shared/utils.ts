@@ -6,6 +6,9 @@ import {
   Protocols,
   RegisteredProviderRecord
 } from './types';
+import { useEffect } from 'react';
+
+export const ESC_KEY = 27;
 
 // avoid http/https confusion and centralize this URL
 export const SPID_URL = 'https://www.spid.gov.it';
@@ -71,4 +74,22 @@ export function isProviderActive(
     (extraProviders.length === 0 || isExtraProviders) &&
     idp.active
   );
+}
+
+export function useEscapeKey(
+  changeState: () => void,
+  checkVisibility: () => boolean,
+  deps: unknown[]
+) {
+  useEffect(() => {
+    const escHandler = (event: KeyboardEvent) => {
+      if (event.keyCode === ESC_KEY) {
+        changeState();
+      }
+    };
+    if (checkVisibility()) {
+      document.addEventListener('keyup', escHandler);
+    }
+    return () => document.removeEventListener('keyup', escHandler);
+  }, deps);
 }
