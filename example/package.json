@@ -20,7 +20,6 @@
     "@types/react-dom": "file:../node_modules/@types/react-dom",
     "@types/react-select": "^4.0.13",
     "bootstrap-italia": "^1.4.3",
-    "codesandbox": "^2.2.1",
     "design-react-kit": "^3.3.3",
     "markdown-to-jsx": "^7.1.2",
     "prettier": "^2.2.1",
