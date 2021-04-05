@@ -91,5 +91,20 @@
       "/../(.*).svg$": "<rootDir>/src/$1.svg",
       "/./(.*).svg$": "<rootDir>/src/shared/$1.svg"
     }
+  },
+  "bundlewatch": {
+    "trackBranches": [
+      "main"
+    ],
+    "files": [
+      {
+        "path": "./dist/index.js",
+        "maxSize": "7.5 KB"
+      },
+      {
+        "path": "./dist/index.modern.js",
+        "maxSize": "7.5 KB"
+      }
+    ]
   }
 }
