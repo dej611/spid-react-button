@@ -3,6 +3,7 @@
 > Pulsante SSO per SPID in React
 
 [![NPM](https://img.shields.io/npm/v/@dej611/spid-react-button.svg)](https://www.npmjs.com/package/@dej611/spid-react-button) ![Gzipped size](https://badgen.net/bundlephobia/minzip/@dej611/spid-react-button) ![Dependencies count](https://badgen.net/bundlephobia/dependency-count/@dej611/spid-react-button) ![Treeshaking supported](https://badgen.net/bundlephobia/tree-shaking/@dej611/spid-react-button)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fdej611%2Fspid-react-button.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fdej611%2Fspid-react-button?ref=badge_shield)
 
 [Demo here](dej611.github.io/spid-react-button/)
 
@@ -423,3 +424,6 @@ Returns a copy of the list of the official providers, already shuffled
 ## License
 
 EUPL 1.2 © [dej611](https://github.com/dej611)
+
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fdej611%2Fspid-react-button.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fdej611%2Fspid-react-button?ref=badge_large)
