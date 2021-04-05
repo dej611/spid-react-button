@@ -9,8 +9,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: Borales/actions-yarn@v2.1.0
-      - run: yarn install
+      
+      - name: Use Node.js 12.16.1
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.16.1
+              
+      - name: Installing dependencies
+        run: npm ci
+        
       - uses: jackyef/bundlewatch-gh-action@master
         with:
           build-script: yarn build
