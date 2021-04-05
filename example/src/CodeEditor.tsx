@@ -47,9 +47,6 @@ export const CodeEditorLink = ({ code }: { code: string }) => {
       <Icon icon="it-software" />
       Open it in Stackblitz
     </Button>
-    {/* <Button className="btn btn-link float-right" type="submit"><Icon icon="it-software" /> Open it in Stackblitz</Button> */}
   </form>
   )
-
-  // return <a target="_blank noreferral" href={`https://codesandbox.io/api/v1/sandboxes/define?parameters=${generateURLParams(code)}`} className="float-right"><Icon icon="it-software"/> Open it Codesandbox</a>
 }
