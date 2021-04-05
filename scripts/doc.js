@@ -188,7 +188,10 @@ const rewriteRecord = (typeRecord, i, array) => {
       valueType: typeDescription(typeRecord.type),
       defaultValue: getCommentSection(typeRecord)
         .tags.filter(({ tag }) => tag === 'defaultvalue')
-        .map(({ text }) => text)
+        .map(({ text }) => text),
+      paramsDescription: getCommentSection(typeRecord)
+        .tags.filter(({ tag }) => tag === 'param')
+        .map(({ param, text }) => `\`${param}\`: ${text}`)
     };
   }
   return {
@@ -236,7 +239,8 @@ readFile(path.normalize(rootPath + '/readme.template'), {
                   defaultValue,
                   description,
                   isOptional,
-                  unrolledTypes
+                  unrolledTypes,
+                  paramsDescription
                 }) => {
                   return `#### ${name}
                   
@@ -253,6 +257,14 @@ readFile(path.normalize(rootPath + '/readme.template'), {
                       : ''
                   }  \n
                   ${description.replace(/\n/g, '  \n')}
+                  ${
+                    paramsDescription.length
+                      ? '\n' +
+                        paramsDescription
+                          .map((line) => `* ${line}`)
+                          .join('  \n')
+                      : ''
+                  }
                 `;
                 }
               )

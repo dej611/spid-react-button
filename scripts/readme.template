@@ -4,6 +4,8 @@
 
 [![NPM](https://img.shields.io/npm/v/@dej611/spid-react-button.svg)](https://www.npmjs.com/package/@dej611/spid-react-button) ![Gzipped size](https://badgen.net/bundlephobia/minzip/@dej611/spid-react-button) ![Dependencies count](https://badgen.net/bundlephobia/dependency-count/@dej611/spid-react-button) ![Treeshaking supported](https://badgen.net/bundlephobia/tree-shaking/@dej611/spid-react-button)
 
+[Demo here](dej611.github.io/spid-react-button/)
+
 ## Install
 
 ```bash
@@ -19,7 +21,7 @@ An alternative to installing the local package is to use it via CDN, adding this
 ## Usage
 
 ```jsx
-import React, { Component } from 'react'
+import React from 'react'
 // Import it via package or in your CSS file via the CDN @import
 import 'typeface-titillium-web';
 import {SPIDReactButton} from '@dej611/spid-react-button'
@@ -31,6 +33,8 @@ function Example(){
   return <SPIDReactButton url="/myLogin/{{idp}}"/>
 }
 ```
+
+**Note**: the providers list has no particular sorting order and is shuffled at every page load.
 
 # API
 

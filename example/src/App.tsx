@@ -79,7 +79,7 @@ const App = () => {
               <p><strong>Is the providers list official?</strong></p>
             </Row>
             <Row>
-              <p>No, as this is not an official project, the list may not be super up-to-date (we check pretty often tho). This official list of SPID provideers is avilable <a href="https://github.com/italia/spid-sp-access-button" target="_blank noreferrer">here</a></p>
+              <p>No, as this is not an official project, the list may not be super up-to-date (we check pretty often tho). This official list of SPID providers is avilable <a href="https://github.com/italia/spid-sp-access-button" target="_blank noreferrer">here</a></p>
             </Row>
             <Row>
               <p><strong>Where the modal version comes from? Is that official?</strong></p>
@@ -97,7 +97,7 @@ const App = () => {
               <p><strong>Why did you write all of this in English rather than Italian?</strong></p>
             </Row>
             <Row>
-              <p>I guess I've started it in English and just finished it. As open source project PR aree very welcome, expecially for translations!</p>
+              <p>I guess I've started it in English and just finished it. As open source project PR are very welcome, expecially for translations!</p>
             </Row>
             <Row>
               <p><strong>Does the project have Typescript types?</strong></p>

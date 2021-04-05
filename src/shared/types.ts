@@ -1,5 +1,5 @@
 /**
- * The protocol to use for the current instance.\n
+ * The protocol to use for the current instance.
  * Only Providers who support the declared protocol are enabled.
  */
 export type Protocols = 'SAML' | 'OIDC';
@@ -8,7 +8,7 @@ export type Protocols = 'SAML' | 'OIDC';
  */
 export type Languages = 'it' | 'en' | 'de';
 /**
- * The size of the button. Options are: `"sm"` (small), `"md"` (medium), `"l"` (large) and `"xl"` (extra large - dropdown only).\n
+ * The size of the button. Options are: `"sm"` (small), `"md"` (medium), `"l"` (large) and `"xl"` (extra large - dropdown only).
  * The modal version does not support the `"xl"` size and will fallback to `"l"` if passed.
  */
 export type Sizes = 'sm' | 'md' | 'l' | 'xl';
