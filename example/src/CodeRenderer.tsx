@@ -3,8 +3,8 @@ import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import jsx from 'react-syntax-highlighter/dist/esm/languages/prism/jsx';
 import css from 'react-syntax-highlighter/dist/esm/languages/prism/css';
 import bash from 'react-syntax-highlighter/dist/esm/languages/prism/bash';
-import { vs } from 'react-syntax-highlighter/dist/esm/styles/prism';
-// import { CodeSandboxLink } from './Codesandbox';
+import {vs} from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { CodeEditorLink } from './CodeEditor';
 
 import { initState, NoFunctionProps } from './constants';
 
@@ -46,6 +46,7 @@ function mySPIDButton(props){
         wrapLines style={vs}>
         {code}
     </SyntaxHighlighter>
+    <CodeEditorLink code={code}/>
     </div>
 }
 
