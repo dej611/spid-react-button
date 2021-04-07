@@ -1,0 +1,44 @@
+name: Build readme
+
+on: 
+  push:
+    branches:
+      - main
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+    
+        steps:
+          - uses: actions/checkout@v2
+          
+          - name: Use Node.js 12.16.1
+            uses: actions/setup-node@v1
+            with:
+              node-version: 12.16.1
+
+          - uses: actions/cache@v2
+            with:
+              path: ~/.npm
+              key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+              restore-keys: |
+                ${{ runner.os }}-node-
+            
+          - name: Installing dependencies
+            run: npm ci
+
+          - name: Build the library
+            run: npm run build:doc
+
+          - name: Commit to main
+            id: commit
+            uses: EndBug/add-and-commit@v7.0.0
+            with:
+              author_name: github-actions
+              author_email: 41898282+github-actions[bot]@users.noreply.github.com
+              message: '[skip ci] Update readme'
+              add: '*.md'
+
+          - name: Handle no changes
+            if: steps.commit.outputs. committed != 'true'
+            run: echo "No commit was required";
