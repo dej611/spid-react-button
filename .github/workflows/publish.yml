@@ -1,0 +1,32 @@
+name: Publish to NPM
+
+on:
+  release:
+    types: [published]
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+    
+        steps:
+          - uses: actions/checkout@v2
+          - name: Use Node.js 12.16.1
+            uses: actions/setup-node@v1
+            with:
+              node-version: 12.16.1
+
+          - uses: actions/cache@v2
+            with:
+              path: ~/.npm
+              key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+              restore-keys: |
+                ${{ runner.os }}-node-
+            
+          - name: Installing dependencies
+            run: npm ci
+
+          - name: Test
+            run: npm test
+          - uses: JS-DevTools/npm-publish@v1
+            with:
+              token: ${{ secrets.NPM_TOKEN }}
