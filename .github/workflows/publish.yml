@@ -1,22 +1,15 @@
-name: Unit tests
+name: Publish to NPM
 
-on: 
-  push:
-    branches:
-      - main
-
-  pull_request:
-    branches:
-      - main
+on:
+  release:
+    types: [published]
 
 jobs:
     build:
-
         runs-on: ubuntu-latest
     
         steps:
           - uses: actions/checkout@v2
-          
           - name: Use Node.js 12.16.1
             uses: actions/setup-node@v1
             with:
@@ -34,3 +27,6 @@ jobs:
 
           - name: Test
             run: npm test
+          - uses: JS-DevTools/npm-publish@v1
+            with:
+              token: ${{ secrets.NPM_TOKEN }}
