@@ -31,7 +31,8 @@
     "doc": "typedoc src/index.tsx --excludePrivate --json ./doc.json && node scripts/doc.js"
   },
   "peerDependencies": {
-    "react": "^16.0.0",
+    "react": ">=16.0.0",
+    "react-dom": ">=16.0.0",
     "typeface-titillium-web": "latest"
   },
   "devDependencies": {
