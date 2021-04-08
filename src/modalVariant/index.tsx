@@ -10,11 +10,12 @@ import {
   getDefinedClasses
 } from './utils';
 
-import { DEFAULT_TRANSITION_TIME, ESC_KEY, possibleStates } from './constants';
+import { DEFAULT_TRANSITION_TIME, possibleStates } from './constants';
 import {
   mergeProviders,
   validateURL,
-  getShuffledProviders
+  getShuffledProviders,
+  useEscapeKey
 } from '../shared/utils';
 import { ProvidersModal } from './ProvidersModal';
 
@@ -100,17 +101,11 @@ export const SPIDReactButton = ({
 }: SPIDButtonProps) => {
   const [state, setState] = useState<ModalState>(possibleStates.INIT);
 
-  useEffect(() => {
-    const escHandler = (event: KeyboardEvent) => {
-      if (event.keyCode === ESC_KEY) {
-        setState(possibleStates.EXITING);
-      }
-    };
-    if (isVisible(state)) {
-      document.addEventListener('keyup', escHandler);
-    }
-    return () => document.removeEventListener('keyup', escHandler);
-  }, [state]);
+  useEscapeKey(
+    () => setState(possibleStates.EXITING),
+    () => isVisible(state),
+    [state]
+  );
 
   useEffect(() => {
     if (state.type === possibleStates.ENTERING.type) {

@@ -1,5 +1,3 @@
-export const ESC_KEY = 27;
-
 export const DEFAULT_TRANSITION_TIME = 2000;
 export const BUTTON_DELAY_TIME = 1.1;
 export const DELAY_STEP = 0.1;
