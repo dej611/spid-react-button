@@ -1,5 +1,5 @@
 import React from 'react';
-import FocusTrap from 'focus-trap-react';
+import { FocusOn } from 'react-focus-on';
 
 import SpidLogoAnimationBlackUrl from '/../shared/svgs/spid-logo-animation-black.svg';
 import SpidLogoUrl from '/../shared/svgs/spid-logo.svg';
@@ -89,7 +89,11 @@ export const ProvidersModal = ({
   } = getModalClasses(visibility);
 
   return (
-    <FocusTrap active={isVisible(visibility)}>
+    <FocusOn
+      onClickOutside={closeModal}
+      onEscapeKey={closeModal}
+      enabled={isVisible(visibility)}
+    >
       <section
         className={getDefinedClasses(['spid-enter-container'])}
         hidden={!isVisible(visibility)}
@@ -240,6 +244,6 @@ export const ProvidersModal = ({
           </section>
         </div>
       </section>
-    </FocusTrap>
+    </FocusOn>
   );
 };

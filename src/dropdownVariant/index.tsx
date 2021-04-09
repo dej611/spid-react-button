@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import FocusTrap from 'focus-trap-react';
+import { FocusOn } from 'react-focus-on';
 
 import SpidIcoCircleBbUrl from '/../shared/svgs/spid-ico-circle-bb.svg';
 import SpidIcoCircleLbUrl from '/../shared/svgs/spid-ico-circle-lb.svg';
@@ -8,8 +8,7 @@ import { SPIDButtonProps } from '../shared/types';
 import {
   validateURL,
   getShuffledProviders,
-  mergeProviders,
-  useEscapeKey
+  mergeProviders
 } from '../shared/utils';
 
 import styles from './index.module.css';
@@ -44,12 +43,6 @@ export const SPIDReactButton = ({
 
   const i18n = getTranslationFn(lang);
 
-  useEscapeKey(
-    () => toggleDropdown(false),
-    () => Boolean(openDropdown),
-    [openDropdown]
-  );
-
   useEffect(() => {
     if (openDropdown && onProvidersShown) {
       onProvidersShown();
@@ -67,7 +60,11 @@ export const SPIDReactButton = ({
     theme === 'negative' ? SpidIcoCircleLbUrl : SpidIcoCircleBbUrl;
 
   return (
-    <FocusTrap active={openDropdown}>
+    <FocusOn
+      onClickOutside={() => toggleDropdown(false)}
+      onEscapeKey={() => toggleDropdown(false)}
+      enabled={openDropdown}
+    >
       <div className={styles.container}>
         <a
           href='#'
@@ -98,6 +95,6 @@ export const SPIDReactButton = ({
           />
         )}
       </div>
-    </FocusTrap>
+    </FocusOn>
   );
 };
