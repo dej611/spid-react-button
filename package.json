@@ -1,6 +1,6 @@
 {
   "name": "@dej611/spid-react-button",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Pulsante SSO per SPID in React",
   "author": "dej611",
   "license": "EUPL-1.2",
@@ -31,9 +31,17 @@
     "doc": "typedoc src/index.tsx --excludePrivate --json ./doc.json && node scripts/doc.js"
   },
   "peerDependencies": {
-    "react": ">=16.0.0",
-    "react-dom": ">=16.0.0",
+    "react": ">=16.8.0",
+    "@types/react": ">=16.8.0",
     "typeface-titillium-web": "latest"
+  },
+  "peerDependenciesMeta": {
+    "@types/react": {
+      "optional": true
+    },
+    "typeface-titillium-web": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "@testing-library/jest-dom": "5.11.9",
@@ -81,7 +89,7 @@
   },
   "homepage": "https://github.com/dej611/spid-react-button",
   "dependencies": {
-    "focus-trap-react": "^8.4.2"
+    "react-focus-on": "^3.5.2"
   },
   "keywords": [
     "spid",

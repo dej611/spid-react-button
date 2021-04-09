@@ -14,8 +14,7 @@ import { DEFAULT_TRANSITION_TIME, possibleStates } from './constants';
 import {
   mergeProviders,
   validateURL,
-  getShuffledProviders,
-  useEscapeKey
+  getShuffledProviders
 } from '../shared/utils';
 import { ProvidersModal } from './ProvidersModal';
 
@@ -100,12 +99,6 @@ export const SPIDReactButton = ({
   onProviderClicked
 }: SPIDButtonProps) => {
   const [state, setState] = useState<ModalState>(possibleStates.INIT);
-
-  useEscapeKey(
-    () => setState(possibleStates.EXITING),
-    () => isVisible(state),
-    [state]
-  );
 
   useEffect(() => {
     if (state.type === possibleStates.ENTERING.type) {
