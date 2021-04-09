@@ -36,6 +36,15 @@ function Example(){
 
 **Note**: the providers list has no particular sorting order and is shuffled at every page load.
 
+
+#### Accessibility notes
+
+In general using the `POST` version of this component makes it usable for the most wide audience, as the `GET` version uses links which may have issues. To know more read below.
+
+The component tries its best to provide the best a11y practices implemented, but there are some specific browser behaviours that may still keep it hard to use with keyboard.
+In particular in OSX Safari and Firefox have some issues with `focus` and the behaviour of `tab`: [please read about it](https://github.com/theKashey/react-focus-lock#focusing-in-osx-safarifirefox-is-strange) when using this component.
+
+
 # API
 
 
