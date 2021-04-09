@@ -36,7 +36,6 @@ function Example(){
 
 **Note**: the providers list has no particular sorting order and is shuffled at every page load.
 
-
 #### Accessibility notes
 
 In general using the `POST` version of this component makes it usable for the most wide audience, as the `GET` version uses links which may have issues. To know more read below.
@@ -44,6 +43,30 @@ In general using the `POST` version of this component makes it usable for the mo
 The component tries its best to provide the best a11y practices implemented, but there are some specific browser behaviours that may still keep it hard to use with keyboard.
 In particular in OSX Safari and Firefox have some issues with `focus` and the behaviour of `tab`: [please read about it](https://github.com/theKashey/react-focus-lock#focusing-in-osx-safarifirefox-is-strange) when using this component.
 
+
+#### Contributing
+
+To get up and running with the development of the project you can follow these steps.
+
+To see the component in action, useful to test it manually after some changes, open a terminal window and type:
+
+```sh
+cd example
+npm start
+```
+
+This will start the `create-react-app` project and open a new browser tab with the example application in it.
+
+At this point it is possible to perform changes to the component/library, open a new terminal in the project folder and use this command when done with changes:
+```sh
+npm build
+```
+
+To run the test do:
+
+```sh
+npm test
+```
 
 # API
 
