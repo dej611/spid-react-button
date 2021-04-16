@@ -169,6 +169,7 @@ export const Configurator = ({ buttonProps, updateProp, setValidURL, isValidURL 
       </Col>
     </div>
     <Row>
+      <Col md={6}>
       <fieldset>
         <legend>Provider supported:</legend>
         <FormGroup check>
@@ -189,6 +190,19 @@ export const Configurator = ({ buttonProps, updateProp, setValidURL, isValidURL 
           )}
         </FormGroup>
       </fieldset>
+      </Col>
+      <Col>
+        <FormGroup check>
+          <Toggle
+            label='Providers sorted'
+            checked={buttonProps.sorted}
+            onChange={({ target }) => {
+              // @ts-expect-error
+              updateProp('sorted', target.checked)
+            }}
+          />
+        </FormGroup>
+      </Col>
     </Row>
   </>
 }

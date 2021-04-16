@@ -93,6 +93,12 @@ export type SPIDButtonProps = {
    */
   supported?: ProviderRecord['entityID'][];
   /**
+   * It forces an ascending order (A->Z) of the providers, based on the entityName string.
+   * Note that this will sort with no distictions between official and extraProviders in the list.
+   * @defaultValue false
+   */
+  sorted?: boolean;
+  /**
    * The protocol to use for the current instance.
    * Only Providers who support the declared protocol are enabled.
    * The default value is `"SAML"`.

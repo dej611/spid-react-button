@@ -12,9 +12,10 @@ export const SPID_URL = 'https://www.spid.gov.it';
 
 export function mergeProviders(
   providers: Readonly<RegisteredProviderRecord>[],
-  extraProviders: ProviderRecord[]
+  extraProviders: ProviderRecord[],
+  { sorted }: { sorted?: boolean } = {}
 ): RegisteredProviderRecord[] {
-  return [
+  const mergedList = [
     ...providers.map((idp) => ({
       ...idp,
       active: !extraProviders.length
@@ -25,6 +26,12 @@ export function mergeProviders(
       active: true
     }))
   ];
+  if (!sorted) {
+    return mergedList;
+  }
+  return mergedList.sort((idpA, idpB) =>
+    idpA.entityName.localeCompare(idpB.entityName)
+  );
 }
 
 export function validateURL(url: string | undefined) {

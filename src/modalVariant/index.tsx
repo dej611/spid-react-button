@@ -93,6 +93,7 @@ export const SPIDReactButton = ({
   mapping = {},
   protocol = 'SAML',
   url,
+  sorted = false,
   supported = providersList.map(({ entityID }) => entityID),
   onProvidersShown,
   onProvidersHidden,
@@ -155,7 +156,9 @@ export const SPIDReactButton = ({
     onProviderClicked
   };
 
-  const mergedProviders = mergeProviders(providersList, extraProviders);
+  const mergedProviders = mergeProviders(providersList, extraProviders, {
+    sorted
+  });
 
   return (
     <div aria-live='polite'>
