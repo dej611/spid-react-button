@@ -183,6 +183,21 @@ The default value is `"md"`.
 
 
 
+#### sorted
+
+
+**Type**: `boolean`  
+
+**Required**: No  
+
+**Default value**: false
+
+
+It forces an ascending order (A->Z) of the providers, based on the entityName string.  
+Note that this will sort with no distictions between official and extraProviders in the list.
+
+
+
 #### supported
 
 **Possible values**: `string[]`  
