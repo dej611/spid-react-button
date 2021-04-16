@@ -32,6 +32,7 @@ export const SPIDReactButton = ({
   configuration = { method: 'GET' },
   theme = 'positive',
   protocol = 'SAML',
+  sorted = false,
   extraProviders = [],
   onProviderClicked,
   onProvidersHidden,
@@ -54,7 +55,9 @@ export const SPIDReactButton = ({
 
   validateURL(url);
 
-  const mergedProviders = mergeProviders(shuffledProviders, extraProviders);
+  const mergedProviders = mergeProviders(shuffledProviders, extraProviders, {
+    sorted
+  });
 
   const buttonImageUrl =
     theme === 'negative' ? SpidIcoCircleLbUrl : SpidIcoCircleBbUrl;

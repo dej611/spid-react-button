@@ -106,5 +106,29 @@ describe('Shared utils', () => {
         expect(active).toEqual(false);
       }
     });
+
+    it('should sort providers by name when requested', () => {
+      const officialIdps: RegisteredProviderRecord[] = [
+        {
+          entityID: 'a',
+          entityName: 'A',
+          protocols: ['OIDC'],
+          active: true
+        },
+        {
+          entityID: 'c',
+          entityName: 'C',
+          protocols: ['OIDC'],
+          active: true
+        }
+      ];
+      const extraIdps: ProviderRecord[] = [{ entityID: 'b', entityName: 'B' }];
+      const merged = mergeProviders(officialIdps, extraIdps, { sorted: true });
+      expect(merged.map(({ entityName }) => entityName)).toEqual([
+        'A',
+        'B',
+        'C'
+      ]);
+    });
   });
 });
