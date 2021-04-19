@@ -10,6 +10,7 @@
   },
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
+  "sideEffects": false,
   "source": "src/index.tsx",
   "engines": {
     "node": ">=10"
