@@ -2,7 +2,7 @@
 
 > Pulsante SSO per SPID in React
 
-[![NPM](https://img.shields.io/npm/v/@dej611/spid-react-button.svg)](https://www.npmjs.com/package/@dej611/spid-react-button) ![Gzipped size](https://badgen.net/bundlephobia/minzip/@dej611/spid-react-button) ![Dependencies count](https://badgen.net/bundlephobia/dependency-count/@dej611/spid-react-button) ![Treeshaking supported](https://badgen.net/bundlephobia/tree-shaking/@dej611/spid-react-button) [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fdej611%2Fspid-react-button.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fdej611%2Fspid-react-button?ref=badge_shield)
+[![NPM](https://img.shields.io/npm/v/@dej611/spid-react-button.svg)](https://www.npmjs.com/package/@dej611/spid-react-button) ![Gzipped size](https://badgen.net/bundlephobia/minzip/@dej611/spid-react-button) ![Dependencies count](https://badgen.net/bundlephobia/dependency-count/@dej611/spid-react-button) ![Treeshaking supported](https://badgen.net/bundlephobia/tree-shaking/@dej611/spid-react-button) [![FOSSA Status](https://app.fossa.com/api/projects/custom%2B24373%2Fgit%40github.com%3Adej611%2Fspid-react-button.git.svg?type=shield)](https://app.fossa.com/projects/custom%2B24373%2Fgit%40github.com%3Adej611%2Fspid-react-button.git?ref=badge_shield)
 
 [Demo here](https://dej611.github.io/spid-react-button/)
 
@@ -76,4 +76,4 @@ npm test
 
 EUPL 1.2 © [dej611](https://github.com/dej611)
 
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fdej611%2Fspid-react-button.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fdej611%2Fspid-react-button?ref=badge_large)
+[![FOSSA Status](https://app.fossa.com/api/projects/custom%2B24373%2Fgit%40github.com%3Adej611%2Fspid-react-button.git.svg?type=large)](https://app.fossa.com/projects/custom%2B24373%2Fgit%40github.com%3Adej611%2Fspid-react-button.git?ref=badge_large)
