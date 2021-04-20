@@ -65,7 +65,7 @@ function typeDescription({ type, ...props }, inline = false) {
     if (props.typeArguments) {
       return `${props.name}<${props.typeArguments
         .map(typeDescription)
-        .join(' | ')}>`;
+        .join(' , ')}>`;
     }
     return props.name;
   }
