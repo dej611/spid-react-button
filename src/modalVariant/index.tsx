@@ -79,7 +79,6 @@ const LoginButton = ({
  * Use this component when you want to minimize the footprint in your project.
  * It accepts the same props as the main component. The `type` prop is ignored in this case.
  *
- * Mind this component requires the `css` from `spid-smart-button` to be imported.
  * @param props
  */
 export const SPIDReactButton = ({
