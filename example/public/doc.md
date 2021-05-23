@@ -15,7 +15,7 @@ The SPIDButtonProps object contains the following properties:
 
 #### configuration
 
-**Possible values**: `{            method : "GET"        } | {            extraFields ?: Record<string | string>, fieldName : string, method : "POST"        }`  
+**Possible values**: `{            method : "GET"        } | {            extraFields ?: Record<string , string>, fieldName : string, method : "POST"        }`  
 
 **Type**: `ConfigurationGET | ConfigurationPOST`  
 
@@ -92,7 +92,7 @@ The language used for the UI. The default value is `"it"`.
 #### mapping
 
 
-**Type**: `Record<string | string>`  
+**Type**: `Record<string , string>`  
 
 **Required**: No  
 
@@ -109,7 +109,7 @@ This is useful when a Service Provider identifies the IDP with a different strin
 **Type**: `(
 providerEntry : ProviderRecord,
 loginURL : string | undefined,
-event : React.MouseEvent<HTMLAnchorElement | MouseEvent> | React.MouseEvent<HTMLButtonElement | MouseEvent>) => void`  
+event : React.MouseEvent<HTMLAnchorElement , MouseEvent> | React.MouseEvent<HTMLButtonElement , MouseEvent>) => void`  
 
 **Required**: No  
 
@@ -190,7 +190,7 @@ The default value is `"md"`.
 
 **Required**: No  
 
-**Default value**: false
+**Default value**: `false`
 
 
 It forces an ascending order (A->Z) of the providers, based on the entityName string.  
@@ -322,7 +322,7 @@ This is the specific GET type.
 
 ___
 
-**ConfigurationPOST**: `{extraFields: Record<string | string>, fieldName: string, method: "POST"}`  
+**ConfigurationPOST**: `{extraFields: Record<string , string>, fieldName: string, method: "POST"}`  
 
 Each Provider button will use this configuration for its button.  
 This is the specific POST type

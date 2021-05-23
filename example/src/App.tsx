@@ -64,7 +64,7 @@ const App = () => {
           <Col>
             <Row><h1>F.A.Q.</h1></Row>
             <Row>
-              <p><strong>7 kb (gzipped) is too much for my project! Is it possible to treeshake it?</strong></p>
+              <p><strong>X kb (gzipped) is too much for my project! Is it possible to treeshake it?</strong></p>
             </Row>
             <Row>
               <p>Yes. If you know already you're going to use only one type of button, you can just pick it: just import <code>SPIDReactButtonModal</code> or <code>SPIDReactButtonDropdown</code> and experice full treeshake.</p>
