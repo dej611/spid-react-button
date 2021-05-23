@@ -6,6 +6,11 @@
 
 [Demo here](https://dej611.github.io/spid-react-button/)
 
+
+| Modal  | Dropdown |
+| ------------- | ------------- |
+| <img src="scripts/spid-modal.png" title="SPID dropdown version" alt="SPID modal version" width="977">  | <img src="scripts/spid-dropdown.png" title="SPID dropdown version" alt="SPID dropdown version" height="486">  |
+
 ## Install
 
 ```bash
