@@ -42,7 +42,7 @@ jobs:
             run: cd .. && npx create-next-app --typescript --use-npm test-nextjs
 
           - name: Add some extra libs and config for SVG support
-            run: cd ../test-nextjs && npm i @svgr/webpack url-loader next-transpile-modules --save-dev && cp .../spid-react-button/.github/workflows/next.config.template ./next.config.js
+            run: cd ../test-nextjs && npm i @svgr/webpack url-loader next-transpile-modules --save-dev && cp ../spid-react-button/.github/workflows/next.config.template ./next.config.js
 
           - name: Link lib + add template page
             run: cd ../test-nextjs && npm link @dej611/spid-react-button && cp ../spid-react-button/.github/workflows/nextjs.template ./pages/index.tsx
