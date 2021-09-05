@@ -45,7 +45,7 @@ jobs:
             run: cd test-nextjs && npm i @svgr/webpack url-loader next-transpile-modules --save-dev && cp ../.github/workflows/next.config.template ./next.config.js
 
           - name: Link lib + add template page
-            run: cd test-nextjs && npm link @dej611/spid-react-button && cp ../.github/workflows/nextjs.template ./pages/index.js
+            run: cd test-nextjs && npm link @dej611/spid-react-button && cp ../.github/workflows/nextjs.template ./pages/index.tsx
 
           - name: Run a build
             run: cd test-nextjs && npx next build
