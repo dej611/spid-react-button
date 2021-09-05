@@ -39,13 +39,10 @@ jobs:
             run: npm link
 
           - name: Start a new NextJS project
-            run: cd .. && npx create-next-app --typescript --use-npm test-nextjs
+            run: cd .. && npx create-next-app --typescript --use-npm -e https://github.com/dej611/nextjs-spid-button test-nextjs
 
-          - name: Add some extra libs and config for SVG support
-            run: cd ../test-nextjs && npm i @svgr/webpack url-loader next-transpile-modules --save-dev && cp ../spid-react-button/.github/workflows/next.config.template ./next.config.js
-
-          - name: Link lib + add template page
-            run: cd ../test-nextjs && npm link @dej611/spid-react-button && cp ../spid-react-button/.github/workflows/nextjs.template ./pages/index.tsx
+          - name: Link current library version
+            run: cd ../test-nextjs && npm link @dej611/spid-react-button
 
           - name: Run a build
             run: cd ../test-nextjs && npx next build
