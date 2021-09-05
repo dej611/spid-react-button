@@ -1,0 +1,15 @@
+import { SPIDReactButton } from '@dej611/spid-react-button'
+import '@dej611/spid-react-button/dist/index.css';
+
+function HomePage() {
+    return <div>
+        <SPIDReactButton
+            url={"/myLogin/idp={{idp}}"}
+        />
+        <SPIDReactButton type="dropdown"
+            url={"/myLogin/idp={{idp}}"}
+        />
+    </div>
+}
+
+export default HomePage

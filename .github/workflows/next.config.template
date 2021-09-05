@@ -1,0 +1,18 @@
+const withTM = require('next-transpile-modules')(['@dej611/spid-react-button']);
+
+module.exports = withTM({
+  reactStrictMode: true,
+  webpack(config) {
+    const fileLoaderRule = config.module.rules.find(rule => rule.test && rule.test.test('.svg'))
+    fileLoaderRule.exclude = /\.svg$/
+    config.module.rules.push({
+      test: /\.svg$/,
+      loader: require.resolve('@svgr/webpack')
+    },
+    {
+      test: /\.svg$/,
+      loader: require.resolve('url-loader')
+    })
+    return config
+  }
+})

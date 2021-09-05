@@ -2,7 +2,6 @@ import * as React from "react"
 
 import { SPIDReactButton } from '@dej611/spid-react-button'
 import '@dej611/spid-react-button/dist/index.css';
-import 'spid-smart-button/dist/spid-button.min.css';
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"

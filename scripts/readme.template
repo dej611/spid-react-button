@@ -9,7 +9,7 @@
 
 | Modal  | Dropdown |
 | ------------- | ------------- |
-| <img src="scripts/spid-modal.png" title="SPID dropdown version" alt="SPID modal version" width="977">  | <img src="scripts/spid-dropdown.png" title="SPID dropdown version" alt="SPID dropdown version" height="486">  |
+| <img src="scripts/spid-modal.png" title="SPID dropdown version" alt="SPID modal version" width="977">  | <img src="scripts/spid-dropdown.png" title="SPID dropdown version" alt="SPID dropdown version" width="977">  |
 
 ## Install
 
@@ -71,6 +71,40 @@ To run the test do:
 
 ```sh
 npm test
+```
+
+## Next.js
+
+Next.js 11 has some issues with the imported SVGs in this package, therefore it requires some configuration tweak and some additional dependencies to make it work correctly.
+
+First step, install some additional dependencies:
+
+```sh
+npm i @svgr/webpack url-loader next-transpile-modules --save-dev
+```
+
+These three dependencies should be added to the Next.js configuration to enable SVG import as URLs (used in this package for the buttons.)
+
+```js
+// next.config.js
+const withTM = require('next-transpile-modules')(['@dej611/spid-react-button']);
+
+module.exports = withTM({
+  reactStrictMode: true,
+  webpack(config) {
+    const fileLoaderRule = config.module.rules.find(rule => rule.test && rule.test.test('.svg'))
+    fileLoaderRule.exclude = /\.svg$/
+    config.module.rules.push({
+      test: /\.svg$/,
+      loader: require.resolve('@svgr/webpack')
+    },
+    {
+      test: /\.svg$/,
+      loader: require.resolve('url-loader')
+    })
+    return config
+  }
+})
 ```
 
 # API
