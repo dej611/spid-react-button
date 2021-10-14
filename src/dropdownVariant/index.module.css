@@ -71,9 +71,13 @@
     display: block
 }
 
+/**
+ * Width of this class has been relaxed to fix #61
+ * It differs from the original style
+ */
 .small {
     font-size: 10px;
-    width: 150px
+    min-width: 150px
 }
 
 .small>span img {
@@ -81,10 +85,13 @@
     height: 19px;
     border: 0;
 }
-
+/**
+ * Width of this class has been relaxed to fix #61
+ * It differs from the original style
+ */
 .medium {
     font-size: 15px;
-    width: 220px
+    min-width: 220px
 }
 
 .medium>span img {
@@ -92,10 +99,13 @@
     height: 29px;
     border: 0
 }
-
+/**
+ * Width of this class has been relaxed to fix #61
+ * It differs from the original style
+ */
 .large {
     font-size: 20px;
-    width: 280px
+    min-width: 280px
 }
 
 .large>span img {
