@@ -8,11 +8,14 @@ import {
 import { ModalState } from './types';
 
 import styles from './index.module.css';
+import extraStyles from './extra.module.css';
 
 // the css module is fake for the modal, so we can just centralize the renaming logic here
 export function getDefinedClasses(klasses: (string | undefined)[]) {
   return klasses
-    .map((klass) => (klass && styles[klass]) || emptyClass)
+    .map(
+      (klass) => (klass && (styles[klass] || extraStyles[klass])) || emptyClass
+    )
     .join(' ');
 }
 
@@ -38,7 +41,7 @@ export function computeButtonClasses({
   return [
     theme,
     corners,
-    size ? `size-${sizeMapping[size] ?? 'large'}` : null,
+    size ? `size-${sizeMapping[size] || 'large'}` : null,
     fluid ? 'fluid' : null
   ]
     .map((type) => (type != null ? `spid-button-${type}` : ''))

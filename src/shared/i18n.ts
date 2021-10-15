@@ -1,47 +1,47 @@
 const translations = {
-  it: {
-    naviga_indietro: 'Torna indietro',
-    alt_logo_SPID: 'Logo SPID',
-    scegli_provider_SPID: 'Scegli il tuo provider SPID',
-    annulla_accesso: 'Annulla',
-    non_hai_SPID: 'Non hai SPID?',
-    cosa_SPID: "Cos'è SPID?",
-    entra_con_SPID: 'Entra con SPID',
-    scopri_di_piu: 'Scopri di più.',
-    accedi_con_idp: 'Accedi a SPID con {0}',
-    idp_disabled: 'Provider non attivo',
-    maggiori_info: 'Maggiori info'
+  naviga_indietro: {
+    it: 'Torna indietro',
+    en: 'Go back',
+    de: 'Gehen Sie zurück'
   },
-  en: {
-    naviga_indietro: 'Go back',
-    alt_logo_SPID: 'SPID logo',
-    scegli_provider_SPID: 'Choose your SPID provider',
-    annulla_accesso: 'Cancel',
-    non_hai_SPID: "Don't have SPID?",
-    cosa_SPID: 'What is SPID?',
-    entra_con_SPID: 'Sign in with SPID',
-    scopri_di_piu: 'Learn more.',
-    accedi_con_idp: 'Access to SPID with {0}',
-    idp_disabled: 'Provider not enabled',
-    maggiori_info: 'More info'
+  alt_logo_SPID: { it: 'Logo SPID', en: 'Logo SPID', de: 'Logo SPID' },
+  scegli_provider_SPID: {
+    it: 'Scegli il tuo provider SPID',
+    en: 'Choose your SPID provider',
+    de: 'Wähle Ihren SPIDProvider'
   },
-  de: {
-    naviga_indietro: 'Gehen Sie zurück',
-    alt_logo_SPID: 'SPID Logo',
-    scegli_provider_SPID: 'Wähle Ihren SPIDProvider',
-    annulla_accesso: 'Zurücknehmen',
-    non_hai_SPID: 'Haben Sie nicht SPID?',
-    cosa_SPID: 'Was ist SPID?',
-    entra_con_SPID: 'Loggen Sie mit SPID',
-    scopri_di_piu: 'Finde mehr heraus.',
-    accedi_con_idp: 'Zugriff auf SPID mit {0}',
-    idp_disabled: 'Provider nicht aktiviert',
-    maggiori_info: 'Mehr info'
-  }
+  annulla_accesso: { it: 'Annulla', en: 'Cancel', de: 'Zurücknehmen' },
+  non_hai_SPID: {
+    it: 'Non hai SPID?',
+    en: "Don't have SPID?",
+    de: 'Haben Sie nicht SPID?'
+  },
+  cosa_SPID: { it: "Cos'è SPID?", en: 'What is SPID?', de: 'Was ist SPID?' },
+  entra_con_SPID: {
+    it: 'Entra con SPID',
+    en: 'Sign in with SPID',
+    de: 'Loggen Sie mit SPID'
+  },
+  scopri_di_piu: {
+    it: 'Scopri di più.',
+    en: 'Learn more.',
+    de: 'Finde mehr heraus.'
+  },
+  accedi_con_idp: {
+    it: 'Accedi a SPID con {0}',
+    en: 'Access to SPID with {0}',
+    de: 'Zugriff auf SPID mit {0}'
+  },
+  idp_disabled: {
+    it: 'Provider non attivo',
+    en: 'Provider not enabled',
+    de: 'Provider nicht aktiviert'
+  },
+  maggiori_info: { it: 'Maggiori info', en: 'More info', de: 'Mehr info' }
 } as const;
 
-export type languages = keyof typeof translations;
-export type labelKeys = keyof typeof translations[languages];
+export type labelKeys = keyof typeof translations;
+export type languages = keyof typeof translations[labelKeys];
 
 export type TranslateFn = (
   labelKey: labelKeys,
@@ -52,7 +52,7 @@ let currentLang = 'it';
 export const getTranslationFn = (language: languages): TranslateFn => {
   currentLang = language;
   return (labelKey: labelKeys, placeholderValue?: string) => {
-    const text = translations[currentLang]?.[labelKey];
+    const text = translations[labelKey] && translations[labelKey][currentLang];
     if (!text) {
       throw Error(
         `labelKey ${labelKey} non presente per la lingua selezionata ${currentLang}`

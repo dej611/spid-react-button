@@ -51,21 +51,25 @@ const LoginButton = ({
     theme === 'negative' ? SpidIcoCircleLbUrl : SpidIcoCircleBbUrl;
   return (
     <button
-      className={`${getDefinedClasses([
+      className={getDefinedClasses([
         'spid-button',
         ...customStylingClasses,
         ...wrapperTransitionClasses
-      ])}`}
+      ])}
       onClick={() => toggleModal(true)}
     >
       <span
         aria-hidden={!isVisible(modalVisibility)}
-        className={`${getDefinedClasses([
+        className={getDefinedClasses([
           'spid-button-icon',
           ...iconButtonClasses
-        ])}`}
+        ])}
       >
-        <img src={buttonImageUrl} alt='Login logo' />
+        <img
+          src={buttonImageUrl}
+          alt='Login logo'
+          className={getDefinedClasses(['spid-button-image-fix'])}
+        />
       </span>
       <span className={getDefinedClasses(['spid-button-text'])}>
         {i18n('entra_con_SPID')}

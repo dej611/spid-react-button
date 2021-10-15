@@ -30,7 +30,7 @@ const ButtonImage = ({ url, altText }: { url: string; altText: string }) => (
 );
 
 function getModalClasses({ type }: ModalState) {
-  const fadeInLeftClass = `spid-button-fade-in-left`;
+  const fadeInLeftClass = 'spid-button-fade-in-left';
   switch (type) {
     case possibleStates.ENTERING.type:
       return {
@@ -101,21 +101,21 @@ export const ProvidersModal = ({
       >
         <div className={getDefinedClasses(['spid-enter'])}>
           <section
-            className={`${getDefinedClasses([
+            className={getDefinedClasses([
               'spid-button-panel',
               'spid-button-panel-select',
               panelClasses
-            ])}`}
+            ])}
             aria-label={i18n('scegli_provider_SPID')}
             tabIndex={0}
           >
             <header className={getDefinedClasses(['spid-button-header'])}>
               <div className={getDefinedClasses(['spid-button-panel-back'])}>
                 <div
-                  className={`${getDefinedClasses([
+                  className={getDefinedClasses([
                     'spid-button-logo',
                     buttonLogoClasses
-                  ])}`}
+                  ])}
                 >
                   <ButtonImage
                     url={SpidLogoUrl}
@@ -123,18 +123,18 @@ export const ProvidersModal = ({
                   />
                 </div>
                 <div
-                  className={`${getDefinedClasses([
+                  className={getDefinedClasses([
                     'spid-button-close-button',
                     'spid-button-fade-out-right',
                     buttonCloseClasses
-                  ])}`}
+                  ])}
                 >
                   <button
                     tabIndex={0}
-                    className={`${getDefinedClasses([
+                    className={getDefinedClasses([
                       'spid-button-panel-close-button',
                       'spid-button-navigable'
-                    ])}`}
+                    ])}
                     aria-label={i18n('naviga_indietro')}
                     onClick={closeModal}
                   >
@@ -148,10 +148,10 @@ export const ProvidersModal = ({
             </header>
             <div className={getDefinedClasses(['spid-button-panel-content'])}>
               <img
-                className={`${getDefinedClasses([
+                className={getDefinedClasses([
                   'spid-button-little-man-icon',
                   buttonManIconClasses
-                ])}`}
+                ])}
                 src={SpidLogoAnimationBlackUrl}
                 alt={i18n('entra_con_SPID')}
               />
@@ -161,11 +161,11 @@ export const ProvidersModal = ({
                 ])}
               >
                 <h1
-                  className={`${getDefinedClasses([
+                  className={getDefinedClasses([
                     'spid-enter-title-page',
                     'spid-button-fade-in-bottom',
                     'spid-button-fade-out-bottom'
-                  ])}`}
+                  ])}
                 >
                   {i18n('scegli_provider_SPID')}
                 </h1>
@@ -198,10 +198,10 @@ export const ProvidersModal = ({
                     return (
                       <span
                         key={idp.entityID}
-                        className={`${getDefinedClasses([
+                        className={getDefinedClasses([
                           'spid-button-idp',
                           classNames
-                        ])}`}
+                        ])}
                         style={style}
                       >
                         <SharedProviderButton
