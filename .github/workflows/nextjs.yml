@@ -1,6 +1,6 @@
 name: NextJS SSR tests
 
-on: 
+on:
   push:
     branches:
       - main
@@ -10,39 +10,40 @@ on:
       - main
 
 jobs:
-    build:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [14, 16]
+    steps:
+      - uses: actions/checkout@v2
 
-        runs-on: ubuntu-latest
-    
-        steps:
-          - uses: actions/checkout@v2
-          
-          - name: Use Node.js 12.16.1
-            uses: actions/setup-node@v1
-            with:
-              node-version: 12.16.1
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node }}
 
-          - uses: actions/cache@v2
-            with:
-              path: ~/.npm
-              key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-              restore-keys: |
-                ${{ runner.os }}-node-
-            
-          - name: Installing dependencies
-            run: npm ci
+      - uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ matrix.node }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-${{ matrix.node }}-
 
-          - name: Build the library
-            run: npm run build:ts
+      - name: Installing dependencies
+        run: npm ci
 
-          - name: Enable the linking
-            run: npm link
+      - name: Build the library
+        run: npm run build:ts
 
-          - name: Start a new NextJS project
-            run: cd .. && npx create-next-app --typescript --use-npm -e https://github.com/dej611/nextjs-spid-button test-nextjs
+      - name: Enable the linking
+        run: npm link
 
-          - name: Link current library version
-            run: cd ../test-nextjs && npm link @dej611/spid-react-button
+      - name: Start a new NextJS project
+        run: cd .. && npx create-next-app --typescript --use-npm -e https://github.com/dej611/nextjs-spid-button test-nextjs
 
-          - name: Run a build
-            run: cd ../test-nextjs && npx next build
+      - name: Link current library version
+        run: cd ../test-nextjs && npm link @dej611/spid-react-button
+
+      - name: Run a build
+        run: cd ../test-nextjs && npx next build

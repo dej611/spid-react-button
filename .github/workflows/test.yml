@@ -1,6 +1,6 @@
 name: Unit tests
 
-on: 
+on:
   push:
     branches:
       - main
@@ -11,24 +11,26 @@ on:
 
 jobs:
     build:
-
         runs-on: ubuntu-latest
-    
+        strategy:
+          matrix:
+            node: [14, 16]
+
         steps:
           - uses: actions/checkout@v2
-          
-          - name: Use Node.js 12.16.1
+
+          - name: Use Node.js
             uses: actions/setup-node@v1
             with:
-              node-version: 12.16.1
+              node-version: ${{ matrix.node }}
 
           - uses: actions/cache@v2
             with:
               path: ~/.npm
-              key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+              key: ${{ runner.os }}-node-${{ matrix.node }}-${{ hashFiles('**/package-lock.json') }}
               restore-keys: |
-                ${{ runner.os }}-node-
-            
+                ${{ runner.os }}-node-${{ matrix.node }}-
+
           - name: Installing dependencies
             run: npm ci
 
