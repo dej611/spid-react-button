@@ -6,25 +6,23 @@ on:
 
 jobs:
     build:
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v2
 
-        runs-on: ubuntu-latest
-    
-        steps:
-          - uses: actions/checkout@v2
-          
-          - name: Use Node.js 12.16.1
-            uses: actions/setup-node@v1
-            with:
-              node-version: 12.16.1
-            
-          - name: Installing dependencies
-            run: npm ci
+        - name: Use Node.js
+          uses: actions/setup-node@v1
+          with:
+            node-version: 16
 
-          - name: Build and deploy to Github Pages
-            run: npm run predeploy
-            
-          - name: Deploy
-            uses: peaceiris/actions-gh-pages@v3
-            with:
-              github_token: ${{ secrets.GITHUB_TOKEN }}
-              publish_dir: ./example/build
+        - name: Installing dependencies
+          run: npm ci
+
+        - name: Build and deploy to Github Pages
+          run: npm run predeploy
+
+        - name: Deploy
+          uses: peaceiris/actions-gh-pages@v3
+          with:
+            github_token: ${{ secrets.GITHUB_TOKEN }}
+            publish_dir: ./example/build

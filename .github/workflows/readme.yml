@@ -1,6 +1,6 @@
 name: Build readme
 
-on: 
+on:
   push:
     branches:
       - main
@@ -8,22 +8,22 @@ on:
 jobs:
     build:
         runs-on: ubuntu-latest
-    
+
         steps:
           - uses: actions/checkout@v2
-          
-          - name: Use Node.js 12.16.1
+
+          - name: Use Node.js
             uses: actions/setup-node@v1
             with:
-              node-version: 12.16.1
+              node-version: 16
 
           - uses: actions/cache@v2
             with:
               path: ~/.npm
-              key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+              key: ${{ runner.os }}-node-16-${{ hashFiles('**/package-lock.json') }}
               restore-keys: |
-                ${{ runner.os }}-node-
-            
+                ${{ runner.os }}-node-16-
+
           - name: Installing dependencies
             run: npm ci
 
