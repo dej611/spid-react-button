@@ -187,7 +187,7 @@ The default value is `false`.
 
 #### lang
 
-**Possible values**: `"it" | "en" | "de" | "es"`  
+**Possible values**: `"it" | "en" | "de"`  
 
 **Type**: `Languages`  
 
