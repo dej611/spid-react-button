@@ -17,7 +17,7 @@
 npm install --save @dej611/spid-react-button typeface-titillium-web
 ```
 
-The package depends on the Titillium font.
+The package depends on the Titillium font.  
 An alternative to installing the local package is to use it via CDN, adding this line to your css file:
 ```css
 @import url(https://fonts.googleapis.com/css?family=Titillium+Web:400,600,700,900);
@@ -114,11 +114,11 @@ module.exports = withTM({
 
 ### SPIDReactButton
 
-**Type**: `Component`
+**Type**: `Component`  
 
-**Props**: `SPIDButtonProps`
+**Props**: `SPIDButtonProps`  
 
-The main component for the button.
+The main component for the button.  
 Use this component with the `type` prop to select the version you prefer.
 
 
@@ -126,32 +126,32 @@ The SPIDButtonProps object contains the following properties:
 
 #### configuration
 
-**Possible values**: `{            method : "GET"        } | {            extraFields ?: Record<string , string>, fieldName : string, method : "POST"        }`
+**Possible values**: `{            method : "GET"        } | {            extraFields ?: Record<string , string>, fieldName : string, method : "POST"        }`  
 
-**Type**: `ConfigurationGET | ConfigurationPOST`
+**Type**: `ConfigurationGET | ConfigurationPOST`  
 
-**Required**: No
+**Required**: No  
 
 **Default value**: `{"method": "GET"}`
 
 
-Each Provider button will use this configuration for its button.
+Each Provider button will use this configuration for its button.  
 The default value is `{"method": "GET"}`
 
 
 
 #### corners
 
-**Possible values**: `"rounded" | "sharp"`
+**Possible values**: `"rounded" | "sharp"`  
 
-**Type**: `CornerType`
+**Type**: `CornerType`  
 
-**Required**: No
+**Required**: No  
 
 **Default value**: `"rounded"`
 
 
-The type of corner for the button: rounded or sharp.
+The type of corner for the button: rounded or sharp.  
 The default value is `"rounded"`.
 
 
@@ -159,9 +159,9 @@ The default value is `"rounded"`.
 #### extraProviders
 
 
-**Type**: `ProviderRecord[]`
+**Type**: `ProviderRecord[]`  
 
-**Required**: No
+**Required**: No  
 
 
 
@@ -172,26 +172,26 @@ Used for testing. *Do not use in production*
 #### fluid
 
 
-**Type**: `boolean`
+**Type**: `boolean`  
 
-**Required**: No
+**Required**: No  
 
 **Default value**: `false`
 
 
-This controls the width of the button: when fluid it will fill all the available space.
-It applies only to the modal version.
+This controls the width of the button: when fluid it will fill all the available space.  
+It applies only to the modal version.  
 The default value is `false`.
 
 
 
 #### lang
 
-**Possible values**: `"it" | "en" | "de" | "fr"`
+**Possible values**: `"it" | "en" | "de"`  
 
-**Type**: `Languages`
+**Type**: `Languages`  
 
-**Required**: No
+**Required**: No  
 
 **Default value**: `"it"`
 
@@ -203,13 +203,13 @@ The language used for the UI. The default value is `"it"`.
 #### mapping
 
 
-**Type**: `Record<string , string>`
+**Type**: `Record<string , string>`  
 
-**Required**: No
+**Required**: No  
 
 
 
-An object containing the mapping for the providers.
+An object containing the mapping for the providers.  
 This is useful when a Service Provider identifies the IDP with a different string than the entityID
 
 
@@ -220,16 +220,16 @@ This is useful when a Service Provider identifies the IDP with a different strin
 **Type**: `(
 providerEntry : ProviderRecord,
 loginURL : string | undefined,
-event : React.MouseEvent<HTMLAnchorElement , MouseEvent> | React.MouseEvent<HTMLButtonElement , MouseEvent>) => void`
+event : React.MouseEvent<HTMLAnchorElement , MouseEvent> | React.MouseEvent<HTMLButtonElement , MouseEvent>) => void`  
 
-**Required**: No
+**Required**: No  
 
 
 
 This is called when a user clicks on a provider button.
 
-* `providerEntry`: The full entry of the provider clicked is passed, together with the event
-* `loginURL`: The final URL for the specific Identity Provider. It returns undefined if the button is disabled
+* `providerEntry`: The full entry of the provider clicked is passed, together with the event  
+* `loginURL`: The final URL for the specific Identity Provider. It returns undefined if the button is disabled  
 * `event`: React original MouseEvent
 
 
@@ -237,9 +237,9 @@ This is called when a user clicks on a provider button.
 #### onProvidersHidden
 
 
-**Type**: `() => void`
+**Type**: `() => void`  
 
-**Required**: No
+**Required**: No  
 
 
 
@@ -250,9 +250,9 @@ This is called when the providers are hidden on the screen (as soon as the anima
 #### onProvidersShown
 
 
-**Type**: `() => void`
+**Type**: `() => void`  
 
-**Required**: No
+**Required**: No  
 
 
 
@@ -262,34 +262,34 @@ This is called when the providers are shown on the screen (as soon as the animat
 
 #### protocol
 
-**Possible values**: `"SAML" | "OIDC"`
+**Possible values**: `"SAML" | "OIDC"`  
 
-**Type**: `Protocols`
+**Type**: `Protocols`  
 
-**Required**: No
+**Required**: No  
 
 **Default value**: `"SAML"`
 
 
-The protocol to use for the current instance.
-Only Providers who support the declared protocol are enabled.
+The protocol to use for the current instance.  
+Only Providers who support the declared protocol are enabled.  
 The default value is `"SAML"`.
 
 
 
 #### size
 
-**Possible values**: `"sm" | "md" | "l" | "xl"`
+**Possible values**: `"sm" | "md" | "l" | "xl"`  
 
-**Type**: `Sizes`
+**Type**: `Sizes`  
 
-**Required**: No
+**Required**: No  
 
 **Default value**: `"md"`
 
 
-The size of the button. Options are: `"sm"` (small), `"md"` (medium), `"l"` (large) and `"xl"` (extra large - dropdown only).
-The modal version does not support the `"xl"` size and will fallback to `"l"` if passed.
+The size of the button. Options are: `"sm"` (small), `"md"` (medium), `"l"` (large) and `"xl"` (extra large - dropdown only).  
+The modal version does not support the `"xl"` size and will fallback to `"l"` if passed.  
 The default value is `"md"`.
 
 
@@ -297,59 +297,59 @@ The default value is `"md"`.
 #### sorted
 
 
-**Type**: `boolean`
+**Type**: `boolean`  
 
-**Required**: No
+**Required**: No  
 
 **Default value**: `false`
 
 
-It forces an ascending order (A->Z) of the providers, based on the entityName string.
+It forces an ascending order (A->Z) of the providers, based on the entityName string.  
 Note that this will sort with no distictions between official and extraProviders in the list.
 
 
 
 #### supported
 
-**Possible values**: `string[]`
+**Possible values**: `string[]`  
 
-**Type**: `ProviderRecord["entityID"][]`
+**Type**: `ProviderRecord["entityID"][]`  
 
-**Required**: No
+**Required**: No  
 
 **Default value**: All providers
 
 
-The list of entityID supported by the button instance.
+The list of entityID supported by the button instance.  
 The default value is all the official providers.
 
 
 
 #### theme
 
-**Possible values**: `"positive" | "negative"`
+**Possible values**: `"positive" | "negative"`  
 
-**Type**: `ColorTheme`
+**Type**: `ColorTheme`  
 
-**Required**: No
+**Required**: No  
 
 **Default value**: `"positive"`
 
 
-The theme used for the button:
-* "positive" has a blue background with white text,
-* "negative" has a white background and blue text.
+The theme used for the button:  
+* "positive" has a blue background with white text,  
+* "negative" has a white background and blue text.  
 The default value is `"positive"`.
 
 
 
 #### type
 
-**Possible values**: `"modal" | "dropdown"`
+**Possible values**: `"modal" | "dropdown"`  
 
-**Type**: `Types`
+**Type**: `Types`  
 
-**Required**: No
+**Required**: No  
 
 **Default value**: `"modal"`
 
@@ -361,16 +361,16 @@ The way to present the providers once clicked. The default value is `"modal"`.
 #### url
 
 
-**Type**: `string`
+**Type**: `string`  
 
-**Required**: Yes
+**Required**: Yes  
 
 
 
-The URL used by the buttons.
-It can be either absolute or relative.
-It must contains the `"{{idp}}"` string in it, which will be replaced by the entityID of each provider
-(unless specified otherwise with the `mapping` prop - see below).
+The URL used by the buttons.  
+It can be either absolute or relative.  
+It must contains the `"{{idp}}"` string in it, which will be replaced by the entityID of each provider  
+(unless specified otherwise with the `mapping` prop - see below).  
 This props is *mandatory*.
 
 
@@ -382,12 +382,12 @@ ___
 
 ### SPIDReactButtonDropdown
 
-**Type**: `Component`
+**Type**: `Component`  
 
-**Props**: `SPIDButtonProps`
+**Props**: `SPIDButtonProps`  
 
-The specific component button with the dropdown.
-Use this component when you want to minimize the footprint in your project.
+The specific component button with the dropdown.  
+Use this component when you want to minimize the footprint in your project.  
 It accepts the same props as the main component. The `type` prop is ignored in this case.
 
 
@@ -400,12 +400,12 @@ ___
 
 ### SPIDReactButtonModal
 
-**Type**: `Component`
+**Type**: `Component`  
 
-**Props**: `SPIDButtonProps`
+**Props**: `SPIDButtonProps`  
 
-The specific component button with the modal.
-Use this component when you want to minimize the footprint in your project.
+The specific component button with the modal.  
+Use this component when you want to minimize the footprint in your project.  
 It accepts the same props as the main component. The `type` prop is ignored in this case.
 
 
@@ -418,55 +418,55 @@ ___
 
 ## Types
 
-**ColorTheme**: `"positive" | "negative"`
+**ColorTheme**: `"positive" | "negative"`  
 
-The theme used for the button:
-* "positive" has a blue background with white text,
+The theme used for the button:  
+* "positive" has a blue background with white text,  
 * "negative" has a white background and blue text.
 
 ___
 
-**ConfigurationGET**: `{method: "GET"}`
+**ConfigurationGET**: `{method: "GET"}`  
 
-Each Provider button will use this configuration for its button.
+Each Provider button will use this configuration for its button.  
 This is the specific GET type.
 
 ___
 
-**ConfigurationPOST**: `{extraFields: Record<string , string>, fieldName: string, method: "POST"}`
+**ConfigurationPOST**: `{extraFields: Record<string , string>, fieldName: string, method: "POST"}`  
 
-Each Provider button will use this configuration for its button.
+Each Provider button will use this configuration for its button.  
 This is the specific POST type
 
 ___
 
-**CornerType**: `"rounded" | "sharp"`
+**CornerType**: `"rounded" | "sharp"`  
 
 The type of corner for the button: rounded or sharp.
 
 ___
 
-**Languages**: `"it" | "en" | "de"`
+**Languages**: `"it" | "en" | "de"`  
 
 The language used for the UI.
 
 ___
 
-**Protocols**: `"SAML" | "OIDC"`
+**Protocols**: `"SAML" | "OIDC"`  
 
-The protocol to use for the current instance.
+The protocol to use for the current instance.  
 Only Providers who support the declared protocol are enabled.
 
 ___
 
-**Sizes**: `"sm" | "md" | "l" | "xl"`
+**Sizes**: `"sm" | "md" | "l" | "xl"`  
 
-The size of the button. Options are: `"sm"` (small), `"md"` (medium), `"l"` (large) and `"xl"` (extra large - dropdown only).
+The size of the button. Options are: `"sm"` (small), `"md"` (medium), `"l"` (large) and `"xl"` (extra large - dropdown only).  
 The modal version does not support the `"xl"` size and will fallback to `"l"` if passed.
 
 ___
 
-**Types**: `"modal" | "dropdown"`
+**Types**: `"modal" | "dropdown"`  
 
 The way to present the providers once clicked.
 
@@ -478,16 +478,16 @@ ___
 
 The object format of a Identity Provider object.
 
-* entityID: `string`
+* entityID: `string`  
 
 
-* entityName: `string`
+* entityName: `string`  
 
 
-* logo: `string` - Optional
+* logo: `string` - Optional  
 
 
-* protocols: `Protocols[]` - Optional
+* protocols: `Protocols[]` - Optional  
 
 
 
