@@ -34,7 +34,7 @@ jobs:
           - name: Installing dependencies
             run: npm ci
 
-          - uses: paambaati/codeclimate-action@v2.7.5
+          - uses: paambaati/codeclimate-action@v3.0.0
             env:
               CC_TEST_REPORTER_ID: ${{ secrets.CODE_CLIMATE_TOKEN }}
             with:
