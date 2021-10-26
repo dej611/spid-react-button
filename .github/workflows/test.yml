@@ -12,30 +12,32 @@ on:
 jobs:
     build:
         runs-on: ubuntu-latest
-        strategy:
-          matrix:
-            node: [14, 16]
-
         steps:
           - uses: actions/checkout@v2
+            with:
+              node-version: 16
 
           - name: Use Node.js
             uses: actions/setup-node@v1
-            with:
-              node-version: ${{ matrix.node }}
 
           - uses: actions/cache@v2
             with:
               path: ~/.npm
-              key: ${{ runner.os }}-node-${{ matrix.node }}-${{ hashFiles('**/package-lock.json') }}
+              key: ${{ runner.os }}-node-16-${{ hashFiles('**/package-lock.json') }}
               restore-keys: |
-                ${{ runner.os }}-node-${{ matrix.node }}-
+                ${{ runner.os }}-node-16-
 
           - name: Installing dependencies
             run: npm ci
 
-          - uses: paambaati/codeclimate-action@v3.0.0
+          - name: Test from committers
+            uses: paambaati/codeclimate-action@v3.0.0
+            if: github.event.pull_request.head.repo.full_name == github.repository && github.actor != 'dependabot[bot]'
             env:
               CC_TEST_REPORTER_ID: ${{ secrets.CODE_CLIMATE_TOKEN }}
             with:
               coverageCommand: npm test
+
+          - name: Test from forks
+            if: github.event.pull_request.head.repo.full_name != github.repository || github.actor == 'dependabot[bot]'
+            run: npm test

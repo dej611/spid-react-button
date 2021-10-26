@@ -8,16 +8,13 @@ on:
 jobs:
   bundlewatch:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node: [14, 16]
     steps:
       - uses: actions/checkout@v2
+        with:
+          node-version: 16
 
       - name: Use Node.js
         uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node }}
 
       - name: Installing dependencies
         run: npm ci
