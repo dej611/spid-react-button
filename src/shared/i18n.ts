@@ -1,3 +1,5 @@
+import type { Languages } from './types';
+
 const translations = {
   naviga_indietro: {
     it: 'Torna indietro',
@@ -77,9 +79,9 @@ const translations = {
     fr: 'Plus d’info'
   }
 } as const;
+const placeholderRegex = /\{\d}/;
 
 export type labelKeys = keyof typeof translations;
-export type languages = keyof typeof translations[labelKeys];
 
 export type TranslateFn = (
   labelKey: labelKeys,
@@ -87,7 +89,7 @@ export type TranslateFn = (
 ) => string;
 
 let currentLang = 'it';
-export const getTranslationFn = (language: languages): TranslateFn => {
+export const getTranslationFn = (language: Languages): TranslateFn => {
   currentLang = language;
   return (labelKey: labelKeys, placeholderValue?: string) => {
     const text = translations[labelKey] && translations[labelKey][currentLang];
@@ -96,10 +98,14 @@ export const getTranslationFn = (language: languages): TranslateFn => {
         `labelKey ${labelKey} non presente per la lingua selezionata ${currentLang}`
       );
     }
-    const placeholderRegex = /\{\d}/;
     if (placeholderValue != null) {
       return text.replace(placeholderRegex, placeholderValue);
     }
     return text;
   };
 };
+/**
+ * Returns the list of supported languages for the UI
+ */
+export const getSupportedLanguages = (): Languages[] =>
+  Object.keys(Object.values(translations)[0]) as Languages[];

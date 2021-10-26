@@ -4,6 +4,9 @@ export {
   providersCopy as providers
 } from './shared/utils';
 
+// export a helper to get the list of supported languages
+export { getSupportedLanguages } from './shared/i18n';
+
 // export the types
 export type {
   SPIDButtonProps,
