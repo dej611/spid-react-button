@@ -6,7 +6,7 @@ export type Protocols = 'SAML' | 'OIDC';
 /**
  * The language used for the UI.
  */
-export type Languages = 'it' | 'en' | 'de';
+export type Languages = 'it' | 'en' | 'de' | 'es' | 'fr';
 /**
  * The size of the button. Options are: `"sm"` (small), `"md"` (medium), `"l"` (large) and `"xl"` (extra large - dropdown only).
  * The modal version does not support the `"xl"` size and will fallback to `"l"` if passed.

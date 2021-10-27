@@ -318,7 +318,8 @@ readFile(path.normalize(rootPath + '/readme.template'), {
 
         ${description.replace(/\n/g, '  \n')}
         `;
-    })}
+    })
+    .join('\n')}
     `
       .split('\n')
       .map((line) => line.trimStart())
