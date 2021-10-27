@@ -111,7 +111,7 @@
     "files": [
       {
         "path": "./dist/index.js",
-        "maxSize": "7.5 KB"
+        "maxSize": "7.6 KB"
       },
       {
         "path": "./dist/index.modern.js",

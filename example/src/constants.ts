@@ -1,10 +1,10 @@
 import { getShuffledProviders } from "@dej611/spid-react-button";
 
-import {Protocols, Languages, Sizes, CornerType, ColorTheme, ConfigurationGET, ConfigurationPOST, Types, SPIDButtonProps} from '@dej611/spid-react-button'
+import {Protocols, Languages, Sizes, CornerType, ColorTheme, ConfigurationGET, ConfigurationPOST, Types, SPIDButtonProps, getSupportedLanguages} from '@dej611/spid-react-button'
 
 export const defaultURL = "/myLogin/idp={{idp}}";
 export const providersList = [...getShuffledProviders()].sort((idpA, idpB) => idpA.entityName.localeCompare(idpB.entityName));
-export const languages: Languages[] = ['it', 'en', 'de']
+export const languages: Languages[] = getSupportedLanguages()
 export const configurations: [ConfigurationGET, ConfigurationPOST] = [{ method: 'GET' }, { method: 'POST', fieldName: 'prova' }]
 export const protocols: Protocols[] = ['SAML', 'OIDC']
 export const sizes: Sizes[] = ['sm', 'md', 'l']
