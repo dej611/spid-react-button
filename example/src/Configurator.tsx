@@ -25,7 +25,7 @@ type ConfiguratorProps = {
 export const Configurator = ({ buttonProps, updateProp, setValidURL, isValidURL }: ConfiguratorProps) => {
 
 
-  const { options: langOptions, selection: langSelection } = getOptionsAndCurrentSelection(['Italiano', 'English', 'Deutsche'], languages, buttonProps, 'lang')
+  const { options: langOptions, selection: langSelection } = getOptionsAndCurrentSelection(['Italiano', 'English', 'Deutsche', 'Spagnolo', 'Francese'], languages, buttonProps, 'lang')
   const { options: sizeOptions, selection: sizeSelection } = getOptionsAndCurrentSelection(['Small', 'Medium', 'Large'], sizes, buttonProps, 'size')
   const { options: colorSchemeOptions, selection: colorThemeSelection } = getOptionsAndCurrentSelection(['Positive', 'Negative'], colorThemes, buttonProps, 'theme')
   const { options: protocolOptions, selection: protocolSelection } = getOptionsAndCurrentSelection(['SAML', 'OIDC'], protocols, buttonProps, 'protocol')
