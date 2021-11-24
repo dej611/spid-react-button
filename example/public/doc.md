@@ -76,7 +76,7 @@ The default value is `false`.
 
 #### lang
 
-**Possible values**: `"it" | "en" | "de"`  
+**Possible values**: `"it" | "en" | "de" | "es" | "fr"`  
 
 **Type**: `Languages`  
 
@@ -335,7 +335,7 @@ The type of corner for the button: rounded or sharp.
 
 ___
 
-**Languages**: `"it" | "en" | "de"`  
+**Languages**: `"it" | "en" | "de" | "es" | "fr"`  
 
 The language used for the UI.
 
@@ -392,4 +392,11 @@ ___
 `getShuffledProviders() => RegisteredProviderRecord[]`
 
 Returns a copy of the list of the official providers, already shuffled
+
+#### getSupportedLanguages
+
+
+`getSupportedLanguages() => Languages[]`
+
+Returns the list of supported languages for the UI
 
