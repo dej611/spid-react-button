@@ -66,6 +66,7 @@ export const SPIDReactButton = ({
     <FocusOn
       onClickOutside={() => toggleDropdown(false)}
       onEscapeKey={() => toggleDropdown(false)}
+      scrollLock={false}
       enabled={openDropdown}
     >
       <div className={styles.container}>
