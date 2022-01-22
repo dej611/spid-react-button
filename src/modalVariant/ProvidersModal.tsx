@@ -1,9 +1,9 @@
 import React from 'react';
 import { FocusOn } from 'react-focus-on';
 
-import SpidLogoAnimationBlackUrl from '/../shared/svgs/spid-logo-animation-black.svg';
-import SpidLogoUrl from '/../shared/svgs/spid-logo.svg';
-import CloseSvgUrl from '/../shared/svgs/close.svg';
+import SpidLogoAnimationBlackUrl from '../shared/svgs/spid-logo-animation-black.svg';
+import SpidLogoUrl from '../shared/svgs/spid-logo.svg';
+import CloseSvgUrl from '../shared/svgs/close.svg';
 
 import type {
   RegisteredProviderRecord,

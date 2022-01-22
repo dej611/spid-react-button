@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import SpidIcoCircleLbUrl from '/../shared/svgs/spid-ico-circle-lb.svg';
-import SpidIcoCircleBbUrl from '/../shared/svgs/spid-ico-circle-bb.svg';
+import SpidIcoCircleLbUrl from '../shared/svgs/spid-ico-circle-lb.svg';
+import SpidIcoCircleBbUrl from '../shared/svgs/spid-ico-circle-bb.svg';
 
 import { getTranslationFn } from '../shared/i18n';
 import {
@@ -43,10 +43,8 @@ const LoginButton = ({
     size,
     fluid
   });
-  const {
-    wrapper: wrapperTransitionClasses,
-    icon: iconButtonClasses
-  } = computeButtonTransitionClasses(modalVisibility);
+  const { wrapper: wrapperTransitionClasses, icon: iconButtonClasses } =
+    computeButtonTransitionClasses(modalVisibility);
   const buttonImageUrl =
     theme === 'negative' ? SpidIcoCircleLbUrl : SpidIcoCircleBbUrl;
   return (
