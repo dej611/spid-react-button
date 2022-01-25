@@ -1,10 +1,6 @@
 import React from 'react';
 import { FocusOn } from 'react-focus-on';
 
-import SpidLogoAnimationBlackUrl from '/../shared/svgs/spid-logo-animation-black.svg';
-import SpidLogoUrl from '/../shared/svgs/spid-logo.svg';
-import CloseSvgUrl from '/../shared/svgs/close.svg';
-
 import type {
   RegisteredProviderRecord,
   SPIDButtonProps
@@ -24,6 +20,15 @@ import { isVisible, getDefinedClasses } from './utils';
 import { TranslateFn } from '../shared/i18n';
 
 import { SharedProviderButton } from '../shared/ProviderButton';
+
+const SpidLogoAnimationBlackUrl = new URL(
+  '../shared/svgs/spid-logo-animation-black.svg',
+  import.meta.url
+).pathname;
+const SpidLogoUrl = new URL('../shared/svgs/spid-logo.svg', import.meta.url)
+  .pathname;
+const CloseSvgUrl = new URL('../shared/svgs/close.svg', import.meta.url)
+  .pathname;
 
 const ButtonImage = ({ url, altText }: { url: string; altText: string }) => (
   <img aria-hidden='true' src={url} alt={altText} style={{ float: 'left' }} />

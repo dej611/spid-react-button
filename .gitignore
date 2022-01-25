@@ -24,3 +24,4 @@ yarn-error.log*
 doc.json
 
 *.tgz
+.parcel-cache

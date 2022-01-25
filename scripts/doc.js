@@ -52,7 +52,7 @@ function getChildren({ kindString, children, type }) {
   throw Error('No children found');
 }
 
-function typeDescription({ type, ...props }, inline = false) {
+function typeDescription({ type, ...props } = {}, inline = false) {
   if (type === 'literal') {
     return '"' + props.value + '"';
   }
@@ -258,7 +258,7 @@ readFile(path.normalize(rootPath + '/readme.template'), {
                   }  \n
                   ${description.replace(/\n/g, '  \n')}
                   ${
-                    paramsDescription.length
+                    paramsDescription?.length
                       ? '\n' +
                         paramsDescription
                           .map((line) => `* ${line}`)

@@ -1,14 +1,41 @@
-import ArubaSVGUrl from '/./svgs/idp-logos/spid-idp-arubaid.svg';
-import InfocertSVGUrl from '/./svgs/idp-logos/spid-idp-infocertid.svg';
-import PosteSVGUrl from '/./svgs/idp-logos/spid-idp-posteid.svg';
-import SielteSVGUrl from '/./svgs/idp-logos/spid-idp-sielteid.svg';
-import TimSVGUrl from '/./svgs/idp-logos/spid-idp-timid.svg';
-import NamirialSVGUrl from '/./svgs/idp-logos/spid-idp-namirialid.svg';
-import RegisterItSVGUrl from '/./svgs/idp-logos/spid-idp-spiditalia.svg';
-import IntesaSVGUrl from '/./svgs/idp-logos/spid-idp-intesaid.svg';
-import LepidaSVGUrl from '/./svgs/idp-logos/spid-idp-lepidaid.svg';
-
 import type { RegisteredProviderRecord } from './types';
+
+const ArubaSVGUrl = new URL(
+  './svgs/idp-logos/spid-idp-arubaid.svg',
+  import.meta.url
+).pathname;
+const InfocertSVGUrl = new URL(
+  './svgs/idp-logos/spid-idp-infocertid.svg',
+  import.meta.url
+).pathname;
+const PosteSVGUrl = new URL(
+  './svgs/idp-logos/spid-idp-posteid.svg',
+  import.meta.url
+).pathname;
+const SielteSVGUrl = new URL(
+  './svgs/idp-logos/spid-idp-sielteid.svg',
+  import.meta.url
+).pathname;
+const TimSVGUrl = new URL(
+  './svgs/idp-logos/spid-idp-timid.svg',
+  import.meta.url
+).pathname;
+const NamirialSVGUrl = new URL(
+  './svgs/idp-logos/spid-idp-namirialid.svg',
+  import.meta.url
+).pathname;
+const RegisterItSVGUrl = new URL(
+  './svgs/idp-logos/spid-idp-spiditalia.svg',
+  import.meta.url
+).pathname;
+const IntesaSVGUrl = new URL(
+  './svgs/idp-logos/spid-idp-intesaid.svg',
+  import.meta.url
+).pathname;
+const LepidaSVGUrl = new URL(
+  './svgs/idp-logos/spid-idp-lepidaid.svg',
+  import.meta.url
+).pathname;
 
 export const providers: Readonly<RegisteredProviderRecord>[] = [
   {

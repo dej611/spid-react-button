@@ -219,52 +219,6 @@ This is useful when a Service Provider identifies the IDP with a different strin
 
 
 
-#### onProviderClicked
-
-
-**Type**: `(
-providerEntry : ProviderRecord,
-loginURL : string | undefined,
-event : React.MouseEvent<HTMLAnchorElement , MouseEvent> | React.MouseEvent<HTMLButtonElement , MouseEvent>) => void`  
-
-**Required**: No  
-
-
-
-This is called when a user clicks on a provider button.
-
-* `providerEntry`: The full entry of the provider clicked is passed, together with the event  
-* `loginURL`: The final URL for the specific Identity Provider. It returns undefined if the button is disabled  
-* `event`: React original MouseEvent
-
-
-
-#### onProvidersHidden
-
-
-**Type**: `() => void`  
-
-**Required**: No  
-
-
-
-This is called when the providers are hidden on the screen (as soon as the animation starts)
-
-
-
-#### onProvidersShown
-
-
-**Type**: `() => void`  
-
-**Required**: No  
-
-
-
-This is called when the providers are shown on the screen (as soon as the animation starts)
-
-
-
 #### protocol
 
 **Possible values**: `"SAML" | "OIDC"`  
@@ -377,6 +331,45 @@ It can be either absolute or relative.
 It must contains the `"{{idp}}"` string in it, which will be replaced by the entityID of each provider  
 (unless specified otherwise with the `mapping` prop - see below).  
 This props is *mandatory*.
+
+
+
+#### onProviderClicked
+
+
+**Type**: `undefined`  
+
+**Required**: Yes  
+
+
+
+
+
+
+
+#### onProvidersHidden
+
+
+**Type**: `undefined`  
+
+**Required**: Yes  
+
+
+
+
+
+
+
+#### onProvidersShown
+
+
+**Type**: `undefined`  
+
+**Required**: Yes  
+
+
+
+
 
 
 

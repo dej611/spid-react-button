@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import SpidIcoCircleLbUrl from '/../shared/svgs/spid-ico-circle-lb.svg';
-import SpidIcoCircleBbUrl from '/../shared/svgs/spid-ico-circle-bb.svg';
 
 import { getTranslationFn } from '../shared/i18n';
 import {
@@ -21,6 +19,15 @@ import { ProvidersModal } from './ProvidersModal';
 import type { TranslateFn } from '../shared/i18n';
 import type { SPIDButtonProps } from '../shared/types';
 import type { ModalState } from './types';
+
+const SpidIcoCircleLbUrl = new URL(
+  '../shared/svgs/spid-ico-circle-lb.svg',
+  import.meta.url
+).pathname;
+const SpidIcoCircleBbUrl = new URL(
+  '../shared/svgs/spid-ico-circle-bb.svg',
+  import.meta.url
+).pathname;
 
 const providersList = getShuffledProviders();
 
@@ -43,10 +50,8 @@ const LoginButton = ({
     size,
     fluid
   });
-  const {
-    wrapper: wrapperTransitionClasses,
-    icon: iconButtonClasses
-  } = computeButtonTransitionClasses(modalVisibility);
+  const { wrapper: wrapperTransitionClasses, icon: iconButtonClasses } =
+    computeButtonTransitionClasses(modalVisibility);
   const buttonImageUrl =
     theme === 'negative' ? SpidIcoCircleLbUrl : SpidIcoCircleBbUrl;
   return (

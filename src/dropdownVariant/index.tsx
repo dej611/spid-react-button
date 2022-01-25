@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FocusOn } from 'react-focus-on';
 
-import SpidIcoCircleBbUrl from '/../shared/svgs/spid-ico-circle-bb.svg';
-import SpidIcoCircleLbUrl from '/../shared/svgs/spid-ico-circle-lb.svg';
 import { getTranslationFn } from '../shared/i18n';
 import { SPIDButtonProps } from '../shared/types';
 import {
@@ -14,6 +12,15 @@ import {
 import styles from './index.module.css';
 import { ProvidersDropdown } from './ProvidersMenu';
 import { getButtonSizeClass } from './util';
+
+const SpidIcoCircleBbUrl = new URL(
+  '../shared/svgs/spid-ico-circle-bb.svg',
+  import.meta.url
+).pathname;
+const SpidIcoCircleLbUrl = new URL(
+  '../shared/svgs/spid-ico-circle-lb.svg',
+  import.meta.url
+).pathname;
 
 const shuffledProviders = getShuffledProviders();
 /**

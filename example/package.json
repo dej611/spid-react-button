@@ -2,35 +2,21 @@
   "name": "spid-react-button-example",
   "homepage": ".",
   "version": "0.0.0",
-  "private": true,
+  "source": "src/index.html",
   "scripts": {
     "analyze": "source-map-explorer 'build/static/js/*.js'",
-    "start": "node ../node_modules/react-scripts/bin/react-scripts.js start",
-    "build": "node ../node_modules/react-scripts/bin/react-scripts.js build",
-    "test": "node ../node_modules/react-scripts/bin/react-scripts.js test",
-    "eject": "node ../node_modules/react-scripts/bin/react-scripts.js eject"
+    "start": "parcel",
+    "build": "parcel build"
   },
   "dependencies": {
-    "@testing-library/jest-dom": "file:../node_modules/@testing-library/jest-dom",
-    "@testing-library/react": "file:../node_modules/@testing-library/react",
-    "@testing-library/user-event": "file:../node_modules/@testing-library/user-event",
-    "@types/jest": "file:../node_modules/@types/jest",
-    "@types/node": "file:../node_modules/@types/node",
-    "@types/react": "file:../node_modules/@types/react",
-    "@types/react-dom": "file:../node_modules/@types/react-dom",
-    "@types/react-select": "^4.0.13",
     "bootstrap-italia": "^1.4.3",
-    "design-react-kit": "^3.3.3",
+    "design-react-kit": "4.0.2",
     "markdown-to-jsx": "^7.1.2",
     "prettier": "^2.2.1",
     "react": "file:../node_modules/react",
     "react-dom": "file:../node_modules/react-dom",
-    "react-scripts": "file:../node_modules/react-scripts",
-    "react-select": "^4.3.0",
     "react-syntax-highlighter": "^15.4.3",
-    "source-map-explorer": "^2.5.2",
     "@dej611/spid-react-button": "file:..",
-    "spid-smart-button": "file:../node_modules/spid-smart-button",
     "svg-loaders-react": "^2.2.1",
     "typeface-lora": "^1.1.13",
     "typeface-roboto-mono": "^1.1.13",
@@ -38,22 +24,14 @@
     "typescript": "file:../node_modules/typescript"
   },
   "devDependencies": {
+    "@types/node": "file:../node_modules/@types/node",
+    "@types/react": "file:../node_modules/@types/react",
+    "@types/react-dom": "file:../node_modules/@types/react-dom",
     "@babel/plugin-syntax-object-rest-spread": "^7.8.3",
-    "@types/react-syntax-highlighter": "^13.5.0"
+    "@types/react-syntax-highlighter": "^13.5.0",
+    "browserslist-config-design-italia": "latest",
+    "parcel": "file:../node_modules/parcel",
+    "source-map-explorer": "^2.5.2"
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+  "browserslist": "extends browserslist-config-design-italia"
 }
