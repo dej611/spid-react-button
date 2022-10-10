@@ -7,6 +7,7 @@ import NamirialSVGUrl from '/./svgs/idp-logos/spid-idp-namirialid.svg';
 import RegisterItSVGUrl from '/./svgs/idp-logos/spid-idp-spiditalia.svg';
 import IntesaSVGUrl from '/./svgs/idp-logos/spid-idp-intesaid.svg';
 import LepidaSVGUrl from '/./svgs/idp-logos/spid-idp-lepidaid.svg';
+import TeamSystemSVGUrl from '/./svgs/idp-logos/spid-idp-teamsystemid.svg';
 
 import type { RegisteredProviderRecord } from './types';
 
@@ -72,6 +73,13 @@ export const providers: Readonly<RegisteredProviderRecord>[] = [
     entityName: 'Lepida ID',
     logo: LepidaSVGUrl,
     entityID: 'https://id.lepida.it/idp/shibboleth',
+    active: true
+  },
+  {
+    protocols: ['SAML'],
+    entityName: 'Team System ID',
+    logo: TeamSystemSVGUrl,
+    entityID: 'https://spid.teamsystem.com/idp',
     active: true
   }
 ];

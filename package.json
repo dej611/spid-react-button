@@ -115,7 +115,7 @@
       },
       {
         "path": "./dist/index.modern.js",
-        "maxSize": "7.5 KB"
+        "maxSize": "7.6 KB"
       }
     ]
   }
