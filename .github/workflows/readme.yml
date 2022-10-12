@@ -27,7 +27,7 @@ jobs:
           - name: Installing dependencies
             run: npm ci
 
-          - name: Build the library
+          - name: Build the documentation
             run: npm run doc
 
           - name: Commit to main
