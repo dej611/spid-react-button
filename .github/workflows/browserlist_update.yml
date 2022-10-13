@@ -1,9 +1,8 @@
-name: Build readme
+name: Monthly browserlist check
 
 on:
-  push:
-    branches:
-      - main
+  schedule:
+    - cron:  '0 13 1 * *'
 
 jobs:
     build:
@@ -15,20 +14,17 @@ jobs:
           - name: Use Node.js
             uses: actions/setup-node@v1
             with:
-              node-version: 16
+              node-version: 14.18.2
 
           - uses: actions/cache@v2
             with:
               path: ~/.npm
-              key: ${{ runner.os }}-node-16-${{ hashFiles('**/package-lock.json') }}
+              key: ${{ runner.os }}-node-14-${{ hashFiles('**/package-lock.json') }}
               restore-keys: |
-                ${{ runner.os }}-node-16-
+                ${{ runner.os }}-node-14-
 
-          - name: Installing dependencies
-            run: npm ci
-
-          - name: Build the documentation
-            run: npm run doc
+          - name: Update browserlist command
+            run: npx browserslist@latest --update-db
 
           - name: Commit to main
             id: commit
@@ -36,8 +32,8 @@ jobs:
             with:
               author_name: github-actions
               author_email: 41898282+github-actions[bot]@users.noreply.github.com
-              message: '[skip ci] Update readme'
-              add: '*.md'
+              message: '[skip ci] Update browserlist'
+              add: '*.json'
 
           - name: Handle no changes
             if: steps.commit.outputs. committed != 'true'
