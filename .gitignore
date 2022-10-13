@@ -9,6 +9,7 @@ build
 dist
 .rpt2_cache
 coverage
+temp
 
 # misc
 .DS_Store

@@ -1,0 +1,12 @@
+{
+    "Aruba ID": "https://loginspid.aruba.it",
+    "Infocert": "https://identity.infocert.it",
+    "Poste ID": "https://posteid.poste.it",
+    "Sielte": "https://identity.sieltecloud.it",
+    "Tim ID": "https://login.id.tim.it/affwebservices/public/saml2sso",
+    "Namirial ID": "https://idp.namirialtsp.com/idp",
+    "SPIDItalia Register.it": "https://spid.register.it",
+    "Intesa ID": "https://spid.intesa.it",
+    "Lepida ID": "https://id.lepida.it/idp/shibboleth",
+    "Team System ID": "https://spid.teamsystem.com/idp"
+}
