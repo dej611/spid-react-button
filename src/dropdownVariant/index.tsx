@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { FocusOn } from 'react-focus-on';
 
-import SpidIcoCircleBbUrl from '/../shared/svgs/spid-ico-circle-bb.svg';
-import SpidIcoCircleLbUrl from '/../shared/svgs/spid-ico-circle-lb.svg';
+import SpidIcoCircleBbUrl from './/../shared/svgs/spid-ico-circle-lb.svg';
+import SpidIcoCircleLbUrl from './/../shared/svgs/spid-ico-circle-lb.svg';
 import { getTranslationFn } from '../shared/i18n';
 import { SPIDButtonProps } from '../shared/types';
 import {
