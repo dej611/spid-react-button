@@ -73,7 +73,9 @@ export function isProviderActive(
     ({ entityID }) => entityID === idp.entityID
   );
   return (
-    supported.indexOf(idp.entityID) > -1 &&
+    (isExtraProviders
+      ? isExtraProviders
+      : supported.indexOf(idp.entityID) > -1) &&
     idp.protocols.indexOf(protocol) > -1 &&
     (extraProviders.length === 0 || isExtraProviders) &&
     idp.active
